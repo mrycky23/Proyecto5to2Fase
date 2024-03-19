@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Data Tables</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/libs/css/style.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/dataTables.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/buttons.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/select.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/select.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
 </head>
 
 <body>
@@ -26,12 +26,12 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Vehiculos</h2>
+                            <h2 class="pageheader-title">Viajes</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Vehiculos</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Viajes</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -54,27 +54,28 @@
                                         <thead>
                                             <tr>
                                                 <th>Placa</th>
-                                                <th>Tipo</th>
-                                                <th>Tonelaje</th>
-                                                <th>Clase</th>
-                                                <th>Color</th>
-                                                <th>Año</th>
-                                                <th>Marca</th>
-                                                <th>Chasis</th>
-                                                <th>Motor</th>
+                                                <th>Chofer</th>
+                                                <th>Fecha Partida</th>
+                                                <th>Fecha Llegada</th>
+                                                <th>Lugar Partida</th>
+                                                <th>Lugar Destino</th>
+                                                <th>KM Inicial</th>
+                                                <th>KM Final</th>
+                                                <th>Orden de trabajo</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>PCA - 9145</td>
-                                                <td>Cabezal</td>
-                                                <td>26.00</td>
-                                                <td>Trailer</td>
-                                                <td>Gris</td>
-                                                <td>2015</td>
-                                                <td>Mercedez Benz</td>
-                                                <td>51618656589</td>
-                                                <td>9889898998822</td>
+                                                <td>Juan Maliza</td>
+                                                <td>2022-02-05</td>
+                                                <td>2022-02-07</td>
+                                                <td>Base Mision</td>
+                                                <td>Guayaquil Puerto</td>
+                                                <td>1000256</td>
+                                                <td>1000300</td>
+                                                <td>01258-8965</td>
                                             </tr>
                                             
                                         </tbody>
@@ -105,43 +106,43 @@
                             <h3 class="section-title">Datos:</h3>
                         </div>-->
                         <div class="card">
-                            <h5 class="card-header">Ingresar vehiculo: </h5>
+                            <h5 class="card-header">Ingresar viaje: </h5>
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Placa:</label>
+                                        <label for="inputText4" class="col-form-label">Seleccionar placa:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Tipo:</label>
+                                        <label for="inputText4" class="col-form-label">Seleccionar conductor:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Tonelaje:</label>
+                                        <label for="inputText4" class="col-form-label">Fecha Partida:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Clase:</label>
+                                        <label for="inputText4" class="col-form-label">Fecha Llegada:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Color:</label>
+                                        <label for="inputText4" class="col-form-label">Lugar Partida:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Año:</label>
+                                        <label for="inputText4" class="col-form-label">Lugar Destino:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Marca:</label>
+                                        <label for="inputText4" class="col-form-label">Km Inicial:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Chasis:</label>
+                                        <label for="inputText4" class="col-form-label">Km Final:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Motor:</label>
+                                        <label for="inputText4" class="col-form-label">Orden de trabajo:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">
                                     </div>
                                    <!-- <div class="custom-file mb-3">
