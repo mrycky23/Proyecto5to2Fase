@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2024 a las 02:38:14
+-- Tiempo de generación: 24-03-2024 a las 19:47:50
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `transportes_transjovalsa`
+-- Base de datos: `transjovalsa2`
 --
 
 -- --------------------------------------------------------
@@ -28,40 +28,60 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `conductor` (
-  `id_conductor` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
-  `telefono` int(11) NOT NULL,
-  `cedula` int(11) NOT NULL,
-  `tipolicencia` varchar(15) NOT NULL,
-  `fecha_exp_licencia` date NOT NULL,
-  `direccion` varchar(100) NOT NULL,
-  `id_vehi` int(11) NOT NULL
+  `telefono` varchar(15) DEFAULT NULL,
+  `cedula` varchar(15) DEFAULT NULL,
+  `tipoLicencia` varchar(2) NOT NULL,
+  `fechaExpLicencia` varchar(30) DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `programacion_mantenimiento`
+-- Estructura de tabla para la tabla `programacion`
 --
 
-CREATE TABLE `programacion_mantenimiento` (
-  `id_mantenimiento` int(11) NOT NULL,
-  `repuesto` varchar(100) NOT NULL,
-  `fecha` date NOT NULL,
-  `nota` varchar(100) NOT NULL
+CREATE TABLE `programacion` (
+  `id` int(11) NOT NULL,
+  `fecha` varchar(20) NOT NULL,
+  `repuesto` varchar(50) NOT NULL,
+  `hora` int(20) NOT NULL,
+  `km` int(20) NOT NULL,
+  `nota` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tiempos`
+-- Estructura de tabla para la tabla `reportes`
 --
 
-CREATE TABLE `tiempos` (
-  `horas` int(11) NOT NULL,
-  `kilometraje` int(11) NOT NULL
+CREATE TABLE `reportes` (
+  `id` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `fechaReporte` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `rol` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `rol`) VALUES
+(1, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -70,13 +90,37 @@ CREATE TABLE `tiempos` (
 --
 
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL,
-  `contrasenia` varchar(10) NOT NULL,
-  `correo` varchar(30) NOT NULL,
-  `rol` varchar(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `nombreUsuario` varchar(30) NOT NULL,
+  `apellidoUsuario` varchar(30) NOT NULL,
+  `contrasenia` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombreUsuario`, `apellidoUsuario`, `contrasenia`, `correo`) VALUES
+(1, 'Fausto', 'Robledo', '123', 'F@correo.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_roles`
+--
+
+CREATE TABLE `usuario_roles` (
+  `idUsuario` int(11) NOT NULL,
+  `idRol` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario_roles`
+--
+
+INSERT INTO `usuario_roles` (`idUsuario`, `idRol`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -85,14 +129,14 @@ CREATE TABLE `usuario` (
 --
 
 CREATE TABLE `vehiculo` (
-  `id_vehi` int(11) NOT NULL,
-  `placa` int(11) NOT NULL,
-  `tipo` varchar(100) NOT NULL,
-  `tonelaje` int(11) NOT NULL,
-  `clase` varchar(100) NOT NULL,
-  `color` varchar(100) NOT NULL,
-  `anio` int(11) NOT NULL,
-  `marca` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `placa` varchar(9) NOT NULL,
+  `tipo` varchar(20) NOT NULL,
+  `tonelaje` varchar(5) NOT NULL,
+  `clase` varchar(20) NOT NULL,
+  `color` varchar(20) NOT NULL,
+  `anio` int(4) NOT NULL,
+  `marca` varchar(20) NOT NULL,
   `chasis` varchar(100) NOT NULL,
   `motor` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -100,18 +144,51 @@ CREATE TABLE `vehiculo` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `viaje`
+-- Estructura de tabla para la tabla `vehiculo_usuario`
 --
 
-CREATE TABLE `viaje` (
-  `id_viaje` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
-  `lugar_partida` varchar(100) NOT NULL,
-  `lugar_destino` varchar(100) NOT NULL,
-  `kilometraje_salida` int(11) NOT NULL,
-  `kilometraje_llegada` int(11) NOT NULL,
-  `ordentrabajo` varchar(100) NOT NULL
+CREATE TABLE `vehiculo_usuario` (
+  `idVehiculo` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viajes`
+--
+
+CREATE TABLE `viajes` (
+  `id` int(11) NOT NULL,
+  `fechaInicio` varchar(30) NOT NULL,
+  `fechaFin` varchar(30) NOT NULL,
+  `lugarPartida` varchar(100) NOT NULL,
+  `lugarDestino` varchar(100) NOT NULL,
+  `KmSalida` int(11) NOT NULL,
+  `KmLlegada` int(11) NOT NULL,
+  `ordenTrabajo` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viajes_conductor`
+--
+
+CREATE TABLE `viajes_conductor` (
+  `idViaje` int(11) NOT NULL,
+  `idConductor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viajes_vehiculo`
+--
+
+CREATE TABLE `viajes_vehiculo` (
+  `idVehiculo` int(11) NOT NULL,
+  `idViaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -122,32 +199,72 @@ CREATE TABLE `viaje` (
 -- Indices de la tabla `conductor`
 --
 ALTER TABLE `conductor`
-  ADD PRIMARY KEY (`id_conductor`),
-  ADD UNIQUE KEY `id_vehi` (`id_vehi`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `programacion_mantenimiento`
+-- Indices de la tabla `programacion`
 --
-ALTER TABLE `programacion_mantenimiento`
-  ADD PRIMARY KEY (`id_mantenimiento`);
+ALTER TABLE `programacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_reportes_usuario` (`idUsuario`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuario_roles`
+--
+ALTER TABLE `usuario_roles`
+  ADD PRIMARY KEY (`idUsuario`,`idRol`),
+  ADD KEY `idRol` (`idRol`);
 
 --
 -- Indices de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  ADD PRIMARY KEY (`id_vehi`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `viaje`
+-- Indices de la tabla `vehiculo_usuario`
 --
-ALTER TABLE `viaje`
-  ADD PRIMARY KEY (`id_viaje`);
+ALTER TABLE `vehiculo_usuario`
+  ADD PRIMARY KEY (`idVehiculo`,`idUsuario`),
+  ADD KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indices de la tabla `viajes`
+--
+ALTER TABLE `viajes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `viajes_conductor`
+--
+ALTER TABLE `viajes_conductor`
+  ADD PRIMARY KEY (`idViaje`,`idConductor`),
+  ADD KEY `idConductor` (`idConductor`);
+
+--
+-- Indices de la tabla `viajes_vehiculo`
+--
+ALTER TABLE `viajes_vehiculo`
+  ADD PRIMARY KEY (`idViaje`,`idVehiculo`),
+  ADD KEY `idVehiculo` (`idVehiculo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -157,53 +274,81 @@ ALTER TABLE `viaje`
 -- AUTO_INCREMENT de la tabla `conductor`
 --
 ALTER TABLE `conductor`
-  MODIFY `id_conductor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `programacion_mantenimiento`
+-- AUTO_INCREMENT de la tabla `programacion`
 --
-ALTER TABLE `programacion_mantenimiento`
-  MODIFY `id_mantenimiento` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `programacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `id_vehi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `viaje`
+-- AUTO_INCREMENT de la tabla `viajes`
 --
-ALTER TABLE `viaje`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `viajes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `conductor`
+-- Filtros para la tabla `reportes`
 --
-ALTER TABLE `conductor`
-  ADD CONSTRAINT `conductor_ibfk_1` FOREIGN KEY (`id_conductor`) REFERENCES `vehiculo` (`id_vehi`);
+ALTER TABLE `reportes`
+  ADD CONSTRAINT `fk_reportes_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`);
 
 --
--- Filtros para la tabla `programacion_mantenimiento`
+-- Filtros para la tabla `usuario_roles`
 --
-ALTER TABLE `programacion_mantenimiento`
-  ADD CONSTRAINT `programacion_mantenimiento_ibfk_1` FOREIGN KEY (`id_mantenimiento`) REFERENCES `vehiculo` (`id_vehi`);
+ALTER TABLE `usuario_roles`
+  ADD CONSTRAINT `usuario_roles_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`),
+  ADD CONSTRAINT `usuario_roles_ibfk_2` FOREIGN KEY (`idRol`) REFERENCES `roles` (`id`);
 
 --
--- Filtros para la tabla `viaje`
+-- Filtros para la tabla `vehiculo_usuario`
 --
-ALTER TABLE `viaje`
-  ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`id_viaje`) REFERENCES `vehiculo` (`id_vehi`);
+ALTER TABLE `vehiculo_usuario`
+  ADD CONSTRAINT `vehiculo_usuario_ibfk_1` FOREIGN KEY (`idVehiculo`) REFERENCES `vehiculo` (`id`),
+  ADD CONSTRAINT `vehiculo_usuario_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`);
+
+--
+-- Filtros para la tabla `viajes_conductor`
+--
+ALTER TABLE `viajes_conductor`
+  ADD CONSTRAINT `viajes_conductor_ibfk_1` FOREIGN KEY (`idViaje`) REFERENCES `viajes` (`id`),
+  ADD CONSTRAINT `viajes_conductor_ibfk_2` FOREIGN KEY (`idConductor`) REFERENCES `conductor` (`id`);
+
+--
+-- Filtros para la tabla `viajes_vehiculo`
+--
+ALTER TABLE `viajes_vehiculo`
+  ADD CONSTRAINT `viajes_vehiculo_ibfk_1` FOREIGN KEY (`idViaje`) REFERENCES `viajes` (`id`),
+  ADD CONSTRAINT `viajes_vehiculo_ibfk_2` FOREIGN KEY (`idVehiculo`) REFERENCES `vehiculo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
