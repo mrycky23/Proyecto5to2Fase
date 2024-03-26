@@ -6,7 +6,7 @@ class ClaseConectar
     private $host = "localhost";
     private $usu = "root";
     private $clave = "";
-    private $base = "transportes_transjovalsa";
+    private $base = "transjovalsa2";
 
     public function ProcedimientoConectar()
     {
