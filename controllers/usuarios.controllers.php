@@ -56,7 +56,7 @@ switch ($_GET["op"]) {
         $RolId = $_POST["RolId"];
         //$Cedula = $_POST["Cedula"];
         $datos = array();
-        $datos = $Usuarios->Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $SucursalId, $RolId, $Cedula);
+        $datos = $Usuarios->Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $RolId);
         echo json_encode($datos);
         break;
         /*TODO: Procedimiento para actualizar */
@@ -84,7 +84,7 @@ switch ($_GET["op"]) {
         $correo = $_POST['correo'];
         $contrasenia = $_POST['contrasenia'];
 
-        //TODO: Si las variables estab vacias rgersa con error
+        //TODO: Si las variables estan vacias regresa con error
         if (empty($correo) or  empty($contrasenia)) {
             header("Location:../login.php?op=2");
             exit();
