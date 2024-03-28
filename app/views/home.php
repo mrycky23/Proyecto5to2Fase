@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/libs/css/style.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../../assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../../assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     
     <title>Mantenimentos Transjovalsa S.A</title>
 </head>
@@ -26,7 +26,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html"><img src="./assets/images/Transjovalsa SA1.jpg" width="180" height="50"></a>
+                <a class="navbar-brand" href="index.html"><img src="../../assets/images/Transjovalsa SA1.jpg" width="180" height="50"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -149,27 +149,27 @@
         <!--MENU-->
                             <li class="nav-item ">
         <!--MANTENIMIENTOS El contenido cargado dinámicamente aparecerá aquí-->
-                                <a class="nav-link" href="#" onclick="loadView('./views/mantenimientos/dashboard.views.html')"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>
+                                <a class="nav-link" href="#" onclick="loadView('mantenimientos/dashboard.views.php')"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>
 
                                 <!--<a class="nav-link" href="./views/dashboard.views.html" target="contenido"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>-->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadView('./views/programacion_mantenimientos/programacion_mant.views.html')"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
+                                <a class="nav-link" href="#" onclick="loadView('programacion_mantenimientos/programacion_mant.views.php')"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
                                 <!--<a class="nav-link" href="./views/programacion_mant.views.html" target="contenido"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>-->
                             </li>
                             <li class="nav-item">
                                <!-- <a class="nav-link" href="./views/conductores.views.html" target="contenido"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>-->
-                                <a class="nav-link" href="#" onclick="loadView('./views/conductores/conductores.views.html')"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
+                                <a class="nav-link" href="#" onclick="loadView('conductores/conductores.views.php')"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
                             </li>
                             <li class="nav-item ">
                                 
-                                <a class="nav-link" href="#" onclick="loadView('./views/vehiculos/vehiculos.views.html')"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
+                                <a class="nav-link" href="#" onclick="loadView('.vehiculos/vehiculos.views.php')"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadView('./views/viajes/viajes.views.html')"><i class="fas fa-fw fa-table"></i>Viajes</a>
+                                <a class="nav-link" href="#" onclick="loadView('viajes/viajes.views.php')"><i class="fas fa-fw fa-table"></i>Viajes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadView('./views/reportes/reportes.views.html')"><i class="fas fa-fw fa-table"></i>Reportes</a>
+                                <a class="nav-link" href="#" onclick="loadView('reportes/reportes.views.php')"><i class="fas fa-fw fa-table"></i>Reportes</a>
                             </li>
                             <li class="nav-divider">
                                 Configuración
@@ -315,27 +315,27 @@
        <div id="content"></div>
     </div>
     
-    <script src="./scripts/scripts.js"></script>
+    <script src="../scripts/scripts.js"></script>
     <!-- jquery 3.3.1 -->
-    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
-    <script src="assets/libs/js/main-js.js"></script>
+    <script src="../../assets/libs/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="../../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
-    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="../../assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="../../assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="../../assets/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
  
 </html>

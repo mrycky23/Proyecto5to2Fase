@@ -1,6 +1,6 @@
 <?php
 //TODO: Requerimientos 
-require_once('../config/conexion.php');
+require_once('../../config/conexion.php');
 
 class Usuarios
 {
@@ -86,7 +86,7 @@ class Usuarios
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoConectar();
-            $cadena = "SELECT usuario.id, usuario.nombreUsuario, usuario.contrasenia, usuario.apellidoUsuario, usuario.correo, roles.rol, roles.id from Usuarios INNER JOIN usuario_roles on usuario.id = usuario_roles.idUsuario INNER JOIN roles ON usuario_roles.idRol = roles.id WHERE `correo`='$Correo'";
+            $cadena = "SELECT usuario.id, usuario.nombreUsuario, usuario.contrasenia, usuario.apellidoUsuario, usuario.correo, roles.rol, roles.id from usuario INNER JOIN usuario_roles on usuario.id = usuario_roles.idUsuario INNER JOIN roles ON usuario_roles.idRol = roles.id WHERE `correo`='$Correo'";
             $datos = mysqli_query($con, $cadena);
             return $datos;
         } catch (Throwable $th) {

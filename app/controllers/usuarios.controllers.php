@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 /*TODO: Requerimientos */
-require_once('../config/sesiones.php');
+require_once('../../config/sesiones.php');
 require_once("../models/usuarios.models.php");
 //require_once("../models/Accesos.models.php");
 $Usuarios = new Usuarios;
@@ -102,27 +102,27 @@ switch ($_GET["op"]) {
         try {
             if (is_array($res) and count($res) > 0) {
                 //if ((md5($contrasenia) == ($res["Contrasenia"]))) {
-                if ((($contrasenia) == ($res["Contrasenia"]))) {
+                if ((($contrasenia) == ($res["contrasenia"]))) {
                     //$datos2 = array();
                     // $datos2 = $Accesos->Insertar(date("Y-m-d H:i:s"), $res["idUsuarios"], 'ingreso');
 
-                    $_SESSION["idUsuarios"] = $res["idUsuarios"];
-                    $_SESSION["Usuarios_Nombres"] = $res["Nombres"];
-                    $_SESSION["Usuarios_Apellidos"] = $res["Apellidos"];
-                    $_SESSION["Usuarios_Correo"] = $res["Correo"];
-                    $_SESSION["Usuario_IdRoles"] = $res["idRoles"];
-                    $_SESSION["Rol"] = $res["Rol"];
+                    $_SESSION["idUsuarios"] = $res["id"];
+                    $_SESSION["Usuarios_Nombres"] = $res["nombreUsuario"];
+                    $_SESSION["Usuarios_Apellidos"] = $res["apellidoUsuario"];
+                    $_SESSION["Usuarios_Correo"] = $res["correo"];
+                    $_SESSION["Usuario_IdRoles"] = $res["id"];
+                    $_SESSION["Rol"] = $res["rol"];
 
 
 
                     header("Location:../views/home.php");
                     exit();
                 } else {
-                    header("Location:../login.php?op=1");
+                    header("Location:../../login.php?op=1");
                     exit();
                 }
             } else {
-                header("Location:../login.php?op=1");
+                header("Location:../../login.php?op=1");
                 exit();
             }
         } catch (Exception $th) {
