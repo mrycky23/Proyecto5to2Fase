@@ -149,17 +149,15 @@
         <!--MENU-->
                             <li class="nav-item ">
         <!--MANTENIMIENTOS El contenido cargado dinámicamente aparecerá aquí-->
-                                <a class="nav-link" href="#" onclick="loadView('mantenimientos/dashboard.views.php')"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>
+                               <!--<a class="nav-link" href="#" onclick="loadView('mantenimientos/dashboard.views.php')" target=""><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>--> 
 
-                                <!--<a class="nav-link" href="./views/dashboard.views.html" target="contenido"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>-->
+                                <a class="nav-link" href="./mantenimientos/dashboard.views.php" target="content"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadView('programacion_mantenimientos/programacion_mant.views.php')"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
-                                <!--<a class="nav-link" href="./views/programacion_mant.views.html" target="contenido"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>-->
+                                <a class="nav-link" href="./progrmacion_mantenimientos/programacion_mant.views.php" target="content"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
                             </li>
                             <li class="nav-item">
-                               <!-- <a class="nav-link" href="./views/conductores.views.html" target="contenido"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>-->
-                                <a class="nav-link" href="#" onclick="loadView('conductores/conductores.views.php')"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
+                               <a class="nav-link" href="./conductores/conductores.views.php" target="content"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
                             </li>
                             <li class="nav-item ">
                                 
@@ -311,8 +309,8 @@
                 </nav>
             </div>
         </div>
-        <!-- <iframe name="contenido" src="./views/dashboard.views.html" style="width: 100%; height: 900vh; border: none;"></iframe> -->
-       <div id="content"></div>
+        <iframe name="content" id= "content" src="./mantenimientos/dashboard.views.php" style="width: 100%; height: 900vh; border: none;"></iframe>
+       <!--<iframe id="content"></iframe>-->
     </div>
     
     <script src="../scripts/scripts.js"></script>

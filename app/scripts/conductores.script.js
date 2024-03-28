@@ -4,40 +4,38 @@ function init() {
   });
 }
 
-$().ready(() => {
+$(document).ready(() => {
   CargaLista();
 });
-
 var CargaLista = () => {
   var html = "";
   $.get(
     "../../controllers/conductores.controllers.php?op=todos",
     (ListaConductores) => {
+      console.log(ListaConductores);
       ListaConductores = JSON.parse(ListaConductores);
       $.each(ListaConductores, (index, conductores) => {
         html += `<tr>
           <td>${index + 1}</td>
-          <td>${conductores.Nombre}</td>
-          <td>${conductores.Apellido}</td>
-          <td>${conductores.Licencia}</td>
-          <td>${conductores.Vigencia}</td>
-          <td>${conductores.Edad}</td>
+          <td>${conductores.nombre}</td>
+          <td>${conductores.apellido}</td>
+          <td>${conductores.licencia}</td>
+          <td>${conductores.vigencia}</td>
+          <td>${conductores.edad}</td>
           <td>${conductores.Telefono}</td> 
           <td>${conductores.Cedula}</td>
           <td>${conductores.Direccion}</td>
-  <td>
-  <button class='btn btn-primary' click='uno(${
-            conductores.id
-          })'>Editar</button>
-  <button class='btn btn-warning' click='eliminar(${
-    conductores.id
-          })'>Eliminar</button>
-              `;
+          <td>
+            <button class='btn btn-primary' data-id='${conductores.id}' onclick='editar(${conductores.id})'>Editar</button>
+            <button class='btn btn-warning' data-id='${conductores.id}' onclick='eliminar(${conductores.id})'>Eliminar</button>
+          </td>
+        </tr>`;
       });
       $("#ListaConductores").html(html);
     }
   );
 };
+
 
 var GuardarEditar = (e) => {
   e.preventDefault();
@@ -81,31 +79,26 @@ var GuardarEditar = (e) => {
         alert("La respuesta del servidor está vacía");
       }
     },
-    /*success: (respuesta) => {
-      console.log(respuesta);
-      respuesta = JSON.parse(respuesta);
-      if (respuesta == "ok") {
-        alert("Se guardo con éxito");
-        CargaLista();
-        LimpiarCajas();
-      } else {
-        alert("no tu pendejada");
-      }
-    },*/
   });
 };
 
 
+var eliminar = (id) => {
+  // lógica para eliminar el conductor con el ID proporcionado
+};
 
-var eliminar = () => {};
+var editar = (id) => {
+  // lógica para editar el conductor con el ID proporcionado
+};
+
 
 var LimpiarCajas = () => {
-  (document.getElementById("nombreConductor").value = "")
-  (document.getElementById("apellidoConductor").value = "")
-  (document.getElementById("telefonoConductor").value = "")
-  (document.getElementById("cedulaConductor").value = "")
-  (document.getElementById("tipoLicencia").value = "")
-  (document.getElementById("vigencia").value = "")
-  (document.getElementById("direccionConductor").value = "")
+  $("#nombreConductor").val("");
+  $("#apellidoConductor").val("");
+  $("#telefonoConductor").val("");
+  $("#cedulaConductor").val("");
+  $("#tipoLicencia").val("");
+  $("#vigencia").val("");
+  $("#direccionConductor").val("");
 };
 init();

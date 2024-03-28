@@ -1,29 +1,32 @@
 <?php
-//TODO: Requerimientos 
+// Requerimientos
 require_once('../../config/conexion.php');
+
 class conductores
 {
-    /*TODO: Procedimiento para sacar todos los registros*/
+    /* Procedimiento para sacar todos los registros */
     public function todos()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM `conductor`";
         $datos = mysqli_query($con, $cadena);
-        return $datos;
         $con->close();
+        return $datos;
     }
-    /*TODO: Procedimiento para sacar un registro*/
+
+    /* Procedimiento para sacar un registro */
     public function uno($conductorId)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM `conductor` WHERE `id`=$conductorId";
         $datos = mysqli_query($con, $cadena);
-        return $datos;
         $con->close();
+        return $datos;
     }
-    /*TODO: Procedimiento para insertar */
+
+    /* Procedimiento para insertar */
     public function Insertar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion)
     {
         $con = new ClaseConectar();
@@ -31,36 +34,46 @@ class conductores
         $cadena = "INSERT INTO `conductor`(`nombre`, `apellido`, `telefono`, `cedula`, `tipoLicencia`, `fechaExpLicencia`, `direccion`) VALUES('$nombre','$apellido','$telefono','$cedula','$tipoLicencia','$ExpLicencia','$direccion')";
 
         if (mysqli_query($con, $cadena)) {
+            $con->close();
             return "ok";
         } else {
-            return mysqli_error($con);
+            $error = mysqli_error($con);
+            $con->close();
+            return $error;
         }
-        $con->close();
     }
-    /*TODO: Procedimiento para actualizar */
-    public function Actualizar()
+
+    /* Procedimiento para actualizar */
+    public function Actualizar($idConductor, $nuevosDatos)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "";
+        // Aquí deberías construir la consulta SQL para actualizar
+        $cadena = ""; // Agrega tu consulta SQL aquí
         if (mysqli_query($con, $cadena)) {
+            $con->close();
             return "ok";
         } else {
-            return 'error al actualizar el registro';
+            $error = mysqli_error($con);
+            $con->close();
+            return $error;
         }
-        $con->close();
     }
-    /*TODO: Procedimiento para Eliminar */
-    public function Eliminar($idAccesos)
+
+    /* Procedimiento para Eliminar */
+    public function Eliminar($idConductor)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "";
+        // Aquí deberías construir la consulta SQL para eliminar
+        $cadena = ""; // Agrega tu consulta SQL aquí
         if (mysqli_query($con, $cadena)) {
+            $con->close();
             return true;
         } else {
+            $con->close();
             return false;
         }
-        $con->close();
     }
 }
+?>
