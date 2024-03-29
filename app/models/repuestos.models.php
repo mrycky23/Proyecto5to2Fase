@@ -2,35 +2,36 @@
 // Requerimientos
 require_once('../../config/conexion.php');
 
-class conductores
+class repuestos
 {
     /* Procedimiento para sacar todos los registros */
     public function todos()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM `programacion`";
+        $cadena = "SELECT * FROM `repuestos`";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
     }
 
     /* Procedimiento para sacar un registro */
-    public function uno($conductorId)
+    public function uno($idRespuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM `programacion` WHERE `id`=$id";
+        $cadena = "SELECT * FROM `repuestos` WHERE `id`=$idRespuesto";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
     }
 
-    public function Insertar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion)
+    /* Procedimiento para insertar */
+    public function Insertar($repuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `programacion`(`nombre`, `apellido`, `telefono`, `cedula`, `tipoLicencia`, `fechaExpLicencia`, `direccion`) VALUES('$nombre','$apellido','$telefono','$cedula','$tipoLicencia','$ExpLicencia','$direccion')";
+        $cadena = "INSERT INTO `repuestos`(`nombre`) VALUES('$repuesto')";
 
         if (mysqli_query($con, $cadena)) {
             $con->close();
@@ -43,7 +44,7 @@ class conductores
     }
 
     /* Procedimiento para actualizar */
-    public function Actualizar($idConductor, $nuevosDatos)
+    public function Actualizar($idRepuesto, $repuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();

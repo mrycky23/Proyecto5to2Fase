@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/libs/css/style.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../../../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
 </head>
 
 <body onload="initialize()">
@@ -660,12 +660,12 @@
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <script src="../assets/libs/js/main-js.js"></script>
-    <script src="../assets/libs/js/gmaps.min.js"></script>
-    <script src="../assets/libs/js/google_map.js">
+    <script src="../../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../../../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../../../assets/libs/js/main-js.js"></script>
+    <script src="../../../assets/libs/js/gmaps.min.js"></script>
+    <script src="../../../assets/libs/js/google_map.js">
     </script>
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyBUb3jDWJQ28vDJhuQZxkC0NXr_zycm8D0&amp;sensor=true"></script>
 </body>

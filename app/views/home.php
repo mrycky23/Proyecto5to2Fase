@@ -26,7 +26,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html"><img src="../../assets/images/Transjovalsa SA1.jpg" width="180" height="50"></a>
+                <a class="navbar-brand" href="./home.php"><img src="../../assets/images/Transjovalsa SA1.jpg" width="180" height="50"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -148,26 +148,22 @@
                             </li>
         <!--MENU-->
                             <li class="nav-item ">
-        <!--MANTENIMIENTOS El contenido cargado dinámicamente aparecerá aquí-->
-                               <!--<a class="nav-link" href="#" onclick="loadView('mantenimientos/dashboard.views.php')" target=""><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>--> 
-
                                 <a class="nav-link" href="./mantenimientos/dashboard.views.php" target="content"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./progrmacion_mantenimientos/programacion_mant.views.php" target="content"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
+                                <a class="nav-link" href="./programacion_mantenimientos/programacion_mant.views.php" target="content"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
                             </li>
                             <li class="nav-item">
                                <a class="nav-link" href="./conductores/conductores.views.php" target="content"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
                             </li>
                             <li class="nav-item ">
-                                
-                                <a class="nav-link" href="#" onclick="loadView('.vehiculos/vehiculos.views.php')"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
+                                <a class="nav-link" href="./vehiculos/vehiculos.views.php" target="content"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadView('viajes/viajes.views.php')"><i class="fas fa-fw fa-table"></i>Viajes</a>
+                                <a class="nav-link" href="./viajes/viajes.views.php" target="content"><i class="fas fa-fw fa-table"></i>Viajes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadView('reportes/reportes.views.php')"><i class="fas fa-fw fa-table"></i>Reportes</a>
+                                <a class="nav-link" href="./reportes/reportes.views.php" target="content"><i class="fas fa-fw fa-table"></i>Reportes</a>
                             </li>
                             <li class="nav-divider">
                                 Configuración
@@ -177,132 +173,16 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="views/blank-page.html">Blank Page</a>
+                                            <a class="nav-link" href="./usuarios/perfilUsuario.views.php" target="content">Perfil usuario</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="views/blank-page-header.html">Blank Page Header</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/login.html">Login</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/404-page.html">404 page</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/registro_usuario.html">Registro usuario</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/forgot-password.html">Olvidó su contraseña</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/pricing.html">Pricing Tables</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/timeline.html">Timeline</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/calendar.html">Calendar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/sortable-nestable-lists.html">Sortable/Nestable List</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/widgets.html">Widgets</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/media-object.html">Media Objects</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/cropper-image.html">Cropper</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/color-picker.html">Color Picker</a>
+                                            <a class="nav-link" href="./usuarios/registroUsuario.views.php" target="content">Registro usuario</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>Apps <span class="badge badge-secondary">New</span></a>
-                                <div id="submenu-7" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/inbox.html">Inbox</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/email-details.html">Email Detail</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/email-compose.html">Email Compose</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/message-chat.html">Message Chat</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Icons</a>
-                                <div id="submenu-8" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/icon-fontawesome.html">FontAwesome Icons</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/icon-material.html">Material Icons</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/icon-simple-lineicon.html">Simpleline Icon</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/icon-themify.html">Themify Icon</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/icon-flag.html">Flag Icons</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/icon-weather.html">Weather Icon</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fas fa-fw fa-map-marker-alt"></i>Maps</a>
-                                <div id="submenu-9" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/map-google.html">Google Maps</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="views/map-vector.html">Vector Maps</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fas fa-f fa-folder"></i>Menu Level</a>
-                                <div id="submenu-10" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Level 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Level 2</a>
-                                            <div id="submenu-11" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#">Level 1</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#">Level 2</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Level 3</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a class="nav-link" href="./mapas/mapas.views.php" target="content"><i class="fas fa-fw fa-table"></i>Mapa Ubicaciones</a>
                             </li>
                         </ul>
                     </div>

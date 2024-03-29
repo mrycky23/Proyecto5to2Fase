@@ -33,7 +33,7 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header" id="top">
                                     <h2 class="pageheader-title">Programacion de mantenimientos </h2>
-                                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                                    <p class="pageheader-text"></p>
         <!--BREADCRUMBS-->
                                     <div class="page-breadcrumb">
                                         <nav aria-label="breadcrumb">
@@ -60,39 +60,31 @@
                                         <form>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Ingresar repuesto:</label>
-                                                <input id="inputText4" type="text" class="form-control" placeholder="">
+                                                <input class="form-control" type="text" id="ingresoRepuesto"  placeholder="">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Repuesto:</label>
-                                                <select class="form-control" id="input-select">
+                                                <select class="form-control" id="repuesto" name= "repuesto">
                                                     <option>Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Código de repuesto:</label>
-                                                <input id="inputText4" type="text" class="form-control" placeholder="Codigo">
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="inputEmail">Vehículo:</label>
-                                                <select class="form-control" id="input-select">
+                                                <select class="form-control" id="vehiculo" name= "vehiculo">
                                                     <option>Placa</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Frecuencia:</label>
-                                                <select class="form-control" id="input-select">
+                                                <select class="form-control" id="frecuencia" name= "frecuencia">
                                                     <option>Kilometros</option>
                                                     <option>Horas</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Duración </label>
-                                                <input id="inputText4" type="number" class="form-control" placeholder="">
+                                                <input id="duracion" name= "duracion" type="number" class="form-control" placeholder="Horas / Kilometros">
                                             </div>
-                                           <!-- <div class="custom-file mb-3">
-                                                <input type="file" class="custom-file-input" id="customFile">
-                                                <label class="custom-file-label" for="customFile">File Input</label>
-                                            </div>-->
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Nota:</label>
                                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -705,6 +697,7 @@
             })
     });
     </script>
+    <script src= "../../scripts/programacion_mant.script.js"></script>
 </body>
  
 </html>

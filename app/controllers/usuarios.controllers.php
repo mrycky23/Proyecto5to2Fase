@@ -86,7 +86,7 @@ switch ($_GET["op"]) {
 
         //TODO: Si las variables estan vacias regresa con error
         if (empty($correo) or  empty($contrasenia)) {
-            header("Location:../login.php?op=2");
+            header("Location:../../login.php?op=2");
             exit();
         }
 
@@ -95,7 +95,7 @@ switch ($_GET["op"]) {
             $datos = $Usuarios->login($correo, $contrasenia);
             $res = mysqli_fetch_assoc($datos);
         } catch (Throwable $th) {
-            header("Location:../login.php?op=1");
+            header("Location:../../login.php?op=1");
             exit();
         }
         //TODO:Control de si existe el registro en la base de datos

@@ -54,13 +54,13 @@
                                     <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
+                                                <th>N#</th>
                                                 <th>Nombre</th>
                                                 <th>Apellido</th>
-                                                <th>Licencia</th>
-                                                <th>Vigencia</th>
-                                                <th>Edad</th>
                                                 <th>Telefono</th>
                                                 <th>Cedula</th>
+                                                <th>Licencia</th>
+                                                <th>Expiracion Lic</th>
                                                 <th>Direccion</th>
                                             </tr>
                                         </thead>
@@ -78,32 +78,29 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!--<div class="section-block" id="basicform">
-                            <h3 class="section-title">Datos:</h3>
-                        </div>-->
                         <div class="card">
                             <h5 class="card-header">Ingresar conductor: </h5>
                             <div class="card-body">
                                 <form id= "form-conductores" method="post">
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Nombre/s:</label>
-                                        <input id="inputText4" type="text" name= "nombreConductor" id= "nombreConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "nombre" id= "nombreConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Apellido/s:</label>
-                                        <input id="inputText4" type="text" name= "apellidoConductor" id= "apellidoConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "apellido" id= "apellidoConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Telefono:</label>
-                                        <input id="inputText4" type="text" name= "telefonoConductor" id= "telefonoConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "telefono" id= "telefonoConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Cedula:</label>
-                                        <input id="inputText4" type="text" name= "cedulaConductor" id= "cedulaConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "cedula" id= "cedulaConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" name= "tipoLicencia" id= "tipoLicencia" class="col-form-label">Tipo Licencia:</label>
-                                            <select class="selectpicker">
+                                            <select name= "tipoLicencia" class="selectpicker form-control">
                                                 <option>A1</option>
                                                 <option>B</option>
                                                 <option>C</option>
@@ -117,13 +114,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Vigencia:</label>
-                                        <input id="inputText4" type="date" name= "vigencia" id= "vigencia" class="form-control" placeholder="dd-mm-aaaa">
+                                        <input type="date" name= "fechaExpLicencia" id= "fechaExpLicencia" class="form-control" placeholder="dd-mm-aaaa">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Dirección:</label>
-                                        <input id="inputText4" type="text" name= "direccionConductor" id= "direccionConductor" class="form-control" placeholder="">
+                                        <input  type="text" name= "direccion" id="direccion" class="form-control" placeholder="">
                                     </div>
-                                    <div class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
+                                    <button id="btn-guardar" class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                 </form>
                             </div>
                         </div>

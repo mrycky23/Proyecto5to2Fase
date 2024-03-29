@@ -35,7 +35,7 @@
     <div class="splash-container">
         <div class="card ">
             <div class="card-body">
-            <div class="card-header text-center"><a href="./index.html"><img src="./assets/images/Transjovalsa SA1.jpg" width="180" height="50" alt="logo"></a><span class="splash-description">Ingrese su información.</span></div>
+            <div class="card-header text-center"><a href="./home.php"><img src="./assets/images/Transjovalsa SA1.jpg" width="180" height="50" alt="logo"></a><span class="splash-description">Ingrese su información.</span></div>
             
             <h4 class="mb-2"></h4>
             <p class="mb-4"></p>
@@ -63,7 +63,7 @@
                         }
                     } ?>
                     <div class="mb-3">
-                        <input class="form-control form-control-lg" id="usuario" name= "correo" type="text" placeholder="Usuario" autocomplete="off">
+                        <input class="form-control form-control-lg" id="correo" name= "correo" type="text" placeholder="Usuario" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <input class="form-control form-control-lg" id="contrasenia" name= "contrasenia" type="password" placeholder="Contraseña">
@@ -78,9 +78,9 @@
             </div>
             <div class="card-footer bg-white p-0  ">
                 <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Crear cuenta</a></div>
+                    <a href="./app/views/usuarios/registroUsuario.views.php" class="footer-link">Crear cuenta</a></div>
                 <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Olvidé mi contraseña</a>
+                    <a href="./app/views/usuarios/olvidarContrasenia.views.php" class="footer-link">Olvidé mi contraseña</a>
                 </div>
             </div>
         </div>

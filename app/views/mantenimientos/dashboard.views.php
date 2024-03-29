@@ -301,21 +301,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>Campaign#1</td>
-                                                    <td>98,789 </td>
-                                                    <td>$4563</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Campaign#2</td>
-                                                    <td>2,789 </td>
-                                                    <td>$325</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Campaign#3</td>
-                                                    <td>1,459 </td>
-                                                    <td>$225</td>
-                                                </tr>
-                                                <tr>
                                                     <td>Campaign#4</td>
                                                     <td>5,035 </td>
                                                     <td>$856</td>
@@ -559,7 +544,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                         Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                         Copyright © 2022 All rights reserved. Developed by <a href="https://colorlib.com/wp/">Transjovalsa S.A</a>.
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="text-md-right footer-links d-none d-sm-block">
@@ -575,6 +560,26 @@
         <!-- end footer -->
         <!-- ============================================================== -->
     </div>
+    <!-- jquery 3.3.1 -->
+    <script src="../../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="../../../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="../../../assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="../../../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="../../../assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="../../../assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="../../../assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="../../../assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="../../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="../../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="../../../assets/libs/js/dashboard-ecommerce.js"></script>
 
 </body>
 </html>

@@ -1,13 +1,13 @@
 <?php
 //error_reporting(0);
 require_once("../../config/cors.php");
-require_once("../models/vehiculos.models.php");
+require_once("../models/repuestos.models.php");
 
-$Vehiculos = new vehiculos;
+$Respuestos = new repuestos;
 
 switch ($_GET["op"]) {
     case 'todos':
-        $datos = $Vehiculos->todos();
+        $datos = $Respuestos->todos();
         $todos = array();
         while ($row = mysqli_fetch_assoc($datos)) {
             $todos[] = $row;
@@ -18,27 +18,27 @@ switch ($_GET["op"]) {
 
     case 'uno':
         $idRespuesto = $_POST["id"];
-        $datos = $Vehiculos->uno($idRespuesto);
+        $datos = $Respuestos->uno($idRespuesto);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
 
     case 'insertar':
-        $repuesto = $_POST["vehiculo"];
-        $datos = $Vehiculos->Insertar($repuesto);
+        $repuesto = $_POST["repuesto"];
+        $datos = $Respuestos->Insertar($repuesto);
         echo json_encode($datos);
         break;
 
     case 'actualizar':
-        $idRepuesto = $_POST["idVehiculo"];
-        $repuesto = $_POST["vehiculo"];
-        $datos = $Vehiculos->Actualizar($idRepuesto, $repuesto);
+        $idRepuesto = $_POST["idRepuesto"];
+        $repuesto = $_POST["repuesto"];
+        $datos = $Respuestos->Actualizar($idRepuesto, $repuesto);
         echo json_encode($datos);
         break;
 
     case 'eliminar':
-        $idRepuesto = $_POST["idVehiculo"];
-        $datos = $Vehiculos->Eliminar($idRepuesto);
+        $idRepuesto = $_POST["idRepuesto"];
+        $datos = $Respuestos->Eliminar($idRepuesto);
         echo json_encode($datos);
         break; 
 }

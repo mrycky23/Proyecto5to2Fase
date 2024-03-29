@@ -3,7 +3,7 @@ function init() {
     GuardarEditar(e);
   });
 }
-
+//Cargar Lista
 $(document).ready(() => {
   CargaLista();
 });
@@ -15,26 +15,44 @@ var CargaLista = () => {
       console.log(ListaConductores);
       ListaConductores = JSON.parse(ListaConductores);
       $.each(ListaConductores, (index, conductores) => {
-        html += `<tr>
+        html += `
+        <tr>
           <td>${index + 1}</td>
           <td>${conductores.nombre}</td>
           <td>${conductores.apellido}</td>
-          <td>${conductores.licencia}</td>
-          <td>${conductores.vigencia}</td>
-          <td>${conductores.edad}</td>
-          <td>${conductores.Telefono}</td> 
-          <td>${conductores.Cedula}</td>
-          <td>${conductores.Direccion}</td>
-          <td>
-            <button class='btn btn-primary' data-id='${conductores.id}' onclick='editar(${conductores.id})'>Editar</button>
-            <button class='btn btn-warning' data-id='${conductores.id}' onclick='eliminar(${conductores.id})'>Eliminar</button>
-          </td>
+          <td>${conductores.telefono}</td>
+          <td>${conductores.cedula}</td>
+          <td>${conductores.tipoLicencia}</td>
+          <td>${conductores.fechaExpLicencia}</td> 
+          <td>${conductores.direccion}</td>
         </tr>`;
       });
       $("#ListaConductores").html(html);
     }
   );
 };
+
+// btn-guardar
+$(document).ready(function() {
+  $('#btn-guardar').click(function(e) {
+      e.preventDefault(); // Evita el envío del formulario por defecto
+
+      // Obtener los datos del formulario
+      var formData = $('#form-conductores').serialize();
+
+      $.ajax({
+          url: '../../controllers/conductores.controllers.php?op=insertar', 
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+              console.log(response);
+          },
+          error: function(xhr, status, error) {
+              console.error(xhr.responseText);
+          }
+      });
+  });
+});
 
 
 var GuardarEditar = (e) => {
@@ -45,12 +63,6 @@ var GuardarEditar = (e) => {
   for (var pair of DatosFormularioConductores.entries()) {
     console.log(pair[0] + ", " + pair[1]);
   }
-
-  /**
-   * if(SucursalId >0){editar   accion='ruta para editar'}
-   * else
-   * { accion = ruta para insertar}
-   */
   $.ajax({
     url: accion,
     type: "post",
