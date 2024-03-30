@@ -57,10 +57,19 @@
                                 <div class="card">
                                     <h5 class="card-header">Ingresar datos: </h5>
                                     <div class="card-body">
-                                        <form>
+                                        <form class= "form-ProgramacionMantenimientos">
+                                        <div class="form-group">
+                                                <label for="inputEmail">Nombre de mantenimiento </label>
+                                                <input id="nombreMantenimiento" name= "nombreMantenimiento" type="text" class="form-control">
+                                            </div>
                                             <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Ingresar repuesto:</label>
-                                                <input class="form-control" type="text" id="ingresoRepuesto"  placeholder="">
+                                                <label for="inputText1">Ingresar repuesto:</label>
+                                                <div class="input-group mb-3">
+                                                <input id= "campoRepuesto" type="text" class="form-control">
+                                                <div class="input-group-append">
+                                                    <button id= "btn-ingresar" type="button" class="btn btn-primary">Ingresar</button>
+                                                </div>
+                                            </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Repuesto:</label>
@@ -77,36 +86,23 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Frecuencia:</label>
                                                 <select class="form-control" id="frecuencia" name= "frecuencia">
+                                                    <option>Seleccionar</option>
                                                     <option>Kilometros</option>
                                                     <option>Horas</option>
+                                                    <option>Dia</option>
+                                                    <option>Mes</option>
+                                                    <option>Año</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Duración </label>
-                                                <input id="duracion" name= "duracion" type="number" class="form-control" placeholder="Horas / Kilometros">
+                                                <input id="duracion" name= "duracion" type="number" class="form-control" placeholder="">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Nota:</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                <textarea class="form-control" id="nota" name= "nota" rows="3"></textarea>
                                             </div>
-                                            <div class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
-                                        </form>
-                                    </div>
-                                    <div class="card-body border-top">
-                                        <h3>Sizing</h3>
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="inputSmall" class="col-form-label">Small</label>
-                                                <input id="inputSmall" type="text" value=".form-control-sm" class="form-control form-control-sm">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputDefault" class="col-form-label">Default</label>
-                                                <input id="inputDefault" type="text" value="Default input" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputLarge" class="col-form-label">Large</label>
-                                                <input id="inputLarge" type="text" value=".form-control-lg" class="form-control form-control-lg">
-                                            </div>
+                                            <div class="aside-compose" id="btn-guardar"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
                                         </form>
                                     </div>
                                 </div>

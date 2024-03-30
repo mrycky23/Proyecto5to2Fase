@@ -302,6 +302,7 @@ select.form-control {
     padding-right: 15px;
     border: 1px solid #d2d2e4;
     border-radius: 2px;
+    width: 50px;
 }
 
 textarea.form-control {

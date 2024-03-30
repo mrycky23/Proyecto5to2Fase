@@ -2,7 +2,7 @@
 // Requerimientos
 require_once('../../config/conexion.php');
 
-class conductores
+class ProgramacionMantenimientos
 {
     /* Procedimiento para sacar todos los registros */
     public function todos()

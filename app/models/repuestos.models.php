@@ -16,11 +16,11 @@ class repuestos
     }
 
     /* Procedimiento para sacar un registro */
-    public function uno($idRespuesto)
+    public function uno($idRepuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM `repuestos` WHERE `id`=$idRespuesto";
+        $cadena = "SELECT * FROM `repuestos` WHERE `id`=$idRepuesto";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
@@ -41,6 +41,26 @@ class repuestos
             $con->close();
             return $error;
         }
+    }
+    public function existeRepuesto($nombreRepuesto)
+    {
+    $con = new ClaseConectar();
+    $con = $con->ProcedimientoConectar();
+    $nombreRepuesto = mysqli_real_escape_string($con, $nombreRepuesto); // Escapar el nombre del repuesto para prevenir inyecciones SQL
+    $consulta = "SELECT COUNT(*) AS cantidad FROM `repuestos` WHERE `nombre` = '$nombreRepuesto'";
+    $resultado = mysqli_query($con, $consulta);
+    
+    if ($resultado) {
+        $fila = mysqli_fetch_assoc($resultado);
+        $cantidad = $fila['cantidad'];
+        mysqli_free_result($resultado);
+        $con->close();
+        return $cantidad > 0; // Devolver true si existe al menos un repuesto con ese nombre, false en caso contrario
+    } else {
+        // Manejo de errores si la consulta falla
+        $con->close();
+        return false;
+    }
     }
 
     /* Procedimiento para actualizar */

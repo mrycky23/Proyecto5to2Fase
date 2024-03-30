@@ -3,11 +3,11 @@
 require_once("../../config/cors.php");
 require_once("../models/repuestos.models.php");
 
-$Respuestos = new repuestos;
+$Repuestos = new repuestos;
 
 switch ($_GET["op"]) {
     case 'todos':
-        $datos = $Respuestos->todos();
+        $datos = $Repuestos->todos();
         $todos = array();
         while ($row = mysqli_fetch_assoc($datos)) {
             $todos[] = $row;
@@ -17,15 +17,22 @@ switch ($_GET["op"]) {
         break;
 
     case 'uno':
-        $idRespuesto = $_POST["id"];
-        $datos = $Respuestos->uno($idRespuesto);
+        $idRepuesto = $_POST["id"];
+        $datos = $Repuestos->uno($idRepuesto);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
 
     case 'insertar':
-        $repuesto = $_POST["repuesto"];
-        $datos = $Respuestos->Insertar($repuesto);
+        $repuesto = $_POST["campoRepuesto"];
+
+    // Verificar si el repuesto ya existe
+    if ($Repuestos->existeRepuesto($repuesto)) {
+        echo json_encode("El repuesto ya existe");
+        return; 
+    }
+
+        $datos = $Repuestos->Insertar($repuesto);
         echo json_encode($datos);
         break;
 

@@ -4,56 +4,32 @@ function init() {
     });
 }
 
-
-
-//Insertar repuesto
-$(document).ready(function () {
-    $('#btn-guardar').click(function (e) {
-        e.preventDefault(); // Evita el envío del formulario por defecto
-
-        // Obtener los datos del formulario
-        var formData = $('#form-conductores').serialize();
-
-        $.ajax({
-            url: '../../controllers/repuestos.controllers.php?op=insertar',
-            type: 'POST',
-            data: formData,
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
+function cargarRepuestos() {
+    // Petición AJAX para obtener los datos de los repuestos desde el controlador
+    $.ajax({
+        url: '../../controllers/repuestos.controllers.php',
+        type: 'GET',
+        data: {
+            op: 'todos'
+        },
+        dataType: 'json',
+        success: function (response) {
+            // Limpiar opciones existentes en el select
+            $('#repuesto').empty();
+            // Agregar la opción "Seleccionar" por defecto
+            $('#repuesto').append('<option value="">Seleccionar</option>');
+            // Iterar sobre los repuestos obtenidos y agregarlos al select
+            $.each(response, function (index, repuesto) {
+                $('#repuesto').append('<option value="' + repuesto.id + '">' + repuesto.nombre + '</option>');
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al obtener los repuestos:', error);
+        }
     });
-});
-
+}
 //Cargar repuestos en el select
-$(document).ready(function(){
-    // Función para cargar opciones en el select
-    function cargarRepuestos() {
-        // Petición AJAX para obtener los datos de los repuestos desde el controlador
-        $.ajax({
-            url: '../../controllers/repuestos.controllers.php', 
-            type: 'GET',
-            data: {op: 'todos'},
-            dataType: 'json',
-            success: function(response) {
-                // Limpiar opciones existentes en el select
-                $('#repuesto').empty();
-                // Agregar la opción "Seleccionar" por defecto
-                $('#repuesto').append('<option value="">Seleccionar</option>');
-                // Iterar sobre los repuestos obtenidos y agregarlos al select
-                $.each(response, function(index, repuesto) {
-                    $('#repuesto').append('<option value="' + repuesto.id + '">' + repuesto.nombre + '</option>');
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error('Error al obtener los repuestos:', error);
-            }
-        });
-    }
-    // Llamar a la función para cargar los repuestos al cargar la página
+$(document).ready(function () {
     cargarRepuestos();
 
     // Si necesitas cargar los repuestos en respuesta a algún evento, como cambiar otro select, puedes descomentar este bloque y adaptarlo a tus necesidades.
@@ -64,34 +40,92 @@ $(document).ready(function(){
     */
 });
 
-//Cargar vehiculos en el select
-$(document).ready(function(){
-    // Función para cargar opciones en el select
-    function cargarVehiculos() {
+//Insertar repuesto
+$(document).ready(function () {
+    $('#btn-ingresar').click(function (e) {
+        e.preventDefault(); // Evita el envío del formulario por defecto
+
+        // Obtener los datos del formulario
+        var repuesto = $('#campoRepuesto').val();
+        // Verificar si el campo está vacío
+        if (repuesto === '') {
+            console.log('El campo está vacío');
+            return; // Detener el proceso si el campo está vacío
+        }
+
+        // Verificar si el repuesto ya existe
+        if (repuestoExistente(repuesto)) {
+            console.log('El repuesto ya existe');
+            return; // Detener el proceso si el repuesto ya existe
+        }
+        $.ajax({
+            url: '../../controllers/repuestos.controllers.php?op=insertar',
+            type: 'POST',
+            data: {
+                campoRepuesto: repuesto
+            },
+            success: function (response) {
+                console.log(response);
+                cargarRepuestos();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});
+
+
+// Función para verificar si el repuesto ya existe
+function repuestoExistente(repuesto) {
+    var existe = false;
+    $.ajax({
+        url: '../../controllers/repuestos.controllers.php?op=verificarExistencia',
+        type: 'POST',
+        data: {
+            repuesto: repuesto
+        },
+        async: false, // Hacer la solicitud AJAX síncrona para que la función espere la respuesta
+        success: function (response) {
+            existe = response === 'true'; // La respuesta será 'true' si el repuesto existe, 'false' si no existe
+            console.log('Existe el repuesto');
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al verificar la existencia del repuesto:', error);
+        }
+    });
+    return false; // Temporalmente retornamos falso para propósitos de demostración
+};
+
+
+function cargarVehiculos() {
         // Petición AJAX para obtener los datos de los repuestos desde el controlador
         $.ajax({
-            url: '../../controllers/vehiculos.controllers.php', 
+            url: '../../controllers/vehiculos.controllers.php',
             type: 'GET',
-            data: {op: 'todos'},
+            data: {
+                op: 'todos'
+            },
             dataType: 'json',
-            success: function(response) {
+            success: function (response) {
                 // Limpiar opciones existentes en el select
-                $('#repuesto').empty();
+                $('#vehiculo').empty();
                 // Agregar la opción "Seleccionar" por defecto
-                $('#repuesto').append('<option value="">Seleccionar</option>');
+                $('#vehiculo').append('<option value="">Seleccionar</option>');
                 // Iterar sobre los repuestos obtenidos y agregarlos al select
-                $.each(response, function(index, repuesto) {
-                    $('#repuesto').append('<option value="' + repuesto.id + '">' + repuesto.placa + '</option>');
+                $.each(response, function (index, vehiculo) {
+                    $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
                 });
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error('Error al obtener los repuestos:', error);
             }
         });
     }
-    // Llamar a la función para cargar los repuestos al cargar la página
-    cargarVehiculos();
 
+//Cargar vehiculos en el select
+$(document).ready(function () {
+    cargarVehiculos();
     // Si necesitas cargar los repuestos en respuesta a algún evento, como cambiar otro select, puedes descomentar este bloque y adaptarlo a tus necesidades.
     /*
     $('#otroSelect').on('change', function() {
@@ -100,45 +134,75 @@ $(document).ready(function(){
     */
 });
 
+$(document).ready(function () {
+    // Escuchar el evento de clic en el botón de guardar
+    $('#btn-guardar').click(function (e) {
+        e.preventDefault(); // Evitar el envío del formulario por defecto
 
-var GuardarEditar = (e) => {
-    e.preventDefault();
-    var DatosFormularioConductores = new FormData($("#form-conductores")[0]);
-    var accion = "../../controllers/conductores.controllers.php?op=insertar";
+        // Obtener los valores del formulario
+        var nombreMantenimiento = $('#nombreMantenimiento').val();
+        var repuesto = $('#repuesto').val();
+        var idVehiculo = $('#vehiculo').val();
+        var frecuencia = $('#frecuencia').val(); // Obtener el valor seleccionado en el campo frecuencia
+        var duracion = $('#duracion').val();
+        var nota = $('#nota').val();
 
-    for (var pair of DatosFormularioConductores.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-    }
-    $.ajax({
-        url: accion,
-        type: "post",
-        data: DatosFormularioConductores,
-        processData: false,
-        contentType: false,
-        cache: false,
-        success: (respuesta) => {
-            console.log(respuesta);
-            if (respuesta.trim() !== "") {
-                try {
-                    respuesta = JSON.parse(respuesta);
-                    if (respuesta === "ok") {
-                        alert("Se guardó con éxito");
-                        CargaLista();
-                        LimpiarCajas();
-                    } else {
-                        alert("Algo salió mal");
-                    }
-                } catch (error) {
-                    console.error("Error al analizar la respuesta JSON:", error);
-                    alert("Error al procesar la respuesta del servidor");
-                }
-            } else {
-                console.error("La respuesta del servidor está vacía");
-                alert("La respuesta del servidor está vacía");
+        // Determinar los valores para los atributos km, hora, día, mes, año
+        var km = 0;
+        var hora = 0;
+        var dia = 0;
+        var mes = 0;
+        var anio = 0;
+        switch (frecuencia) {
+            case 'Kilometros':
+                km = duracion; // La duración se asigna a km si la frecuencia es Kilómetros
+                break;
+            case 'Horas':
+                hora = duracion; // La duración se asigna a hora si la frecuencia es Horas
+                break;
+            case 'Dia':
+                dia = duracion; // La duración se asigna a día si la frecuencia es Día
+                break;
+            case 'Mes':
+                mes = duracion; // La duración se asigna a mes si la frecuencia es Mes
+                break;
+            case 'Anio':
+                anio = duracion; // La duración se asigna a año si la frecuencia es Año
+                break;
+            default:
+                break;
+        }
+
+        // Crear objeto con los datos del formulario
+        var datosFormulario = {
+            nombreMantenimiento: nombreMantenimiento,
+            repuesto: repuesto,
+            idVehiculo: idVehiculo,
+            km: km,
+            hora: hora,
+            dia: dia,
+            mes: mes,
+            anio: anio,
+            nota: nota
+        };
+
+        // Realizar la petición AJAX para insertar los datos en la tabla programacion
+        $.ajax({
+            url: 'ruta_del_controlador.php', // Ruta del controlador que maneja la inserción en la tabla programacion
+            type: 'POST',
+            data: datosFormulario,
+            success: function (response) {
+                console.log(response);
+                // Aquí puedes agregar lógica adicional si lo necesitas
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
             }
-        },
+        });
     });
-};
+});
+
+
 
 
 var eliminar = (id) => {
@@ -151,12 +215,12 @@ var editar = (id) => {
 
 
 var LimpiarCajas = () => {
-    $("#nombreConductor").val("");
-    $("#apellidoConductor").val("");
-    $("#telefonoConductor").val("");
-    $("#cedulaConductor").val("");
-    $("#tipoLicencia").val("");
-    $("#vigencia").val("");
-    $("#direccionConductor").val("");
+    $("#nombreMantenimiento").val("");
+    $("#campoRepuesto").val("");
+    $("#repuesto").val("");
+    $("#vehiculo").val("");
+    $("#frecuencia").val("");
+    $("#duracion").val("");
+    $("#nota").val("");
 };
 init();
