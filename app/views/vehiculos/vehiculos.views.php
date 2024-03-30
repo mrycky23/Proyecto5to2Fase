@@ -65,31 +65,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>PCA - 9145</td>
-                                                <td>Cabezal</td>
-                                                <td>26.00</td>
-                                                <td>Trailer</td>
-                                                <td>Gris</td>
-                                                <td>2015</td>
-                                                <td>Mercedez Benz</td>
-                                                <td>51618656589</td>
-                                                <td>9889898998822</td>
-                                            </tr>
                                             
-                                        </tbody>
-                                        <!--<tfoot>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Tipo Licencia</th>
-                                                <th>Vigencia</th>
-                                                <th>Edad</th>
-                                                <th>Teléfono</th>
-                                                <th>Cedula</th>
-                                                <th>Dirección</th>
-                                            </tr>
-                                        </tfoot>-->
+                                        </tbody class="table-border-bottom-0" id="ListaVehiculos">
                                     </table>
                                 </div>
                             </div>
@@ -101,48 +78,45 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!--<div class="section-block" id="basicform">
-                            <h3 class="section-title">Datos:</h3>
-                        </div>-->
                         <div class="card">
                             <h5 class="card-header">Ingresar vehiculo: </h5>
                             <div class="card-body">
                                 <form >
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Placa:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="placa" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Tipo:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="tipo" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Tonelaje:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="tonelaje" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Clase:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="clase" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Color:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="color" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Año:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="anio" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Marca:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="marca" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Chasis:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="chasis" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Motor:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="motor" type="text" class="form-control" placeholder="">
                                     </div>
                                    <!-- <div class="custom-file mb-3">
                                         <input type="file" class="custom-file-input" id="customFile">
@@ -150,7 +124,7 @@
                                     </div>-->
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Nota:</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" id="nota" rows="3"></textarea>
                                     </div>
                                     <div class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
                                 </form>
