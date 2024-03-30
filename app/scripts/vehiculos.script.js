@@ -1,5 +1,5 @@
 function init() {
-    $("#form-conductores").on("submit", (e) => {
+    $("#form-vehiculos").on("submit", (e) => {
       GuardarEditar(e);
     });
   }
@@ -10,7 +10,7 @@ function init() {
   var CargaLista = () => {
     var html = "";
     $.get(
-      "../../controllers/conductores.controllers.php?op=todos",
+      "../../controllers/vehiculos.controllers.php?op=todos",
       (ListaVehiculos) => {
         console.log(ListaVehiculos);
         ListaVehiculos = JSON.parse(ListaVehiculos);
@@ -18,10 +18,10 @@ function init() {
           html += `
           <tr>
             <td>${index + 1}</td>
-            <td>${vehiculos.nombre}</td>
-            <td>${vehiculos.apellido}</td>
-            <td>${vehiculos.telefono}</td>
-            <td>${vehiculos.cedula}</td>
+            <td>${vehiculos.placa}</td>
+            <td>${vehiculos.tipo}</td>
+            <td>${vehiculos.tonelaje}</td>
+            <td>${vehiculos.clase}</td>
             <td>${vehiculos.tipoLicencia}</td>
             <td>${vehiculos.fechaExpLicencia}</td> 
             <td>${vehiculos.direccion}</td>

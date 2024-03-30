@@ -81,7 +81,7 @@
                         <div class="card">
                             <h5 class="card-header">Ingresar vehiculo: </h5>
                             <div class="card-body">
-                                <form >
+                                <form id= "form-conductores" method="post">
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Placa:</label>
                                         <input id="placa" type="text" class="form-control" placeholder="">
@@ -126,7 +126,7 @@
                                         <label for="exampleFormControlTextarea1">Nota:</label>
                                         <textarea class="form-control" id="nota" rows="3"></textarea>
                                     </div>
-                                    <div class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
+                                    <div id= "btn-guardar" class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
                                 </form>
                             </div>
                         </div>

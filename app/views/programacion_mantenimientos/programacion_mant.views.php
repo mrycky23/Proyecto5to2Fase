@@ -103,7 +103,7 @@
                                                 <label for="nota">Nota:</label>
                                                 <textarea class="form-control" id="nota" name="nota" rows="3"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-lg btn-secondary btn-block">Guardar</button>
+                                            <button id= "btn-guardar" type="submit" class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
 
                                     </div>
