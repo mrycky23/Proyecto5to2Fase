@@ -57,53 +57,55 @@
                                 <div class="card">
                                     <h5 class="card-header">Ingresar datos: </h5>
                                     <div class="card-body">
-                                        <form class= "form-ProgramacionMantenimientos">
-                                        <div class="form-group">
-                                                <label for="inputEmail">Nombre de mantenimiento </label>
-                                                <input id="nombreMantenimiento" name= "nombreMantenimiento" type="text" class="form-control">
+                                    <form class="form-ProgramacionMantenimientos">
+                                            <div class="form-group">
+                                                <label for="nombreMantenimiento">Nombre de mantenimiento</label>
+                                                <input id="nombreMantenimiento" name="nombreMantenimiento" type="text" class="form-control" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputText1">Ingresar repuesto:</label>
+                                                <label for="campoRepuesto">Ingresar repuesto:</label>
                                                 <div class="input-group mb-3">
-                                                <input id= "campoRepuesto" type="text" class="form-control">
-                                                <div class="input-group-append">
-                                                    <button id= "btn-ingresar" type="button" class="btn btn-primary">Ingresar</button>
+                                                    <input id="campoRepuesto" type="text" class="form-control">
+                                                    <div class="input-group-append">
+                                                        <button id="btn-ingresar" type="button" class="btn btn-primary">Ingresar</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            </div>
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Repuesto:</label>
-                                                <select class="form-control" id="repuesto" name= "repuesto">
-                                                    <option>Seleccionar</option>
+                                                <label for="repuesto">Repuesto:</label>
+                                                <select class="form-control" id="repuesto" name="repuesto" required>
+                                                    <option value="">Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail">Vehículo:</label>
-                                                <select class="form-control" id="vehiculo" name= "vehiculo">
-                                                    <option>Placa</option>
+                                                <label for="vehiculo">Vehículo:</label>
+                                                <select class="form-control" id="vehiculo" name="vehiculo" required>
+                                                    <option value="">Seleccionar</option>
+                                                    <!-- Aquí podrías agregar opciones para los vehículos disponibles -->
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail">Frecuencia:</label>
-                                                <select class="form-control" id="frecuencia" name= "frecuencia">
-                                                    <option>Seleccionar</option>
-                                                    <option>Kilometros</option>
-                                                    <option>Horas</option>
-                                                    <option>Dia</option>
-                                                    <option>Mes</option>
-                                                    <option>Año</option>
+                                                <label for="frecuencia">Frecuencia:</label>
+                                                <select class="form-control" id="frecuencia" name="frecuencia" required>
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Kilometros">Kilómetros</option>
+                                                    <option value="Horas">Horas</option>
+                                                    <option value="Dia">Día</option>
+                                                    <option value="Mes">Mes</option>
+                                                    <option value="Anio">Año</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail">Duración </label>
-                                                <input id="duracion" name= "duracion" type="number" class="form-control" placeholder="">
+                                                <label for="duracion">Duración</label>
+                                                <input id="duracion" name="duracion" type="number" class="form-control" placeholder="" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Nota:</label>
-                                                <textarea class="form-control" id="nota" name= "nota" rows="3"></textarea>
+                                                <label for="nota">Nota:</label>
+                                                <textarea class="form-control" id="nota" name="nota" rows="3"></textarea>
                                             </div>
-                                            <div class="aside-compose" id="btn-guardar"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
+                                            <button type="submit" class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>

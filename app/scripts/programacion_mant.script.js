@@ -188,7 +188,7 @@ $(document).ready(function () {
 
         // Realizar la petición AJAX para insertar los datos en la tabla programacion
         $.ajax({
-            url: 'ruta_del_controlador.php', // Ruta del controlador que maneja la inserción en la tabla programacion
+            url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertar', // Ruta del controlador que maneja la inserción en la tabla programacion
             type: 'POST',
             data: datosFormulario,
             success: function (response) {
@@ -197,6 +197,8 @@ $(document).ready(function () {
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
+                console.error(status.responseText);
+                console.error(error.responseText);
             }
         });
     });

@@ -26,21 +26,22 @@ class ProgramacionMantenimientos
         return $datos;
     }
 
-    public function Insertar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion)
-    {
-        $con = new ClaseConectar();
-        $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `programacion`(`nombre`, `apellido`, `telefono`, `cedula`, `tipoLicencia`, `fechaExpLicencia`, `direccion`) VALUES('$nombre','$apellido','$telefono','$cedula','$tipoLicencia','$ExpLicencia','$direccion')";
+    public function Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota)
+{
+    $con = new ClaseConectar();
+    $con = $con->ProcedimientoConectar();
+    $cadena = "INSERT INTO `programacion`(`nombreMantenimiento`, `repuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`) VALUES ('$nombreMantenimiento', '$repuesto', '$idVehiculo', '$km', '$hora', '$dia', '$mes', '$anio', '$nota')";
 
-        if (mysqli_query($con, $cadena)) {
-            $con->close();
-            return "ok";
-        } else {
-            $error = mysqli_error($con);
-            $con->close();
-            return $error;
-        }
+    if (mysqli_query($con, $cadena)) {
+        $con->close();
+        return "ok";
+    } else {
+        $error = mysqli_error($con);
+        $con->close();
+        return $error;
     }
+}
+
 
     /* Procedimiento para actualizar */
     public function Actualizar($idConductor, $nuevosDatos)

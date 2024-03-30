@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Data Tables</title>
+    <title>Vehiculos</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -107,7 +107,7 @@
                         <div class="card">
                             <h5 class="card-header">Ingresar vehiculo: </h5>
                             <div class="card-body">
-                                <form>
+                                <form >
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Placa:</label>
                                         <input id="inputText4" type="text" class="form-control" placeholder="">

@@ -1,7 +1,7 @@
 <?php
 //error_reporting(0);
 require_once("../../config/cors.php");
-require_once("../models/repuestos.models.php");
+require_once("../models/programacion_mantenimientos.models.php");
 
 $ProgramacionMantenimientos = new ProgramacionMantenimientos;
 
@@ -23,11 +23,46 @@ switch ($_GET["op"]) {
         echo json_encode($res);
         break;
 
-    case 'insertar':
-        $repuesto = $_POST["campoRepuesto"];
-        $datos = $Repuestos->Insertar($repuesto);
-        echo json_encode($datos);
-        break;
+        case 'insertar':
+            // Obtener los datos del formulario
+            $nombreMantenimiento = $_POST["nombreMantenimiento"];
+            $repuesto = $_POST["repuesto"];
+            $idVehiculo = $_POST["vehiculo"];
+            $frecuencia = $_POST["frecuencia"];
+            $duracion = $_POST["duracion"];
+            $nota = $_POST["nota"];
+            
+            // Determinar los valores para los atributos km, hora, día, mes, año
+            $km = 0;
+            $hora = 0;
+            $dia = 0;
+            $mes = 0;
+            $anio = 0;
+            switch ($frecuencia) {
+                case 'Kilometros':
+                    $km = $duracion;
+                    break;
+                case 'Horas':
+                    $hora = $duracion;
+                    break;
+                case 'Dia':
+                    $dia = $duracion;
+                    break;
+                case 'Mes':
+                    $mes = $duracion;
+                    break;
+                case 'Anio':
+                    $anio = $duracion;
+                    break;
+                default:
+                    break;
+            }
+            
+            // Insertar los datos en la tabla programacion
+            $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
+            echo json_encode($datos);
+            break;
+        
 
     case 'actualizar':
         $idRepuesto = $_POST["idRepuesto"];
@@ -38,7 +73,7 @@ switch ($_GET["op"]) {
 
     case 'eliminar':
         $idRepuesto = $_POST["idRepuesto"];
-        $datos = $Respuestos->Eliminar($idRepuesto);
+        $datos = $Repuestos->Eliminar($idRepuesto);
         echo json_encode($datos);
         break; 
 }
