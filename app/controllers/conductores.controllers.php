@@ -23,13 +23,13 @@ switch ($_GET["op"]) {
         break;
 
     case 'insertar':
-        $nombre = $_POST["nombre"];
-        $apellido = $_POST["apellido"];
-        $telefono = $_POST["telefono"];
-        $cedula = $_POST["cedula"];
+        $nombre = $_POST["nombreConductor"];
+        $apellido = $_POST["apellidoConductor"];
+        $telefono = $_POST["telefonoConductor"];
+        $cedula = $_POST["cedulaConductor"];
         $tipoLicencia = $_POST["tipoLicencia"];
         $ExpLicencia = $_POST["fechaExpLicencia"]; 
-        $direccion = $_POST["direccion"];
+        $direccion = $_POST["direccionConductor"];
         $datos = $Conductor->Insertar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion);
         echo json_encode($datos);
         break;
