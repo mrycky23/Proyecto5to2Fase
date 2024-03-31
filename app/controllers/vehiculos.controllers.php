@@ -24,14 +24,29 @@ switch ($_GET["op"]) {
         break;
 
     case 'insertar':
-        $repuesto = $_POST["vehiculo"];
-        $datos = $Vehiculos->Insertar($repuesto);
+        $placa = $_POST["placa"];
+        $tipo = $_POST["tipo"];
+        $tonelaje = $_POST["tonelaje"];
+        $clase = $_POST["clase"];
+        $color = $_POST["color"];
+        $anio = $_POST["anio"];
+        $marca = $_POST["marca"];
+        $chasis = $_POST["chasis"];
+        $motor = $_POST["motor"];
+        $datos = $Vehiculos->Insertar($placa, $tipo, $tonelaje, $clase, $color, $anio, $marca, $chasis, $motor);
         echo json_encode($datos);
         break;
 
     case 'actualizar':
-        $idRepuesto = $_POST["idVehiculo"];
-        $repuesto = $_POST["vehiculo"];
+        $idRepuesto = $_POST["placa"];
+        $repuesto = $_POST["tipo"];
+        $repuesto = $_POST["tonelaje"];
+        $repuesto = $_POST["clase"];
+        $repuesto = $_POST["color"];
+        $repuesto = $_POST["anio"];
+        $repuesto = $_POST["marca"];
+        $repuesto = $_POST["chasis"];
+        $repuesto = $_POST["motor"];
         $datos = $Vehiculos->Actualizar($idRepuesto, $repuesto);
         echo json_encode($datos);
         break;

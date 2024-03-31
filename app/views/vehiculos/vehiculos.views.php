@@ -47,12 +47,13 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Lista</h5>
+                            <h5 class="card-header">Listado de vehiculos</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table class="table table-striped table-bordered first" >
                                         <thead>
                                             <tr>
+                                                <th>N#</th>
                                                 <th>Placa</th>
                                                 <th>Tipo</th>
                                                 <th>Tonelaje</th>
@@ -66,7 +67,7 @@
                                         </thead>
                                         <tbody>
                                             
-                                        </tbody class="table-border-bottom-0" id="ListaVehiculos">
+                                        </tbody id="ListaVehiculos">
                                     </table>
                                 </div>
                             </div>
@@ -81,52 +82,48 @@
                         <div class="card">
                             <h5 class="card-header">Ingresar vehiculo: </h5>
                             <div class="card-body">
-                                <form id= "form-conductores" method="post">
+                                <form id= "form-vehiculos" method="post">
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Placa:</label>
-                                        <input id="placa" type="text" class="form-control" placeholder="">
+                                        <input id="placa" name= "placa"type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Tipo:</label>
-                                        <input id="tipo" type="text" class="form-control" placeholder="">
+                                        <input id="tipo" name = "tipo" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Tonelaje:</label>
-                                        <input id="tonelaje" type="text" class="form-control" placeholder="">
+                                        <input id="tonelaje" name= "tonelaje" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Clase:</label>
-                                        <input id="clase" type="text" class="form-control" placeholder="">
+                                        <input id="clase" name="clase" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Color:</label>
-                                        <input id="color" type="text" class="form-control" placeholder="">
+                                        <input id="color" name= "color" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Año:</label>
-                                        <input id="anio" type="text" class="form-control" placeholder="">
+                                        <input id="anio" name="anio" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Marca:</label>
-                                        <input id="marca" type="text" class="form-control" placeholder="">
+                                        <input id="marca" name= "marca" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Chasis:</label>
-                                        <input id="chasis" type="text" class="form-control" placeholder="">
+                                        <input id="chasis" name= "chasis" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Motor:</label>
-                                        <input id="motor" type="text" class="form-control" placeholder="">
+                                        <input id="motor" name= "motor" type="text" class="form-control" placeholder="">
                                     </div>
                                    <!-- <div class="custom-file mb-3">
                                         <input type="file" class="custom-file-input" id="customFile">
                                         <label class="custom-file-label" for="customFile">File Input</label>
                                     </div>-->
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Nota:</label>
-                                        <textarea class="form-control" id="nota" rows="3"></textarea>
-                                    </div>
-                                    <div id= "btn-guardar" class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
+                                    <div id="btn-guardar" class="aside-compose"><button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button></div>
                                 </form>
                             </div>
                         </div>
@@ -181,6 +178,7 @@
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
+    <script src="../../scripts/vehiculos.script.js"> </script>
 </body>
  
 </html>
