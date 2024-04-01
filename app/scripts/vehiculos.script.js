@@ -1,6 +1,3 @@
-//document.addEventListener("DOMContentLoaded", function() {
-//  init();
-//});
 function init() {
   CargaLista();
   $('#btn-guardar').click(function(e) {
@@ -32,36 +29,6 @@ function ActualizarTabla() {
     // Llamada a la función CargaLista para obtener los nuevos datos
   CargaLista();
 }
-/*
-var CargaLista = () => {
-  var html = "";
-  $.get(
-    "../../controllers/vehiculos.controllers.php?op=todos",
-    (ListaVehiculos) => {
-      console.log(ListaVehiculos);
-      // Parsear la respuesta como JSON
-     // var vehiculos = JSON.parse(ListaVehiculos);
-      // Iterar sobre la lista de vehículos
-      ListaVehiculos.forEach((vehiculo, index) => {
-        html += `
-          <tr>
-            <td>${vehiculo.placa}</td>
-            <td>${vehiculo.tipo}</td>
-            <td>${vehiculo.tonelaje}</td>
-            <td>${vehiculo.clase}</td>
-            <td>${vehiculo.color}</td>
-            <td>${vehiculo.anio}</td>
-            <td>${vehiculo.marca}</td>
-            <td>${vehiculo.chasis}</td>
-            <td>${vehiculo.motor}</td>
-          </tr>`;
-      });
-      $("#ListaVehiculos").html(html);
-    }
-  );
-};
-
-*/
 
 //Cargar Lista
 var CargaLista = () => {

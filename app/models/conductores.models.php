@@ -1,5 +1,4 @@
 <?php
-// Requerimientos
 require_once('../../config/conexion.php');
 
 class conductores

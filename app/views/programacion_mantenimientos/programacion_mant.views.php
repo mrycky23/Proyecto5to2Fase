@@ -57,7 +57,7 @@
                                 <div class="card">
                                     <h5 class="card-header">Ingresar datos: </h5>
                                     <div class="card-body">
-                                    <form class="form-ProgramacionMantenimientos">
+                                        <form id= "form-ProgramacionMantenimientos" method="post">
                                             <div class="form-group">
                                                 <label for="nombreMantenimiento">Nombre de mantenimiento</label>
                                                 <input id="nombreMantenimiento" name="nombreMantenimiento" type="text" class="form-control" required>
@@ -73,20 +73,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="repuesto">Repuesto:</label>
-                                                <select class="form-control" id="repuesto" name="repuesto" required>
+                                                <select id="repuesto" name="repuesto" class="form-control"  required>
                                                     <option value="">Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="vehiculo">Vehículo:</label>
-                                                <select class="form-control" id="vehiculo" name="vehiculo" required>
+                                                <select  id="vehiculo" name="vehiculo" class="form-control" required>
                                                     <option value="">Seleccionar</option>
-                                                    <!-- Aquí podrías agregar opciones para los vehículos disponibles -->
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="frecuencia">Frecuencia:</label>
-                                                <select class="form-control" id="frecuencia" name="frecuencia" required>
+                                                <select id="frecuencia" name="frecuencia" class="form-control" required>
                                                     <option value="">Seleccionar</option>
                                                     <option value="Kilometros">Kilómetros</option>
                                                     <option value="Horas">Horas</option>
@@ -103,7 +102,7 @@
                                                 <label for="nota">Nota:</label>
                                                 <textarea class="form-control" id="nota" name="nota" rows="3"></textarea>
                                             </div>
-                                            <button id= "btn-guardar" type="submit" class="btn btn-lg btn-secondary btn-block">Guardar</button>
+                                            <button id= "btn-guardar"  class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
 
                                     </div>

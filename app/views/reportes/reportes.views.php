@@ -47,35 +47,21 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Lista</h5>
+                            <h5 class="card-header">Generar reporte:</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
                                                 <th>Placa</th>
-                                                <th>Tipo</th>
-                                                <th>Tonelaje</th>
-                                                <th>Clase</th>
-                                                <th>Color</th>
-                                                <th>Año</th>
-                                                <th>Marca</th>
-                                                <th>Chasis</th>
-                                                <th>Motor</th>
+                                                <th>Repuesto</th>
+                                                <th>Km Inicial</th>
+                                                <th>Km Final</th>
+                                                <th>Fecha</th>
+                                                <th>Conductor</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>PCA - 9145</td>
-                                                <td>Cabezal</td>
-                                                <td>26.00</td>
-                                                <td>Trailer</td>
-                                                <td>Gris</td>
-                                                <td>2015</td>
-                                                <td>Mercedez Benz</td>
-                                                <td>51618656589</td>
-                                                <td>9889898998822</td>
-                                            </tr>
                                             
                                         </tbody>
                                         <!--<tfoot>

@@ -302,7 +302,7 @@ select.form-control {
     padding-right: 15px;
     border: 1px solid #d2d2e4;
     border-radius: 2px;
-    width: 50px;
+    width: 300px;
 }
 
 textarea.form-control {
@@ -4031,7 +4031,7 @@ Pills vertical
     background-color: #ff407b;
     text-decoration: none;
 }
-
+/*Colo badge succes*/
 .badge-success {
     background-color: #21ae41;
 }
@@ -4099,10 +4099,10 @@ Pills vertical
     background-color: #d7d7df;
     text-decoration: none;
 }
-
+/*Boton badge dashboard*/
 .dashboard-badges {}
 
-.badge-dot {
+.badge-dot { 
     border-radius: 100%;
     padding: 4px;
     display: inline-block;

@@ -50,10 +50,10 @@
                             <h5 class="card-header">Listado de vehiculos</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first" >
+                                <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
-                                                <th>N#</th>
+                                                <th>N°</th>
                                                 <th>Placa</th>
                                                 <th>Tipo</th>
                                                 <th>Tonelaje</th>
@@ -63,11 +63,11 @@
                                                 <th>Marca</th>
                                                 <th>Chasis</th>
                                                 <th>Motor</th>
+                                                
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            
-                                        </tbody id="ListaVehiculos">
+                                        <tbody class="table-border-bottom-0" id="ListaVehiculos">
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

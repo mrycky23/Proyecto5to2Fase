@@ -28,19 +28,13 @@ function cargarRepuestos() {
         }
     });
 }
-//Cargar repuestos en el select
+
+// Cargar repuestos en el select
 $(document).ready(function () {
     cargarRepuestos();
-
-    // Si necesitas cargar los repuestos en respuesta a algún evento, como cambiar otro select, puedes descomentar este bloque y adaptarlo a tus necesidades.
-    /*
-    $('#otroSelect').on('change', function() {
-        cargarRepuestos();
-    });
-    */
 });
 
-//Insertar repuesto
+// Insertar repuesto
 $(document).ready(function () {
     $('#btn-ingresar').click(function (e) {
         e.preventDefault(); // Evita el envío del formulario por defecto
@@ -75,7 +69,6 @@ $(document).ready(function () {
     });
 });
 
-
 // Función para verificar si el repuesto ya existe
 function repuestoExistente(repuesto) {
     var existe = false;
@@ -95,45 +88,39 @@ function repuestoExistente(repuesto) {
         }
     });
     return false; // Temporalmente retornamos falso para propósitos de demostración
-};
-
+}
 
 function cargarVehiculos() {
-        // Petición AJAX para obtener los datos de los repuestos desde el controlador
-        $.ajax({
-            url: '../../controllers/vehiculos.controllers.php',
-            type: 'GET',
-            data: {
-                op: 'todos'
-            },
-            dataType: 'json',
-            success: function (response) {
-                // Limpiar opciones existentes en el select
-                $('#vehiculo').empty();
-                // Agregar la opción "Seleccionar" por defecto
-                $('#vehiculo').append('<option value="">Seleccionar</option>');
-                // Iterar sobre los repuestos obtenidos y agregarlos al select
-                $.each(response, function (index, vehiculo) {
-                    $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
-                });
-            },
-            error: function (xhr, status, error) {
-                console.error('Error al obtener los repuestos:', error);
-            }
-        });
-    }
+    // Petición AJAX para obtener los datos de los vehículos desde el controlador
+    $.ajax({
+        url: '../../controllers/vehiculos.controllers.php',
+        type: 'GET',
+        data: {
+            op: 'todos'
+        },
+        dataType: 'json',
+        success: function (response) {
+            // Limpiar opciones existentes en el select
+            $('#vehiculo').empty();
+            // Agregar la opción "Seleccionar" por defecto
+            $('#vehiculo').append('<option value="">Seleccionar</option>');
+            // Iterar sobre los vehículos obtenidos y agregarlos al select
+            $.each(response, function (index, vehiculo) {
+                $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al obtener los vehículos:', error);
+        }
+    });
+}
 
-//Cargar vehiculos en el select
+// Cargar vehículos en el select
 $(document).ready(function () {
     cargarVehiculos();
-    // Si necesitas cargar los repuestos en respuesta a algún evento, como cambiar otro select, puedes descomentar este bloque y adaptarlo a tus necesidades.
-    /*
-    $('#otroSelect').on('change', function() {
-        cargarRepuestos();
-    });
-    */
 });
 
+// Guardar Programacion
 $(document).ready(function () {
     // Escuchar el evento de clic en el botón de guardar
     $('#btn-guardar').click(function (e) {
@@ -142,80 +129,92 @@ $(document).ready(function () {
         // Obtener los valores del formulario
         var nombreMantenimiento = $('#nombreMantenimiento').val();
         var repuesto = $('#repuesto').val();
-        var idVehiculo = $('#vehiculo').val();
+        var vehiculoNombre = $('#vehiculo option:selected').text(); // Obtener el nombre del vehículo seleccionado
         var frecuencia = $('#frecuencia').val(); // Obtener el valor seleccionado en el campo frecuencia
         var duracion = $('#duracion').val();
         var nota = $('#nota').val();
 
-        // Determinar los valores para los atributos km, hora, día, mes, año
-        var km = 0;
-        var hora = 0;
-        var dia = 0;
-        var mes = 0;
-        var anio = 0;
-        switch (frecuencia) {
-            case 'Kilometros':
-                km = duracion; // La duración se asigna a km si la frecuencia es Kilómetros
-                break;
-            case 'Horas':
-                hora = duracion; // La duración se asigna a hora si la frecuencia es Horas
-                break;
-            case 'Dia':
-                dia = duracion; // La duración se asigna a día si la frecuencia es Día
-                break;
-            case 'Mes':
-                mes = duracion; // La duración se asigna a mes si la frecuencia es Mes
-                break;
-            case 'Anio':
-                anio = duracion; // La duración se asigna a año si la frecuencia es Año
-                break;
-            default:
-                break;
-        }
-
-        // Crear objeto con los datos del formulario
-        var datosFormulario = {
-            nombreMantenimiento: nombreMantenimiento,
-            repuesto: repuesto,
-            idVehiculo: idVehiculo,
-            km: km,
-            hora: hora,
-            dia: dia,
-            mes: mes,
-            anio: anio,
-            nota: nota
-        };
-
-        // Realizar la petición AJAX para insertar los datos en la tabla programacion
+        // Realizar una petición AJAX para obtener el ID del vehículo seleccionado
         $.ajax({
-            url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertar', // Ruta del controlador que maneja la inserción en la tabla programacion
+            url: '../../controllers/programacion_mantenimientos.controllers.php?op=buscarIdVehiculo', // Ruta del controlador que maneja la inserción en la tabla programacion
             type: 'POST',
-            data: datosFormulario,
+            data: {
+                nombreVehiculo: vehiculoNombre
+            }, // Enviar el nombre del vehículo al script PHP
+            dataType: 'json',
             success: function (response) {
-                console.log(response);
-                // Aquí puedes agregar lógica adicional si lo necesitas
+                // Verificar si se obtuvo el ID del vehículo correctamente
+                if (response.success) {
+                    var idVehiculo = response.idVehiculo;
+
+                    // Determinar los valores para los atributos km, hora, día, mes, año
+                    var km = 0;
+                    var hora = 0;
+                    var dia = 0;
+                    var mes = 0;
+                    var anio = 0;
+                    switch (frecuencia) {
+                        case 'Kilometros':
+                            km = duracion; // La duración se asigna a km si la frecuencia es Kilómetros
+                            break;
+                        case 'Horas':
+                            hora = duracion; // La duración se asigna a hora si la frecuencia es Horas
+                            break;
+                        case 'Dia':
+                            dia = duracion; // La duración se asigna a día si la frecuencia es Día
+                            break;
+                        case 'Mes':
+                            mes = duracion; // La duración se asigna a mes si la frecuencia es Mes
+                            break;
+                        case 'Anio':
+                            anio = duracion; // La duración se asigna a año si la frecuencia es Año
+                            break;
+                        default:
+                            break;
+                    }
+
+                    // Crear objeto con los datos del formulario
+                    var datosFormulario = {
+                        nombreMantenimiento: nombreMantenimiento,
+                        repuesto: repuesto,
+                        idVehiculo: idVehiculo, // Usar el ID del vehículo obtenido
+                        km: km,
+                        hora: hora,
+                        dia: dia,
+                        mes: mes,
+                        anio: anio,
+                        nota: nota
+                    };
+
+                    // Realizar la petición AJAX para insertar los datos en la tabla programacion
+                    $.ajax({
+                        url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertar', // Ruta del controlador que maneja la inserción en la tabla programacion
+                        type: 'POST',
+                        data: datosFormulario,
+                        success: function (response) {
+                            console.log(response);
+                            LimpiarCajas();
+                            // Aquí puedes agregar lógica adicional si lo necesitas
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            console.error(status.responseText);
+                            console.error(error.responseText);
+                        }
+                    });
+                } else {
+                    // Mostrar mensaje de error si no se pudo obtener el ID del vehículo
+                    console.error('Error al obtener el ID del vehículo:', response.error);
+                }
             },
             error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-                console.error(status.responseText);
-                console.error(error.responseText);
+                console.error('Error al obtener el ID del vehículo:', error);
             }
         });
     });
 });
 
-
-
-
-var eliminar = (id) => {
-    // lógica para eliminar el conductor con el ID proporcionado
-};
-
-var editar = (id) => {
-    // lógica para editar el conductor con el ID proporcionado
-};
-
-
+// Función para limpiar los campos del formulario
 var LimpiarCajas = () => {
     $("#nombreMantenimiento").val("");
     $("#campoRepuesto").val("");
@@ -225,4 +224,5 @@ var LimpiarCajas = () => {
     $("#duracion").val("");
     $("#nota").val("");
 };
+
 init();

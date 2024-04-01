@@ -17,21 +17,38 @@ switch ($_GET["op"]) {
         break;
 
     case 'uno':
-        $idRepuesto = $_POST["id"];
+        $programacion = $_POST["id"];
         $datos = $Repuestos->uno($idRepuesto);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
 
-        case 'insertar':
-            // Obtener los datos del formulario
-            $nombreMantenimiento = $_POST["nombreMantenimiento"];
-            $repuesto = $_POST["repuesto"];
-            $idVehiculo = $_POST["vehiculo"];
-            $frecuencia = $_POST["frecuencia"];
-            $duracion = $_POST["duracion"];
-            $nota = $_POST["nota"];
+    case 'buscarIdVehiculo':
+            // Obtener el nombre del vehículo enviado desde la solicitud AJAX
+            $nombreVehiculo = $_POST["nombreVehiculo"];
             
+            // Realizar la búsqueda del ID del vehículo en función de su nombre
+            $vehiculo = $Vehiculos->BuscarIdVehiculo($nombreVehiculo);
+        
+            // Verificar si se encontró el vehículo
+            if ($vehiculo) {
+                // Si se encontró, devolver el ID del vehículo como respuesta en formato JSON
+                echo json_encode(array("success" => true, "idVehiculo" => $vehiculo['id']));
+            } else {
+                // Si no se encontró el vehículo, devolver un mensaje de error en formato JSON
+                echo json_encode(array("success" => false, "error" => "No se pudo encontrar el ID del vehículo"));
+            }
+            break;    
+        
+    
+    case 'insertar':
+            // Validar y sanitizar los datos del formulario
+            $nombreMantenimiento = isset($_POST["nombreMantenimiento"]) ? $_POST["nombreMantenimiento"] : '';
+            $repuesto = isset($_POST["repuesto"]) ? $_POST["repuesto"] : '';
+            $idVehiculo = isset($_POST["vehiculo"]) ? $_POST["vehiculo"] : '';
+            $frecuencia = isset($_POST["frecuencia"]) ? $_POST["frecuencia"] : '';
+            $duracion = isset($_POST["duracion"]) ? $_POST["duracion"] : '';
+            $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';
             // Determinar los valores para los atributos km, hora, día, mes, año
             $km = 0;
             $hora = 0;
@@ -60,6 +77,7 @@ switch ($_GET["op"]) {
             
             // Insertar los datos en la tabla programacion
             $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
+            
             echo json_encode($datos);
             break;
         
