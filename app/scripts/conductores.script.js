@@ -136,6 +136,8 @@ var LimpiarCajas = () => {
   $("#tipoLicencia").val("");
   $("#fechaExpLicencia").val("");
   $("#direccionConductor").val("");
+  //aqui para probar 
+  $("#ModalConductores").modal("hide");
 };
 
 init();
