@@ -4,30 +4,7 @@ function init() {
     });
 }
 
-function cargarRepuestos() {
-    // Petición AJAX para obtener los datos de los repuestos desde el controlador
-    $.ajax({
-        url: '../../controllers/repuestos.controllers.php',
-        type: 'GET',
-        data: {
-            op: 'todos'
-        },
-        dataType: 'json',
-        success: function (response) {
-            // Limpiar opciones existentes en el select
-            $('#repuesto').empty();
-            // Agregar la opción "Seleccionar" por defecto
-            $('#repuesto').append('<option value="">Seleccionar</option>');
-            // Iterar sobre los repuestos obtenidos y agregarlos al select
-            $.each(response, function (index, repuesto) {
-                $('#repuesto').append('<option value="' + repuesto.id + '">' + repuesto.nombre + '</option>');
-            });
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al obtener los repuestos:', error);
-        }
-    });
-}
+
 
 // Cargar repuestos en el select
 $(document).ready(function () {
@@ -67,62 +44,11 @@ $(document).ready(function () {
             }
         });
     });
-});
 
-// Función para verificar si el repuesto ya existe
-function repuestoExistente(repuesto) {
-    var existe = false;
-    $.ajax({
-        url: '../../controllers/repuestos.controllers.php?op=verificarExistencia',
-        type: 'POST',
-        data: {
-            repuesto: repuesto
-        },
-        async: false, // Hacer la solicitud AJAX síncrona para que la función espere la respuesta
-        success: function (response) {
-            existe = response === 'true'; // La respuesta será 'true' si el repuesto existe, 'false' si no existe
-            console.log('Existe el repuesto');
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al verificar la existencia del repuesto:', error);
-        }
-    });
-    return false; // Temporalmente retornamos falso para propósitos de demostración
-}
 
-function cargarVehiculos() {
-    // Petición AJAX para obtener los datos de los vehículos desde el controlador
-    $.ajax({
-        url: '../../controllers/vehiculos.controllers.php',
-        type: 'GET',
-        data: {
-            op: 'todos'
-        },
-        dataType: 'json',
-        success: function (response) {
-            // Limpiar opciones existentes en el select
-            $('#vehiculo').empty();
-            // Agregar la opción "Seleccionar" por defecto
-            $('#vehiculo').append('<option value="">Seleccionar</option>');
-            // Iterar sobre los vehículos obtenidos y agregarlos al select
-            console.log(response);
-            $.each(response, function (index, vehiculo) {
-                $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
-            });
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al obtener los vehículos:', error);
-        }
-    });
-}
 
-// Cargar vehículos en el select
-$(document).ready(function () {
-    cargarVehiculos();
-});
 
-// Guardar Programacion
-$(document).ready(function () {
+
     // Escuchar el evento de clic en el botón de guardar
     $('#btn-guardar').click(function (e) {
         e.preventDefault(); // Evitar el envío del formulario por defecto
@@ -196,8 +122,111 @@ $(document).ready(function () {
                     console.error(error.responseText);
                 }
             });
+            $.ajax({
+                url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertarRespuestoProgramacion', // Ruta del controlador que maneja la inserción en la tabla programacion
+                type: 'POST',
+                data: datosFormulario,
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(status.responseText);
+                    console.error(error.responseText);
+                }
+            });
+
+
+            $.ajax({
+                url: '../../controllers/programacion_mantenimientos.controllers.php?op=actualizarEstado', // Ruta del controlador que maneja la inserción en la tabla programacion
+                type: 'POST',
+                data: datosFormulario,
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(status.responseText);
+                    console.error(error.responseText);
+                }
+            });
     });
+
+    cargarVehiculos();
 });
+
+// Función para verificar si el repuesto ya existe
+function repuestoExistente(repuesto) {
+    var existe = false;
+    $.ajax({
+        url: '../../controllers/repuestos.controllers.php?op=verificarExistencia',
+        type: 'POST',
+        data: {
+            repuesto: repuesto
+        },
+        async: false, // Hacer la solicitud AJAX síncrona para que la función espere la respuesta
+        success: function (response) {
+            existe = response === 'true'; // La respuesta será 'true' si el repuesto existe, 'false' si no existe
+            console.log('Existe el repuesto');
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al verificar la existencia del repuesto:', error);
+        }
+    });
+    return false; // Temporalmente retornamos falso para propósitos de demostración
+}
+
+function cargarVehiculos() {
+    // Petición AJAX para obtener los datos de los vehículos desde el controlador
+    $.ajax({
+        url: '../../controllers/vehiculos.controllers.php',
+        type: 'GET',
+        data: {
+            op: 'todos'
+        },
+        dataType: 'json',
+        success: function (response) {
+            // Limpiar opciones existentes en el select
+            $('#vehiculo').empty();
+            // Agregar la opción "Seleccionar" por defecto
+            $('#vehiculo').append('<option value="">Seleccionar</option>');
+            // Iterar sobre los vehículos obtenidos y agregarlos al select
+            console.log(response);
+            $.each(response, function (index, vehiculo) {
+                $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al obtener los vehículos:', error);
+        }
+    });
+}
+
+function cargarRepuestos() {
+    // Petición AJAX para obtener los datos de los repuestos desde el controlador
+    $.ajax({
+        url: '../../controllers/repuestos.controllers.php',
+        type: 'GET',
+        data: {
+            op: 'todos'
+        },
+        dataType: 'json',
+        success: function (response) {
+            // Limpiar opciones existentes en el select
+            $('#repuesto').empty();
+            // Agregar la opción "Seleccionar" por defecto
+            $('#repuesto').append('<option value="">Seleccionar</option>');
+            // Iterar sobre los repuestos obtenidos y agregarlos al select
+            $.each(response, function (index, repuesto) {
+                $('#repuesto').append('<option value="' + repuesto.id + '">' + repuesto.nombre + '</option>');
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al obtener los repuestos:', error);
+        }
+    });
+}
+
 
 // Función para limpiar los campos del formulario
 var LimpiarCajas = () => {

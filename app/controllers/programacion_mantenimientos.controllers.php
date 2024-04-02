@@ -2,8 +2,11 @@
 //error_reporting(0);
 require_once("../../config/cors.php");
 require_once("../models/programacion_mantenimientos.models.php");
+require_once("../models/programacion_repuestos.models.php");
 
 $ProgramacionMantenimientos = new ProgramacionMantenimientos;
+$Programacion_repuestos = new programacion_repuestos;
+
 
 switch ($_GET["op"]) {
     case 'todos':
@@ -19,6 +22,19 @@ switch ($_GET["op"]) {
     case 'uno':
         $programacion = $_POST["id"];
         $datos = $Repuestos->uno($idRepuesto);
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
+
+    case 'actualizarEstado':
+        $datos = $ProgramacionMantenimientos->actualizarEstado();
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
+
+    case 'actualizarEstado':
+        $idRepuesto = $_POST["repuesto"];
+        $datos = $Programacion_repuestos->insertarRespuestoProgramacion($idRepuesto);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;

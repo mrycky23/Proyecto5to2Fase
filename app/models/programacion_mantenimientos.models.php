@@ -15,6 +15,16 @@ class ProgramacionMantenimientos
         return $datos;
     }
 
+    public function actualizarEstado()
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "CALL actualizar_estado_programacion()";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+
     /* Procedimiento para sacar un registro */
     public function uno($conductorId)
     {
@@ -65,9 +75,6 @@ class ProgramacionMantenimientos
     }
     
 
-   
-    
-    
 
     public function Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota)
     {
