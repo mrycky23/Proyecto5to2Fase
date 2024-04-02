@@ -1,100 +1,63 @@
 function init() {
-    $("#form-conductores").on("submit", (e) => {
-      GuardarEditar(e);
-    });
-  }
-  //Cargar Lista
-  $(document).ready(() => {
-    CargaLista();
-  });
-  var CargaLista = () => {
-    var html = "";
-    $.get(
-      "../../controllers/conductores.controllers.php?op=todos",
-      (ListaVehiculos) => {
-        console.log(ListaVehiculos);
-        ListaVehiculos = JSON.parse(ListaVehiculos);
-        $.each(ListaVehiculos, (index, vehiculos) => {
-          html += `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${vehiculos.nombre}</td>
-            <td>${vehiculos.apellido}</td>
-            <td>${vehiculos.telefono}</td>
-            <td>${vehiculos.cedula}</td>
-            <td>${vehiculos.tipoLicencia}</td>
-            <td>${vehiculos.fechaExpLicencia}</td> 
-            <td>${vehiculos.direccion}</td>
-          </tr>`;
-        });
-        $("#ListaVehiculos").html(html);
-      }
-    );
-  };
-  
-  // btn-guardar
-  $(document).ready(function() {
-    $('#btn-guardar').click(function(e) {
-        e.preventDefault(); // Evita el envío del formulario por defecto
-  
-        // Obtener los datos del formulario
-        var formData = $('#form-conductores').serialize();
-  
-        $.ajax({
-            url: '../../controllers/conductores.controllers.php?op=insertar', 
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    });
-  });
-  
-  
-  var GuardarEditar = (e) => {
-    e.preventDefault();
-    var DatosFormularioConductores = new FormData($("#form-conductores")[0]);
-    var accion = "../../controllers/conductores.controllers.php?op=insertar";
-  
-    for (var pair of DatosFormularioConductores.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
+  CargaLista();
+  $('#btn-guardar').click(function(e) {
+    e.preventDefault(); // Evita el envío del formulario por defecto
+
+    // Obtener los datos del formulario
+    var formData = $('#form-vehiculos').serialize();
+
     $.ajax({
-      url: accion,
-      type: "post",
-      data: DatosFormularioConductores,
-      processData: false,
-      contentType: false,
-      cache: false,
-      success: (respuesta) => {
-        console.log(respuesta);
-        if (respuesta.trim() !== "") {
-          try {
-            respuesta = JSON.parse(respuesta);
-            if (respuesta === "ok") {
-              alert("Se guardó con éxito");
-              CargaLista();
-              LimpiarCajas();
-            } else {
-              alert("Algo salió mal");
-            }
-          } catch (error) {
-            console.error("Error al analizar la respuesta JSON:", error);
-            alert("Error al procesar la respuesta del servidor");
-          }
-        } else {
-          console.error("La respuesta del servidor está vacía");
-          alert("La respuesta del servidor está vacía");
+        url: '../../controllers/vehiculos.controllers.php?op=insertar', 
+        type: 'POST',
+        data: formData,
+        success: function(response) {
+            console.log(response);
+            ActualizarTabla();
+            LimpiarCajas();
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            console.error(status.responseText);
+            console.error(error.responseText);
         }
-      },
     });
-  };
+});
+}
+
   
-  
+function ActualizarTabla() {
+    // Llamada a la función CargaLista para obtener los nuevos datos
+  CargaLista();
+}
+
+//Cargar Lista
+var CargaLista = () => {
+  var html = "";
+  $.get(
+    "../../controllers/vehiculos.controllers.php?op=todos",
+    (ListaVehiculos) => {
+      console.log(ListaVehiculos);
+      ListaVehiculos = JSON.parse(ListaVehiculos);
+      $.each(ListaVehiculos, (index, vehiculos) => {
+        html += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${vehiculos.placa}</td>
+          <td>${vehiculos.tipo}</td>
+          <td>${vehiculos.tonelaje}</td>
+          <td>${vehiculos.clase}</td>
+          <td>${vehiculos.color}</td>
+          <td>${vehiculos.anio}</td> 
+          <td>${vehiculos.marca}</td>
+          <td>${vehiculos.chasis}</td>
+          <td>${vehiculos.motor}</td>
+        </tr>`;
+      });
+      $("#ListaVehiculos").html(html);
+    }
+  );
+};
+
   var eliminar = (id) => {
     // lógica para eliminar el conductor con el ID proporcionado
   };
@@ -105,12 +68,14 @@ function init() {
   
   
   var LimpiarCajas = () => {
-    $("#nombreConductor").val("");
-    $("#apellidoConductor").val("");
-    $("#telefonoConductor").val("");
-    $("#cedulaConductor").val("");
-    $("#tipoLicencia").val("");
-    $("#vigencia").val("");
-    $("#direccionConductor").val("");
+    $("#placa").val("");
+    $("#tipo").val("");
+    $("#tonelaje").val("");
+    $("#clase").val("");
+    $("#color").val("");
+    $("#anio").val("");
+    $("#marca").val("");
+    $("#chasis").val("");
+    $("#motor").val("");
   };
   init();

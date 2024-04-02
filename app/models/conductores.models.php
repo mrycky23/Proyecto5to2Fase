@@ -1,5 +1,4 @@
 <?php
-// Requerimientos
 require_once('../../config/conexion.php');
 
 class conductores
@@ -10,6 +9,15 @@ class conductores
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM `conductor`";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+    public function nombresConductores()
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT nombre FROM `conductor`";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;

@@ -63,7 +63,7 @@
                         }
                     } ?>
                     <div class="mb-3">
-                        <input class="form-control form-control-lg" id="correo" name= "correo" type="text" placeholder="Usuario" autocomplete="off">
+                        <input class="form-control form-control-lg" id="correo" name= "correo" type="text" placeholder="Correo" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <input class="form-control form-control-lg" id="contrasenia" name= "contrasenia" type="password" placeholder="Contraseña">

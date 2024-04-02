@@ -34,7 +34,7 @@
                                 <div class="page-header" id="top">
                                     <h2 class="pageheader-title">Programacion de mantenimientos </h2>
                                     <p class="pageheader-text"></p>
-        <!--BREADCRUMBS-->
+<!--BREADCRUMBS-->
                                     <div class="page-breadcrumb">
                                         <nav aria-label="breadcrumb">
                                             <ol class="breadcrumb">
@@ -57,7 +57,7 @@
                                 <div class="card">
                                     <h5 class="card-header">Ingresar datos: </h5>
                                     <div class="card-body">
-                                    <form class="form-ProgramacionMantenimientos">
+                                        <form id= "form-ProgramacionMantenimientos" method="post">
                                             <div class="form-group">
                                                 <label for="nombreMantenimiento">Nombre de mantenimiento</label>
                                                 <input id="nombreMantenimiento" name="nombreMantenimiento" type="text" class="form-control" required>
@@ -73,20 +73,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="repuesto">Repuesto:</label>
-                                                <select class="form-control" id="repuesto" name="repuesto" required>
+                                                <select id="repuesto" name="repuesto" class="form-control"  required>
                                                     <option value="">Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="vehiculo">Vehículo:</label>
-                                                <select class="form-control" id="vehiculo" name="vehiculo" required>
+                                                <select  id="vehiculo" name="vehiculo" class="form-control" required>
                                                     <option value="">Seleccionar</option>
-                                                    <!-- Aquí podrías agregar opciones para los vehículos disponibles -->
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="frecuencia">Frecuencia:</label>
-                                                <select class="form-control" id="frecuencia" name="frecuencia" required>
+                                                <select id="frecuencia" name="frecuencia" class="form-control" required>
                                                     <option value="">Seleccionar</option>
                                                     <option value="Kilometros">Kilómetros</option>
                                                     <option value="Horas">Horas</option>
@@ -103,19 +102,15 @@
                                                 <label for="nota">Nota:</label>
                                                 <textarea class="form-control" id="nota" name="nota" rows="3"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-lg btn-secondary btn-block">Guardar</button>
+                                            <button id= "btn-guardar"  class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
                         <!-- end basic form  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- select options  -->
-                        <!-- ============================================================== -->
+                        <!-- select options  
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="select">
@@ -155,13 +150,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- ============================================================== -->
+                        </div>-->
                         <!-- end select options  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- checkboxes and radio -->
-                        <!-- ============================================================== -->
+                        
+                        <!-- checkboxes and radio 
+                        
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="checkboxradio">
                                 <div class="section-block">
@@ -215,12 +208,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
+                       -->
                         <!-- end checkboxes and radio -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- validation state -->
-                        <!-- ============================================================== -->
+                        
+                        <!-- validation state 
+                        
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="validation">
@@ -268,12 +260,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
+                        -->
                         <!-- end validation state -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- input groups -->
-                        <!-- ============================================================== -->
+                        <!-- input groups 
+                        
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="inputgroup">
@@ -377,12 +367,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
+                        -->
                         <!-- end input groups -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- inputmask -->
-                        <!-- ============================================================== -->
+                        
+                        <!-- inputmask 
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="inputmask">
@@ -538,12 +526,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
+                        -->
                         <!-- end  inputmask -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- switch component -->
-                        <!-- ============================================================== -->
+                        
+                        <!-- switch component
+                       
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block">
@@ -616,13 +603,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
+                        -->
                         <!-- end switch component -->
-                        <!-- ============================================================== -->
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- sidenavbar -->
-                    <!-- ============================================================== -->
+                    <!-- sidenavbar 
                     <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
                         <div class="sidebar-nav-fixed">
                             <ul class="list-unstyled">
@@ -637,20 +621,13 @@
                                 <li><a href="#top">Back to Top</a></li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- ============================================================== -->
+                    </div>-->
                     <!-- end sidenavbar -->
-                    <!-- ============================================================== -->
                 </div>
             </div>
-            <!-- ============================================================== -->
             <!-- footer -->
-            <!-- ============================================================== -->
-            
-            <!-- ============================================================== -->
             <!-- end footer -->
-            <!-- ============================================================== -->
-        </div>
+            </div>
     
     <!-- ============================================================== -->
     <!-- end main wrapper -->

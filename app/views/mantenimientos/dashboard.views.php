@@ -46,11 +46,12 @@
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
 <!--WIDGETS-->
+    <!--viajes del mes-->
                     <div class="row">
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted">Total Revenue</h5>
+                                    <h5 class="text-muted">Viajes del mes</h5>
                                     <div class="metric-value d-inline-block">
                                         <h1 class="mb-1">$12099</h1>
                                     </div>
@@ -64,7 +65,7 @@
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted">Affiliate Revenue</h5>
+                                    <h5 class="text-muted">Presupuesto anual</h5>
                                     <div class="metric-value d-inline-block">
                                         <h1 class="mb-1">$12099</h1>
                                     </div>
@@ -78,7 +79,7 @@
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted">Refunds</h5>
+                                    <h5 class="text-muted">Fondos</h5>
                                     <div class="metric-value d-inline-block">
                                         <h1 class="mb-1">0.00</h1>
                                     </div>
@@ -92,12 +93,12 @@
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted">Avg. Revenue Per User</h5>
-                                    <div class="metric-value d-inline-block">
+                                    <h5 class="text-muted">Estado de vehiculos</h5>
+                                    <!--<div class="metric-value d-inline-block">
                                         <h1 class="mb-1">$28000</h1>
-                                    </div>
+                                    </div>-->
                                     <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-                                        <span>-2.00%</span>
+                                        <span>-50.00%</span>
                                     </div>
                                 </div>
                                 <div id="sparkline-revenue4"></div>
@@ -115,31 +116,32 @@
 <!--TABLA-->
                         <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Recent Orders</h5>
+                                <h5 class="card-header">Próximos mantenimientos</h5>
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                    <table class="table table-striped table-bordered first">
                                             <thead class="bg-light">
                                                 <tr class="border-0">
                                                     <th class="border-0">#</th>
-                                                    <th class="border-0">Image</th>
-                                                    <th class="border-0">Product Name</th>
-                                                    <th class="border-0">Product Id</th>
-                                                    <th class="border-0">Quantity</th>
-                                                    <th class="border-0">Price</th>
-                                                    <th class="border-0">Order Time</th>
-                                                    <th class="border-0">Customer</th>
-                                                    <th class="border-0">Status</th>
+                                                    <th class="border-0">Nombre mantenimiento</th>
+                                                    <th class="border-0">Vehiculo</th>
+                                                    <th class="border-0">Repuesto</th>
+                                                    <th class="border-0">Kilometraje</th>
+                                                    <th class="border-0">Horas</th>
+                                                    <th class="border-0">Día</th>
+                                                    <th class="border-0">Mes</th>
+                                                    <th class="border-0">Año</th>
+                                                    <th class="border-0">Nota</th>
+                                                    <th class="border-0">Estado</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
+                                            <tbody class="table-border-bottom-0" id="Dashboard">
+                                                <!--<tr>
                                                     <td>1</td>
-                                                    <td>
-                                                        <div class="m-r-10"><img src="../assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
-                                                    </td>
+                                                    <td>Sistema de ventilacin </td>
                                                     <td>Product #1 </td>
                                                     <td>id000001 </td>
+                                                    <td>20</td>
                                                     <td>20</td>
                                                     <td>$80.00</td>
                                                     <td>27-08-2018 01:22:12</td>
@@ -148,9 +150,6 @@
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td>
-                                                        <div class="m-r-10"><img src="../assets/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
-                                                    </td>
                                                     <td>Product #2 </td>
                                                     <td>id000002 </td>
                                                     <td>12</td>
@@ -187,7 +186,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-                                                </tr>
+                                                </tr>-->
                                             </tbody>
                                         </table>
                                     </div>
@@ -580,6 +579,7 @@
     <script src="../../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="../../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../../assets/libs/js/dashboard-ecommerce.js"></script>
-
+    
+    <script src="../../scripts/dashboard.script.js"> </script>
 </body>
 </html>

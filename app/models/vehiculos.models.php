@@ -6,7 +6,7 @@ class vehiculos
 {
     /* Procedimiento para sacar todos los registros */
     public function todos()
-    {
+    {//SELECT placa, tipo, tonelaje, clase, color, anio, marca, chasis, motor FROM `vehiculo`"
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM `vehiculo`";
@@ -14,7 +14,15 @@ class vehiculos
         $con->close();
         return $datos;
     }
-
+    public function placasVehiculos()
+    {   
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT placa FROM `vehiculo`";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
     /* Procedimiento para sacar un registro */
     public function uno($idRespuesto)
     {
@@ -27,11 +35,11 @@ class vehiculos
     }
 
     /* Procedimiento para insertar */
-    public function Insertar($repuesto)
+    public function Insertar($placa, $tipo, $tonelaje, $clase, $color, $anio, $marca, $chasis, $motor)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `vehiculo`(`nombre`) VALUES('$repuesto')";
+        $cadena = "INSERT INTO `vehiculo`(`placa`, `tipo`, `tonelaje`, `clase`, `color`, `anio`, `marca`, `chasis`, `motor`) VALUES('$placa', '$tipo', '$tonelaje', '$clase', '$color',' $anio', '$marca', '$chasis',' $motor')";
 
         if (mysqli_query($con, $cadena)) {
             $con->close();

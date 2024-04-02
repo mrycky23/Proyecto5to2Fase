@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Data Tables</title>
+    <title>Viajes</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -47,12 +47,13 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Lista</h5>
+                            <h5 class="card-header">Lista de viajes</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
+                                                <th>N°</th>
                                                 <th>Placa</th>
                                                 <th>Chofer</th>
                                                 <th>Fecha Partida</th>
@@ -65,32 +66,8 @@
                                                 
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>PCA - 9145</td>
-                                                <td>Juan Maliza</td>
-                                                <td>2022-02-05</td>
-                                                <td>2022-02-07</td>
-                                                <td>Base Mision</td>
-                                                <td>Guayaquil Puerto</td>
-                                                <td>1000256</td>
-                                                <td>1000300</td>
-                                                <td>01258-8965</td>
-                                            </tr>
-                                            
+                                        <tbody class="table-border-bottom-0" id="ListaViajes">
                                         </tbody>
-                                        <!--<tfoot>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Tipo Licencia</th>
-                                                <th>Vigencia</th>
-                                                <th>Edad</th>
-                                                <th>Teléfono</th>
-                                                <th>Cedula</th>
-                                                <th>Dirección</th>
-                                            </tr>
-                                        </tfoot>-->
                                     </table>
                                 </div>
                             </div>
@@ -108,52 +85,57 @@
                         <div class="card">
                             <h5 class="card-header">Ingresar viaje: </h5>
                             <div class="card-body">
-                                <form>
+                                <form id= "form-viajes" method= "post">
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Seleccionar placa:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <select id="placa" name="placa"class="form-control"  required>
+                                            <option value="">Seleccionar</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Seleccionar conductor:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <select id="conductor" name="conductor" class="form-control" required>
+                                            <option value="">Seleccionar</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Fecha Partida:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="fechaPartida" name= "fechaPartida" type="date" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Fecha Llegada:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id= "fechaLlegada" name= "fechaLlegada" type="date"  class="form-control" placeholder="dd-mm-aaaa">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Lugar Partida:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="lugarPartida" name= "lugarPartida" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Lugar Destino:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="lugarDestino" name= "lugarDestino" type="text" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Km Inicial:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="kmInicial" name= "kmInicial" type="number" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Km Final:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="kmfinal" name= "kmFinal" type="number" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Orden de trabajo:</label>
-                                        <input id="inputText4" type="text" class="form-control" placeholder="">
+                                        <input id="ordenTrabajo" name= "ordenTrabajo" type="text" class="form-control" placeholder="">
                                     </div>
                                    <!-- <div class="custom-file mb-3">
+                                    agregar archivos
                                         <input type="file" class="custom-file-input" id="customFile">
                                         <label class="custom-file-label" for="customFile">File Input</label>
                                     </div>-->
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Nota:</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea id="nota" name= "nota" class="form-control" rows="2"></textarea>
                                     </div>
-                                    <div class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
+                                    <button id="btn-guardar" class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                 </form>
                             </div>
                         </div>
@@ -167,7 +149,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            Copyright © 2018 Tranjovalsa. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Tranjovalsa S.A</a>.
+                            Copyright © 2024 Tranjovalsa. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Tranjovalsa S.A</a>.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">
@@ -207,6 +189,8 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+
+    <script src="../../scripts/viajes.script.js"> </script>
     
 </body>
  

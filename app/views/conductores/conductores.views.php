@@ -48,7 +48,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Lista</h5>
+                            <h5 class="card-header">Listado de conductores</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered first">
@@ -84,23 +84,23 @@
                                 <form id= "form-conductores" method="post">
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Nombre/s:</label>
-                                        <input type="text" name= "nombre" id= "nombreConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "nombreConductor" id= "nombreConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Apellido/s:</label>
-                                        <input type="text" name= "apellido" id= "apellidoConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "apellidoConductor" id= "apellidoConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Telefono:</label>
-                                        <input type="text" name= "telefono" id= "telefonoConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "telefonoConductor" id= "telefonoConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Cedula:</label>
-                                        <input type="text" name= "cedula" id= "cedulaConductor" class="form-control" placeholder="">
+                                        <input type="text" name= "cedulaConductor" id= "cedulaConductor" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" name= "tipoLicencia" id= "tipoLicencia" class="col-form-label">Tipo Licencia:</label>
-                                            <select name= "tipoLicencia" class="selectpicker form-control">
+                                        <label for="inputText4"  class="col-form-label">Tipo Licencia:</label>
+                                            <select name= "tipoLicencia" id= "tipoLicencia"class="selectpicker form-control">
                                                 <option>A1</option>
                                                 <option>B</option>
                                                 <option>C</option>
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Dirección:</label>
-                                        <input  type="text" name= "direccion" id="direccion" class="form-control" placeholder="">
+                                        <input  type="text" name= "direccionConductor" id="direccionConductor" class="form-control" placeholder="">
                                     </div>
                                     <button id="btn-guardar" class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                 </form>
