@@ -26,6 +26,16 @@ function init() {
   });
 }
 
+$(document).ready(function(){
+  // Evento de clic en el botón para abrir el modal
+  $('#btn-editar').click(function(){
+    // Aquí puedes cambiar el contenido del modal según tus necesidades
+    $('#contenidoModal').html('Aquí puedes poner tu contenido HTML dinámico');
+    // Mostrar el modal
+    $('#miModal').modal('show');
+  });
+});
+
 var GuardarEditar = (e) => {
   e.preventDefault();
   var DatosFormularioConductores = new FormData($("#form_conductores")[0]);
@@ -35,11 +45,6 @@ var GuardarEditar = (e) => {
     console.log(pair[0] + ", " + pair[1]);
   }
 
- /* if ($("#id").val() != "") {
-    accion = ruta + "Actualizar";
-  } else {
-    accion = ruta + "Insertar";
-  }*/
 
   $.ajax({
     url: accion,
@@ -89,10 +94,10 @@ var CargaLista = () => {
           <td>${conductores.fechaExpLicencia}</td> 
           <td>${conductores.direccion}</td>
           <td>
-            <button class='btn btn-primary' onclick='editar(${
+            <button id="btn-editar" class='btn btn-primary' onclick='editar(${
               conductores.id
             })'>Editar</button>
-            <button class='btn btn-info' onclick='eliminar(${
+            <button id="btn-eliminar" class='btn btn-info' onclick='eliminar(${
               conductores.id
             })'>Eliminar</button>
           </td>
