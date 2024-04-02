@@ -448,7 +448,7 @@
                             <!-- social source  -->
                             <!-- ============================================================== -->
                             <div class="card">
-                                <h5 class="card-header"> Sales By Social Source</h5>
+                                <h5 class="card-header"> Redes Sociales</h5>
                                 <div class="card-body p-0">
                                     <ul class="social-sales list-group list-group-flush">
                                         <li class="list-group-item social-sales-content"><span class="social-sales-icon-circle facebook-bgcolor mr-2"><i class="fab fa-facebook-f"></i></span><span class="social-sales-name">Facebook</span><span class="social-sales-count text-dark">120 Sales</span>

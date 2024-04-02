@@ -53,12 +53,17 @@
                                     <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
-                                                <th>Placa</th>
-                                                <th>Repuesto</th>
-                                                <th>Km Inicial</th>
-                                                <th>Km Final</th>
-                                                <th>Fecha</th>
-                                                <th>Conductor</th>
+                                            <th class="border-0">#</th>
+                                                    <th class="border-0">Nombre mantenimiento</th>
+                                                    <th class="border-0">Vehiculo</th>
+                                                    <th class="border-0">Repuesto</th>
+                                                    <th class="border-0">Kilometraje</th>
+                                                    <th class="border-0">Horas</th>
+                                                    <th class="border-0">Día</th>
+                                                    <th class="border-0">Mes</th>
+                                                    <th class="border-0">Año</th>
+                                                    <th class="border-0">Nota</th>
+                                                    <th class="border-0">Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
