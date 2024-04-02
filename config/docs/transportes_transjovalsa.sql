@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-03-2024 a las 22:54:43
+-- Tiempo de generación: 02-04-2024 a las 04:26:10
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,66 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `transjovalsa2`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_estado_programacion` ()   BEGIN
+    DECLARE vehiculo_id_val INT;
+    DECLARE km_total_viajes INT;
+    DECLARE km_programacion INT;
+    DECLARE porcentaje_km DECIMAL(5,2);
+    DECLARE estado_programacion VARCHAR(20);
+    DECLARE done INT DEFAULT FALSE; -- Variable para controlar el bucle
+
+    -- Cursor para recorrer los vehículos
+    DECLARE cur CURSOR FOR 
+        SELECT vv.idVehiculo
+        FROM viajes_vehiculo vv
+        GROUP BY vv.idVehiculo;
+
+    -- Variables para manejar errores
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN cur;
+    read_loop: LOOP
+        FETCH cur INTO vehiculo_id_val;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Calcular el total de kilómetros recorridos por el vehículo en todos los viajes
+        SET km_total_viajes = (SELECT SUM(v.KmLlegada - v.KmSalida)
+                               FROM viajes v
+                               INNER JOIN viajes_vehiculo vv ON v.id = vv.idViaje
+                               WHERE vv.idVehiculo = vehiculo_id_val);
+
+        -- Obtener el total de kilómetros programados para el vehículo
+        SET km_programacion = (SELECT km FROM programacion WHERE idVehiculo = vehiculo_id_val);
+
+        -- Calcular el porcentaje de kilómetros recorridos en comparación con la programación
+        SET porcentaje_km = (km_total_viajes / km_programacion) * 100;
+
+        -- Determinar estado de la programación
+        IF porcentaje_km > 100 THEN
+            SET estado_programacion = 'Mantenimiento atrasado';
+        ELSEIF porcentaje_km <= 100  AND porcentaje_km > 80 THEN
+            SET estado_programacion = 'Alerta';
+        ELSEIF porcentaje_km <= 80 AND porcentaje_km > 20 THEN
+            SET estado_programacion = 'Próximo a mantenimiento';
+        ELSE
+            SET estado_programacion = 'Buen estado';
+        END IF;
+
+        -- Actualizar estado en la tabla programacion para el vehículo actual
+        UPDATE programacion SET Estado = estado_programacion WHERE idVehiculo = vehiculo_id_val;
+    END LOOP;
+
+    CLOSE cur;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -57,7 +117,15 @@ CREATE TABLE `conductor` (
 
 INSERT INTO `conductor` (`id`, `nombre`, `apellido`, `telefono`, `cedula`, `tipoLicencia`, `fechaExpLicencia`, `direccion`) VALUES
 (1, 'Juan', 'Maliza', '0999563258', '1600743174', 'E', '30-11-2024', 'Av. Los Arboles'),
-(5, 'RICARDO JOSUE', 'VACA MINO', '+593985527102', '1801869321', 'C1', '2024-03-30', 'Unidad Nacional Y Agustin Ruales');
+(5, 'RICARDO JOSUE', 'VACA MINO', '+593985527102', '1801869321', 'C1', '2024-03-30', 'Unidad Nacional Y Agustin Ruales'),
+(6, 'Carltos ', 'Pintag', '099873445', '1803971371', 'EI', '2024-04-03', 'Quito'),
+(7, 'Marcelo', 'Volvo', '026855655', '0092939323', 'C1', '2024-04-02', 'Quito'),
+(8, 'RICARDO ', 'Moncayo', '0985527102', '16022559988', 'C1', '2024-03-25', 'Unidad Nacional Y Agustin Ruales'),
+(9, 'Marco Vinicio', 'Vaca Sanchez', '03288434', '19034324324', 'D1', '2024-04-05', 'Puyo'),
+(12, 'Oswaldo', 'Martinez', '0985527102', '1234567891', 'A1', '2024-04-05', 'Unidad Nacional Y Agustin Ruales'),
+(13, 'Eduardo', 'Jacome', '0589332555', '1225896315', 'E', '2024-04-05', 'Ignacio Herrera'),
+(14, 'Luis', 'Verdozo', '12259966323', '1600055233', 'D', '2024-04-25', 'Unidad Nacional Y Agustin Ruales'),
+(15, 'Jose', 'Choloquiga', '089922158', '19952009995', 'E', '2024-09-04', 'Latacunga');
 
 -- --------------------------------------------------------
 
@@ -76,15 +144,17 @@ CREATE TABLE `programacion` (
   `dia` int(11) NOT NULL,
   `mes` int(11) NOT NULL,
   `anio` int(11) NOT NULL,
-  `nota` varchar(500) NOT NULL
+  `nota` varchar(500) NOT NULL,
+  `estado` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `programacion`
 --
 
-INSERT INTO `programacion` (`id`, `fecha`, `nombreMantenimiento`, `repuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`) VALUES
-(1, '', 'Mantenimiento Llantas', 'Llantas 156', 1, 100, 0, 0, 0, 0, '0');
+INSERT INTO `programacion` (`id`, `fecha`, `nombreMantenimiento`, `repuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`, `estado`) VALUES
+(1, '', 'Mantenimiento Llantas', 'Llantas 156', 1, 100, 0, 0, 0, 0, '0', 'Próximo a mantenimie'),
+(5, '02-03-2024', 'Mantenimiento preventivo', 'llantas 56', 5, 50000, 0, 0, 0, 0, 'none', 'Buen estado');
 
 -- --------------------------------------------------------
 
@@ -97,6 +167,14 @@ CREATE TABLE `programacion_repuestos` (
   `idRepuesto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `programacion_repuestos`
+--
+
+INSERT INTO `programacion_repuestos` (`idProgramacion`, `idRepuesto`) VALUES
+(1, 6),
+(5, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -106,7 +184,7 @@ CREATE TABLE `programacion_repuestos` (
 CREATE TABLE `reportes` (
   `id` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `fechaReporte` varchar(20) NOT NULL,
+  `fechaReporte` timestamp NOT NULL DEFAULT current_timestamp(),
   `idVehiculo` int(11) NOT NULL,
   `idProgramacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -140,7 +218,9 @@ INSERT INTO `repuestos` (`id`, `nombre`, `fecha_creacion`) VALUES
 (15, 'Motor', '2024-03-29 22:36:34'),
 (16, 'llantas r22', '2024-03-30 12:56:07'),
 (17, 'aire acondicionado', '2024-03-30 17:20:58'),
-(18, 'aceite145', '2024-03-30 18:11:13');
+(18, 'aceite145', '2024-03-30 18:11:13'),
+(19, 'calefaccion', '2024-03-31 23:23:40'),
+(20, 'ACEITE', '2024-03-31 23:27:20');
 
 -- --------------------------------------------------------
 
@@ -235,7 +315,11 @@ CREATE TABLE `vehiculo` (
 --
 
 INSERT INTO `vehiculo` (`id`, `placa`, `tipo`, `tonelaje`, `clase`, `color`, `anio`, `marca`, `chasis`, `motor`) VALUES
-(1, 'PCA-5223', 'CABEZAL', '8.25', 'TRAILER', 'AZUL', 2012, 'INTERNATIONAL', '3H5CRT566HY67JY67H', '79505271');
+(1, 'PCA-5223', 'CABEZAL', '8.25', 'TRAILER', 'AZUL', 2012, 'INTERNATIONAL', '3H5CRT566HY67JY67H', '79505271'),
+(2, 'AAAA-2569', 'CABEZAL', '20.0', 'TRAILER', 'GRIS', 2024, 'Mercedes Benz', '235999995958', 'R51R8FDS84'),
+(3, 'SAD-2596', 'CABEZAL', '21', 'TRAILER', 'BLANCO', 2025, 'INTERNATIONAL', 'SD89SDV54SDF9', ' 9840126198492'),
+(4, 'SAD-2596', 'CABEZAL', '21', 'TRAILER', 'BLANCO', 2025, 'INTERNATIONAL', 'SD89SDV54SDF9', ' 9840126198492'),
+(5, 'QAA-1964', 'TRACTOCAMION', '57', 'TRAILER', 'PLOMO', 2015, 'MERCEDEZ BENZ', '88498SFWEFW', ' SFD8465S1DF1');
 
 -- --------------------------------------------------------
 
@@ -262,8 +346,17 @@ CREATE TABLE `viajes` (
   `lugarDestino` varchar(100) NOT NULL,
   `KmSalida` int(11) NOT NULL,
   `KmLlegada` int(11) NOT NULL,
-  `ordenTrabajo` varchar(100) DEFAULT NULL
+  `ordenTrabajo` varchar(100) DEFAULT NULL,
+  `nota` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `viajes`
+--
+
+INSERT INTO `viajes` (`id`, `fechaInicio`, `fechaFin`, `lugarPartida`, `lugarDestino`, `KmSalida`, `KmLlegada`, `ordenTrabajo`, `nota`) VALUES
+(1, '02-02-2024', '03-03-2024', 'Coca', 'Quito', 1000, 1100, '2569853', ''),
+(2, '30-03-2024', '01-04-2024', 'Quito', 'Guayaquil', 58000, 58060, '64191020', 'none');
 
 -- --------------------------------------------------------
 
@@ -276,6 +369,14 @@ CREATE TABLE `viajes_conductor` (
   `idConductor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `viajes_conductor`
+--
+
+INSERT INTO `viajes_conductor` (`idViaje`, `idConductor`) VALUES
+(1, 1),
+(2, 13);
+
 -- --------------------------------------------------------
 
 --
@@ -286,6 +387,14 @@ CREATE TABLE `viajes_vehiculo` (
   `idVehiculo` int(11) NOT NULL,
   `idViaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `viajes_vehiculo`
+--
+
+INSERT INTO `viajes_vehiculo` (`idVehiculo`, `idViaje`) VALUES
+(1, 1),
+(3, 2);
 
 --
 -- Índices para tablas volcadas
@@ -401,13 +510,13 @@ ALTER TABLE `viajes_vehiculo`
 -- AUTO_INCREMENT de la tabla `conductor`
 --
 ALTER TABLE `conductor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `programacion`
 --
 ALTER TABLE `programacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `reportes`
@@ -419,7 +528,7 @@ ALTER TABLE `reportes`
 -- AUTO_INCREMENT de la tabla `repuestos`
 --
 ALTER TABLE `repuestos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -449,13 +558,13 @@ ALTER TABLE `usuario_roles`
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `viajes`
 --
 ALTER TABLE `viajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
