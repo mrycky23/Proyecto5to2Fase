@@ -75,7 +75,6 @@
                     </div>
                     <div class= "mb-2">
                         <a href="./fpdf-tutoriales-master/PruebaH.php" target="_blank" class="btn btn-success"><i class=" fas fa-file-pdf"></i> Generar reportes</a>
-                        <button id="btn-guardar" class="btn btn-lg btn-secondary btn-block" onclick="generarReportePDF()">Imprimir</button>
                     </div>
                     <!-- ============================================================== -->
                     <!-- end basic table  -->
