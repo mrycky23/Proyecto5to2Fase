@@ -88,7 +88,7 @@ var CargaLista = () => {
             <button class='btn btn-primary' onclick='editar(${
               conductores.id
             })'>Editar</button>
-            <button class='btn btn-warning' onclick='eliminar(${
+            <button class='btn btn-danger' onclick='eliminar(${
               conductores.id
             })'>Eliminar</button>
           </td>
