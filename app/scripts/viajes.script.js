@@ -46,10 +46,10 @@ var CargaLista = () => {
             <td>${viajes.KmLlegada}</td>
             <td>${viajes.ordenTrabajo}</td>
             <td>
-            <button class='btn btn-primary' onclick='editar(${
+            <button class='btn btn-warning btn-editar' onclick='editar(${
               viajes.id
             })'>Editar</button>
-            <button class='btn btn-info' onclick='eliminar(${
+            <button class='btn btn-info btn-eliminar' onclick='eliminar(${
               viajes.id
             })'>Eliminar</button>
           </td>

@@ -42,41 +42,6 @@
                 <!-- end pageheader -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- basic table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Listado de vehiculos</h5>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
-                                        <thead>
-                                            <tr>
-                                                <th>N°</th>
-                                                <th>Placa</th>
-                                                <th>Tipo</th>
-                                                <th>Tonelaje</th>
-                                                <th>Clase</th>
-                                                <th>Color</th>
-                                                <th>Año</th>
-                                                <th>Marca</th>
-                                                <th>Chasis</th>
-                                                <th>Motor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0" id="ListaVehiculos">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                </div>
-                <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">Ingresar vehiculo: </h5>
@@ -128,6 +93,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- basic table  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Listado de vehiculos</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                <table class="table table-striped table-bordered first" id= "vehiculosTable">
+                                        <thead>
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>Placa</th>
+                                                <th>Tipo</th>
+                                                <th>Tonelaje</th>
+                                                <th>Clase</th>
+                                                <th>Color</th>
+                                                <th>Año</th>
+                                                <th>Marca</th>
+                                                <th>Chasis</th>
+                                                <th>Motor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0" id="ListaVehiculos">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end basic table  -->
+                    <!-- ============================================================== -->
+                </div>
+                
             </div>
             <!-- ============================================================== -->
             <!-- footer -->

@@ -44,58 +44,6 @@
                 <!-- end pageheader -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- basic table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Listado de conductores</h5>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
-                                        <thead>
-                                            <tr>
-                                                <th>N#</th>
-                                                <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Telefono</th>
-                                                <th>Cedula</th>
-                                                <th>Licencia</th>
-                                                <th>Expiracion Lic</th>
-                                                <th>Direccion</th>
-                                                <th>Opciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0" id="ListaConductores">
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                    <!--nueva linea para el modal si sirve -->
-                    <!-- Modal Conductores-->
-                    <style>
-    .swal2-container {
-        z-index: 999999;
-    }
-</style>
-<div class="modal" tabindex="-1" id="ModalConductores">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tituloModal">Insertar Conductor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-
-<!--Este codigo para abajo es el bueno -->
-                </div>
-                <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">Ingresar conductor: </h5>
@@ -150,6 +98,48 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- basic table  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Listado de conductores</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered first">
+                                        <thead>
+                                            <tr>
+                                                <th>N#</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Telefono</th>
+                                                <th>Cedula</th>
+                                                <th>Licencia</th>
+                                                <th>Expiracion Lic</th>
+                                                <th>Direccion</th>
+                                                <th>Opciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0" id="ListaConductores">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end basic table  -->
+                    <!-- ============================================================== -->
+                    <!--nueva linea para el modal si sirve -->
+                    <!-- Modal Conductores-->
+                   
+
+
+<!--Este codigo para abajo es el bueno -->
+                </div>
+                
             </div>
             <!-- ============================================================== -->
             <!-- footer -->

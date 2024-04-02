@@ -2,7 +2,7 @@
 require_once('../../config/conexion.php');
 class dashboard{
     public function todos()
-{
+    {
     $con = new ClaseConectar();
     $con = $con->ProcedimientoConectar();
     
