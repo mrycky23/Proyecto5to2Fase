@@ -42,9 +42,14 @@ switch ($_GET["op"]) {
 
     case 'actualizar':
         $idConductor = $_POST["idConductor"];
-        $Ultimo = $_POST["Ultimo"];
-        $idUsuario = $_POST["idUsuario"];
-        $datos = $Conductor->Actualizar($idConductor, $Ultimo, $idUsuario);
+        $nombre = $_POST["nombreConductor"];
+        $apellido = $_POST["apellidoConductor"];
+        $telefono = $_POST["telefonoConductor"];
+        $cedula = $_POST["cedulaConductor"];
+        $tipoLicencia = $_POST["tipoLicencia"];
+        $ExpLicencia = $_POST["fechaExpLicencia"]; 
+        $direccion = $_POST["direccionConductor"];
+        $datos = $Conductor->Actualizar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion);
         echo json_encode($datos);
         break;
 
