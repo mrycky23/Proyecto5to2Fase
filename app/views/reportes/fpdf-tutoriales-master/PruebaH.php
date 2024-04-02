@@ -80,12 +80,17 @@ class PDF extends FPDF
       $this->SetTextColor(255, 255, 255); //colorTexto
       $this->SetDrawColor(163, 163, 163); //colorBorde
       $this->SetFont('Arial', 'B', 11);
-      $this->Cell(30, 10, utf8_decode('N°'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('NÚMERO'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('TIPO'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('PRECIO'), 1, 0, 'C', 1);
-      $this->Cell(85, 10, utf8_decode('CARACTERÍSTICAS'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('ESTADO'), 1, 1, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('#'), 1, 0, 'C', 1);
+      $this->Cell(85, 10, utf8_decode('Nombre mantenimiento'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Vehiculo'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Repuesto'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Kilometraje'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Horas'), 1, 1, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Día'), 1, 1, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Mes'), 1, 1, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Año'), 1, 1, 'C', 1);
+      $this->Cell(55, 10, utf8_decode('Nota'), 1, 1, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Estado'), 1, 1, 'C', 1);
    }
 
    // Pie de página
