@@ -45,7 +45,7 @@ switch ($_GET["op"]) {
             // Validar y sanitizar los datos del formulario
             $nombreMantenimiento = isset($_POST["nombreMantenimiento"]) ? $_POST["nombreMantenimiento"] : '';
             $repuesto = isset($_POST["repuesto"]) ? $_POST["repuesto"] : '';
-            $idVehiculo = isset($_POST["vehiculo"]) ? $_POST["vehiculo"] : '';
+            $idVehiculo = isset($_POST["idVehiculo"]) ? $_POST["idVehiculo"] : '';
             $frecuencia = isset($_POST["frecuencia"]) ? $_POST["frecuencia"] : '';
             $duracion = isset($_POST["duracion"]) ? $_POST["duracion"] : '';
             $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';

@@ -14,7 +14,15 @@ class vehiculos
         $con->close();
         return $datos;
     }
-
+    public function placasVehiculos()
+    {   
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT placa FROM `vehiculo`";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
     /* Procedimiento para sacar un registro */
     public function uno($idRespuesto)
     {

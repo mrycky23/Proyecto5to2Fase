@@ -13,7 +13,14 @@ switch ($_GET["op"]) {
         }
         echo json_encode($todos);
         break;
-
+    case 'nombresConductores':
+        $datos = $Conductor->nombresConductores();
+        $todos = array();
+        while ($row = mysqli_fetch_assoc($datos)) {
+            $todos[] = $row;
+        }
+        echo json_encode($todos);
+        break;
     case 'uno':
         $idConductor = $_POST["idConductor"];
         $datos = $Conductor->uno($idConductor);

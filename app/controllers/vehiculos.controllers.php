@@ -15,6 +15,15 @@ switch ($_GET["op"]) {
         mysqli_free_result($datos);
         echo json_encode($todos);
         break;
+    case 'placasVehiculos':
+        $datos = $Vehiculos->placasVehiculos();
+        $todos = array();
+        while ($row = mysqli_fetch_assoc($datos)) {
+            $todos[] = $row;
+        }
+        mysqli_free_result($datos);
+        echo json_encode($todos);
+        break;
 
     case 'uno':
         $idRespuesto = $_POST["id"];

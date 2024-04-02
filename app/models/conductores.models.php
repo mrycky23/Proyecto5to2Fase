@@ -13,6 +13,15 @@ class conductores
         $con->close();
         return $datos;
     }
+    public function nombresConductores()
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT nombre FROM `conductor`";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
 
     /* Procedimiento para sacar un registro */
     public function uno($conductorId)

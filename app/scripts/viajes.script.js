@@ -40,8 +40,8 @@ var CargaLista = () => {
                 html += `
           <tr>
             <td>${index + 1}</td>
-            <td>${viajes.placa}</td>
-            <td>${viajes.conductor}</td>
+            <td>${viajes.placa_vehiculo}</td>
+            <td>${viajes.nombre_conductor}</td>
             <td>${viajes.fechaInicio}</td>
             <td>${viajes.fechaFin}</td>
             <td>${viajes.lugarPartida}</td>
@@ -62,21 +62,21 @@ function cargarPlaca() {
         url: '../../controllers/vehiculos.controllers.php',
         type: 'GET',
         data: {
-            op: 'todos'
+            op: 'placasVehiculos'
         },
         dataType: 'json',
         success: function (response) {
             // Limpiar opciones existentes en el select
-            $('#repuesto').empty();
+            $('#placa').empty();
             // Agregar la opción "Seleccionar" por defecto
-            $('#repuesto').append('<option value="">Seleccionar</option>');
+            $('#placa').append('<option value="">Seleccionar</option>');
             // Iterar sobre los repuestos obtenidos y agregarlos al select
-            $.each(response, function (index, vehiculo) {
-                $('#repuesto').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
+            $.each(response, function (index, placas) {
+                $('#placa').append('<option value="' + placas.id + '">' + placas.placa + '</option>');
             });
         },
         error: function (xhr, status, error) {
-            console.error('Error al obtener los repuestos:', error);
+            console.error('Error al obtener las placas:', error);
         }
     });
 }
@@ -84,27 +84,31 @@ function cargarPlaca() {
 function cargarConductor() {
     // Petición AJAX para obtener los datos de los repuestos desde el controlador
     $.ajax({
-        url: '../../controllers/conductor.controllers.php',
+        url: '../../controllers/conductores.controllers.php?op=nombresConductores',
         type: 'GET',
-        data: {
-            op: 'todos'
-        },
         dataType: 'json',
         success: function (response) {
+            console.log(response);
             // Limpiar opciones existentes en el select
-            $('#repuesto').empty();
+            $('#conductor').empty();
             // Agregar la opción "Seleccionar" por defecto
-            $('#repuesto').append('<option value="">Seleccionar</option>');
+            $('#conductor').append('<option value="">Seleccionar</option>');
             // Iterar sobre los repuestos obtenidos y agregarlos al select
-            $.each(response, function (index, repuesto) {
-                $('#repuesto').append('<option value="' + repuesto.id + '">' + repuesto.nombre + '</option>');
+            $.each(response, function (index, conductor) {
+                $('#conductor').append('<option value="' + conductor.id + '">' + conductor.nombre + '</option>');
             });
         },
         error: function (xhr, status, error) {
-            console.error('Error al obtener los repuestos:', error);
+            console.error('Error al obtener los nombres del conductor:', error);
         }
     });
 }
+
+// Cargar selects
+$(document).ready(function () {
+    cargarPlaca();
+    cargarConductor();
+});
 
 var eliminar = (id) => {
     // lógica para eliminar el conductor con el ID proporcionado
