@@ -11,7 +11,26 @@ function obtener_datos_de_base_de_datos() {
     $con = $con->ProcedimientoConectar();
 
     // Consulta SQL para seleccionar datos
-    $consulta = "SELECT id, idUsuario , fechaReporte,idVehiculo ,idProgramacion  FROM reportes";
+  //  $consulta = "SELECT id, idUsuario , fechaReporte,idVehiculo ,idProgramacion  FROM reportes";
+    $consulta = "SELECT 
+    p.nombreMantenimiento, 
+    v.placa AS placa_vehiculo, 
+    r.nombre AS nombre_repuesto, 
+    p.km, 
+    p.hora, 
+    p.dia, 
+    p.mes, 
+    p.anio, 
+    p.nota, 
+    p.estado
+FROM 
+    programacion p
+INNER JOIN 
+    vehiculo v ON p.idVehiculo = v.id
+LEFT JOIN 
+    programacion_repuestos pr ON p.id = pr.idProgramacion
+LEFT JOIN 
+    repuestos r ON pr.idRepuesto = r.id";
 
     // Ejecutar la consulta
     $resultado = $con->query($consulta);

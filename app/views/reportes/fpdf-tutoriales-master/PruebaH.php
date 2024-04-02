@@ -8,10 +8,32 @@ class PDF extends FPDF
    // Cabecera de página
    function Header()
    {
+      require_once('../../config/conexion.php');
       //include '../../recursos/Recurso_conexion_bd.php';//llamamos a la conexion BD
+      $con = new ClaseConectar();
+      $con = $con->ProcedimientoConectar();
 
-      //$consulta_info = $conexion->query(" select *from hotel ");//traemos datos de la empresa desde BD
-      //$dato_info = $consulta_info->fetch_object();
+      $consulta_info = $con->query("SELECT 
+      p.nombreMantenimiento, 
+      v.placa AS placa_vehiculo, 
+      r.nombre AS nombre_repuesto, 
+      p.km, 
+      p.hora, 
+      p.dia, 
+      p.mes, 
+      p.anio, 
+      p.nota, 
+      p.estado
+  FROM 
+      programacion p
+  INNER JOIN 
+      vehiculo v ON p.idVehiculo = v.id
+  LEFT JOIN 
+      programacion_repuestos pr ON p.id = pr.idProgramacion
+  LEFT JOIN 
+      repuestos r ON pr.idRepuesto = r.id");//traemos datos de la empresa desde BD
+      $dato_info = $consulta_info->fetch_object();
+      
       $this->Image('../../assets/images/Transjovalsa SA1.jpg', 270, 5, 20); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
       $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
       $this->Cell(95); // Movernos a la derecha
