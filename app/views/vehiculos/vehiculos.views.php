@@ -63,7 +63,6 @@
                                                 <th>Marca</th>
                                                 <th>Chasis</th>
                                                 <th>Motor</th>
-                                                
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0" id="ListaVehiculos">

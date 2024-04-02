@@ -62,6 +62,7 @@
                                                 <th>Licencia</th>
                                                 <th>Expiracion Lic</th>
                                                 <th>Direccion</th>
+                                                <th>Opciones</th>
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0" id="ListaConductores">

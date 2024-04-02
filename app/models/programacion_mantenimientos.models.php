@@ -88,7 +88,8 @@ class ProgramacionMantenimientos
         // Si la preparación falla, devolver un mensaje de error
         return "Error al preparar la consulta: " . $con->error;
     }
-    $stmt->bind_param("ssiiiiiss", $nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
+     // Corregir los tipos de los parámetros en bind_param
+     $stmt->bind_param("ssiiiiiis", $nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
 
     // Ejecutar la consulta
     $result = $stmt->execute();
