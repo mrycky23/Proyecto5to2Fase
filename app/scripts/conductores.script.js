@@ -1,11 +1,9 @@
 function init() {
   CargaLista();
-// btn-guardar
 
   $('#btn-guardar').click(function(e) {
-      e.preventDefault(); // Evita el envío del formulario por defecto
+      e.preventDefault();
 
-      // Obtener los datos del formulario
       var formData = $('#form-conductores').serialize();
 
       $.ajax({
@@ -14,9 +12,8 @@ function init() {
           data: formData,
           success: function(response) {
               console.log(response);
-               LimpiarCajas();
-               ActualizarTabla();
-              
+              LimpiarCajas();
+              ActualizarTabla();   
           },
           error: function(xhr, status, error) {
               console.error(xhr.responseText);
@@ -24,29 +21,22 @@ function init() {
       });
   });
 
-}
-function ActualizarTabla() {
-  // Llamada a la función CargaLista para obtener los nuevos datos
-  CargaLista();
-}
-
-//Boton de guardar y editar los conductores
-//
-function init() {
   $("#form_conductores").on("submit", (e) => {
     GuardarEditar(e);
   });
 }
+
 var GuardarEditar = (e) => {
   e.preventDefault();
   var DatosFormularioConductores = new FormData($("#form_conductores")[0]);
   var accion = "";
 
-  if (document.getElementById("id").value != "") {
+  if ($("#id").val() != "") {
     accion = ruta + "Actualizar";
   } else {
     accion = ruta + "Insertar";
   }
+
   $.ajax({
     url: accion,
     type: "post",
@@ -68,7 +58,7 @@ var GuardarEditar = (e) => {
       } else {
         Swal.fire({
           title: "Conductor!",
-          text: "Error al guradar",
+          text: "Error al guardar",
           icon: "error",
         });
       }
@@ -76,7 +66,6 @@ var GuardarEditar = (e) => {
   });
 };
 
-//Cargar Lista
 var CargaLista = () => {
   var html = "";
   $.get(
@@ -95,31 +84,28 @@ var CargaLista = () => {
           <td>${conductores.tipoLicencia}</td>
           <td>${conductores.fechaExpLicencia}</td> 
           <td>${conductores.direccion}</td>
-          
           <td>
-          <button class='btn btn-primary' click='uno(${
-                  conductores.id
-                })'>Editar</button>
-                <button class='btn btn-warning' click='Eliminar(${
-                  conductores.id
-                })'>Eliminar</button>
-                `;
-              });
+            <button class='btn btn-primary' onclick='editar(${
+              conductores.id
+            })'>Editar</button>
+            <button class='btn btn-warning' onclick='eliminar(${
+              conductores.id
+            })'>Eliminar</button>
+          </td>
+        </tr>`;
+      });
       $("#ListaConductores").html(html);
     }
   );
 };
 
-
-
 var eliminar = (id) => {
-  // lógica para eliminar el conductor con el ID proporcionado
+  // Lógica para eliminar el conductor con el ID proporcionado
 };
 
 var editar = (id) => {
-  // lógica para editar el conductor con el ID proporcionado
+  // Lógica para editar el conductor con el ID proporcionado
 };
-
 
 var LimpiarCajas = () => {
   $("#nombreConductor").val("");
@@ -129,6 +115,6 @@ var LimpiarCajas = () => {
   $("#tipoLicencia").val("");
   $("#fechaExpLicencia").val("");
   $("#direccionConductor").val("");
-  $("#ModalConductores").modal("hide");
 };
+
 init();
