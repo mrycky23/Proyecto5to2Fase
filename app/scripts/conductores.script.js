@@ -29,13 +29,17 @@ function init() {
 var GuardarEditar = (e) => {
   e.preventDefault();
   var DatosFormularioConductores = new FormData($("#form_conductores")[0]);
-  var accion = "";
+  var accion = "../../controllers/conductores.controllers.php?op=insertar";
 
-  if ($("#id").val() != "") {
+  for (var pair of DatosFormularioConductores.entries()) {
+    console.log(pair[0] + ", " + pair[1]);
+  }
+
+ /* if ($("#id").val() != "") {
     accion = ruta + "Actualizar";
   } else {
     accion = ruta + "Insertar";
-  }
+  }*/
 
   $.ajax({
     url: accion,
