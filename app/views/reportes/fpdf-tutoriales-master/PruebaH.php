@@ -127,12 +127,17 @@ $pdf->SetDrawColor(163, 163, 163); //colorBorde
    }*/
 $i = $i + 1;
 /* TABLA */
-$pdf->Cell(30, 10, utf8_decode("N°"), 1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode("numero"), 1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode("nombre"), 1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode("precio"), 1, 0, 'C', 0);
-$pdf->Cell(85, 10, utf8_decode("info"), 1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode("total"), 1, 1, 'C', 0);
 
+$pdf->Cell(10, 10, utf8_decode('#'), 1, 0, 'C', 0);
+$pdf->Cell(40, 10, utf8_decode('Nombre mantenimiento'), 1, 0, 'C', 0);
+$pdf->Cell(27, 10, utf8_decode('Vehiculo'), 1, 0, 'C', 0);
+$pdf->Cell(30, 10, utf8_decode('Repuesto'), 1, 0, 'C', 0);
+$pdf->Cell(27, 10, utf8_decode('Kilometraje'), 1, 0, 'C', 0);
+$pdf->Cell(27, 10, utf8_decode('Horas'), 1, 0, 'C', 0);
+$pdf->Cell(15, 10, utf8_decode('Día'), 1, 0, 'C', 0);
+$pdf->Cell(15, 10, utf8_decode('Mes'), 1, 0, 'C', 0);
+$pdf->Cell(15, 10, utf8_decode('Año'), 1, 0, 'C', 0);
+$pdf->Cell(30, 10, utf8_decode('Nota'), 1, 0, 'C', 0);
+$pdf->Cell(30, 10, utf8_decode('Estado'), 1, 1, 'C', 0);
 
 $pdf->Output('Prueba2.pdf', 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
