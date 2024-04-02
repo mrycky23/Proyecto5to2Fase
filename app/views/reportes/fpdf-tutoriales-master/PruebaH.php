@@ -8,16 +8,37 @@ class PDF extends FPDF
    // Cabecera de página
    function Header()
    {
-      //include '../../recursos/Recurso_conexion_bd.php';//llamamos a la conexion BD
+      include '../../../../config/conexion.php';//llamamos a la conexion BD
+      //$con = new ClaseConectar();
+      //$con = $con->ProcedimientoConectar();
 
-      //$consulta_info = $conexion->query(" select *from hotel ");//traemos datos de la empresa desde BD
-      //$dato_info = $consulta_info->fetch_object();
-      $this->Image('../../../../assets/images/Transjovalsa SA1.jpg', 220, 5, 70); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
-      $this->SetFont('Arial', 'B', 30); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
+      $consulta_info = $con->query("SELECT 
+      p.nombreMantenimiento, 
+      v.placa AS placa_vehiculo, 
+      r.nombre AS nombre_repuesto, 
+      p.km, 
+      p.hora, 
+      p.dia, 
+      p.mes, 
+      p.anio, 
+      p.nota, 
+      p.estado
+  FROM 
+      programacion p
+  INNER JOIN 
+      vehiculo v ON p.idVehiculo = v.id
+  LEFT JOIN 
+      programacion_repuestos pr ON p.id = pr.idProgramacion
+  LEFT JOIN 
+      repuestos r ON pr.idRepuesto = r.id");//traemos datos de la empresa desde BD
+      $dato_info = $consulta_info->fetch_object();
+      
+      $this->Image('../../../../assets/images/Transjovalsa SA1.jpg', 270, 5, 20); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
+      $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
       $this->Cell(95); // Movernos a la derecha
       $this->SetTextColor(0, 0, 0); //color
       //creamos una celda o fila
-      $this->Cell(110, 15, utf8_decode('Transjovalsa S.A.'), 0, 1, 'C', 0); // AnchoCelda,AltoCelda,titulo,borde(1-0),saltoLinea(1-0),posicion(L-C-R),ColorFondo(1-0)
+      $this->Cell(110, 15, utf8_decode('Transjovalsa S.A.'), 1, 1, 'C', 0); // AnchoCelda,AltoCelda,titulo,borde(1-0),saltoLinea(1-0),posicion(L-C-R),ColorFondo(1-0)
       $this->Ln(3); // Salto de línea
       $this->SetTextColor(103); //color
 
@@ -59,17 +80,12 @@ class PDF extends FPDF
       $this->SetTextColor(255, 255, 255); //colorTexto
       $this->SetDrawColor(163, 163, 163); //colorBorde
       $this->SetFont('Arial', 'B', 11);
-      $this->Cell(15, 10, utf8_decode('N°'), 1, 0, 'C', 1);// AnchoCelda,AltoCelda,titulo,borde(1-0),saltoLinea(1-0),posicion(L-C-R),ColorFondo(1-0)
-      $this->Cell(15, 10, utf8_decode('Mantenimiento'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Vehiculo'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Repuesto'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Kilometraje'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Horas'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Día'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Mes'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Año'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Nota'), 1, 0, 'C', 1);
-      $this->Cell(15, 10, utf8_decode('Estado'), 1, 1, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('N°'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('NÚMERO'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('TIPO'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('PRECIO'), 1, 0, 'C', 1);
+      $this->Cell(85, 10, utf8_decode('CARACTERÍSTICAS'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('ESTADO'), 1, 1, 'C', 1);
    }
 
    // Pie de página
@@ -111,7 +127,7 @@ $pdf->Cell(40, 10, utf8_decode("numero"), 1, 0, 'C', 0);
 $pdf->Cell(40, 10, utf8_decode("nombre"), 1, 0, 'C', 0);
 $pdf->Cell(40, 10, utf8_decode("precio"), 1, 0, 'C', 0);
 $pdf->Cell(85, 10, utf8_decode("info"), 1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode("total"), 1, 0, 'C', 0);
+$pdf->Cell(40, 10, utf8_decode("total"), 1, 1, 'C', 0);
 
 
 $pdf->Output('Prueba2.pdf', 'I');//nombreDescarga, Visor(I->visualizar - D->descargar)
