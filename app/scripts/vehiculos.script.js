@@ -99,6 +99,21 @@ var CargaLista = () => {
 
 var eliminar = (id) => {
   // Lógica para eliminar el vehículo con el ID proporcionado
+  if (confirm("¿Estás seguro de que quieres eliminar este vehiculo?")) {
+    $.post(
+      "../../controllers/tareas.controllers.php?op=eliminar",
+      { TareaID: TareaID },
+      (resultado) => {
+        resultado = JSON.parse(resultado);
+        if (resultado === "ok") {
+          alert("Vehiculo eliminado correctamente");
+          CargaLista();
+        } else {
+          alert("Error al eliminar el vehiculo");
+        }
+      }
+    );
+  }
 };
 
 var editar = (id) => {

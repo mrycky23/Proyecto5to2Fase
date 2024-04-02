@@ -123,6 +123,7 @@
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <div id="btn-guardar" class="aside-compose"><button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button></div>
                                     </div>
                                   
                                 </form>
