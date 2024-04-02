@@ -4,14 +4,14 @@ document.getElementById('btn-guardar').addEventListener('click', function() {
     function generarReportePDF() {
         // Petición AJAX para generar el reporte PDF
         $.ajax({
-            url: '../../views/reportespdf.php', // Ruta del script PHP que genera el PDF
+            url: '../../views/reportespdf.php', // Ruta del script PHP que genera el PDF}
             type: 'GET',
             success: function (response) {
                 // La respuesta es el PDF generado
                 // Abre una nueva ventana del navegador con el PDF
                 window.open(response);
             },
-            error: function (xhr, status, error) {
+            error: function (_xhr, _status, error) {
                 console.error('Error al generar el reporte PDF:', error);
             }
         });
