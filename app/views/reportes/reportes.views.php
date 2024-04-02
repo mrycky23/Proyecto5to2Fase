@@ -138,7 +138,10 @@
                                         <label for="exampleFormControlTextarea1">Nota:</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
+                                    
                                     <div class="aside-compose"><a class="btn btn-lg btn-secondary btn-block" href="#">Guardar</a></div>
+                                    <button id="btn-guardar" class="btn btn-lg btn-secondary btn-block" onclick="generarReportePDF()">Imprimir</button>
+
                                 </form>
                             </div>
                         </div>
