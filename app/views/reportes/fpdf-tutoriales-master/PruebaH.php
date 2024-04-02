@@ -12,7 +12,7 @@ class PDF extends FPDF
       //$con = new ClaseConectar();
       //$con = $con->ProcedimientoConectar();
 
-      $consulta_info = $con->query("SELECT 
+     /* $consulta_info = $con->query("SELECT 
       p.nombreMantenimiento, 
       v.placa AS placa_vehiculo, 
       r.nombre AS nombre_repuesto, 
@@ -31,7 +31,7 @@ class PDF extends FPDF
       programacion_repuestos pr ON p.id = pr.idProgramacion
   LEFT JOIN 
       repuestos r ON pr.idRepuesto = r.id");//traemos datos de la empresa desde BD
-      $dato_info = $consulta_info->fetch_object();
+      $dato_info = $consulta_info->fetch_object();*/
       
       $this->Image('../../../../assets/images/Transjovalsa SA1.jpg', 270, 5, 20); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
       $this->SetFont('Arial', 'B', 19); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
