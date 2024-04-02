@@ -29,6 +29,53 @@ function ActualizarTabla() {
   // Llamada a la función CargaLista para obtener los nuevos datos
   CargaLista();
 }
+
+//Boton de guardar y editar los conductores
+//
+function init() {
+  $("#form_conductores").on("submit", (e) => {
+    GuardarEditar(e);
+  });
+}
+var GuardarEditar = (e) => {
+  e.preventDefault();
+  var DatosFormularioConductores = new FormData($("#form_conductores")[0]);
+  var accion = "";
+
+  if (document.getElementById("id").value != "") {
+    accion = ruta + "Actualizar";
+  } else {
+    accion = ruta + "Insertar";
+  }
+  $.ajax({
+    url: accion,
+    type: "post",
+    data: DatosFormularioConductores,
+    processData: false,
+    contentType: false,
+    cache: false,
+    success: (respuesta) => {
+      console.log(respuesta);
+      respuesta = JSON.parse(respuesta);
+      if (respuesta == "ok") {
+        Swal.fire({
+          title: "Conductor!",
+          text: "Se guardó con éxito",
+          icon: "success",
+        });
+        CargaLista();
+        LimpiarCajas();
+      } else {
+        Swal.fire({
+          title: "Conductor!",
+          text: "Error al guradar",
+          icon: "error",
+        });
+      }
+    },
+  });
+};
+
 //Cargar Lista
 var CargaLista = () => {
   var html = "";
@@ -48,8 +95,16 @@ var CargaLista = () => {
           <td>${conductores.tipoLicencia}</td>
           <td>${conductores.fechaExpLicencia}</td> 
           <td>${conductores.direccion}</td>
-        </tr>`;
-      });
+          
+          <td>
+          <button class='btn btn-primary' click='uno(${
+                  conductores.id
+                })'>Editar</button>
+                <button class='btn btn-warning' click='Eliminar(${
+                  conductores.id
+                })'>Eliminar</button>
+                `;
+              });
       $("#ListaConductores").html(html);
     }
   );
@@ -74,5 +129,6 @@ var LimpiarCajas = () => {
   $("#tipoLicencia").val("");
   $("#fechaExpLicencia").val("");
   $("#direccionConductor").val("");
+  $("#ModalConductores").modal("hide");
 };
 init();
