@@ -11,7 +11,7 @@ $(document).ready(function () {
     cargarRepuestos();
 });
 
-// Insertar repuesto
+/*Insertar repuesto
 $(document).ready(function () {
     $('#btn-ingresar').click(function (e) {
         e.preventDefault(); // Evita el envío del formulario por defecto
@@ -154,6 +154,162 @@ $(document).ready(function () {
 
     cargarVehiculos();
 });
+*/
+$(document).ready(function () {
+    cargarRepuestos();
+    cargarVehiculos();
+
+    $('#btn-ingresar').click(function (e) {
+        e.preventDefault(); // Evitar el envío del formulario por defecto
+
+        // Obtener los datos del formulario
+        var repuesto = $('#campoRepuesto').val();
+        
+        // Verificar si el campo está vacío
+        if (repuesto === '') {
+            console.log('El campo está vacío');
+            return; // Detener el proceso si el campo está vacío
+        }
+
+        // Verificar si el repuesto ya existe
+        repuestoExistente(repuesto, function(existe) {
+            if (existe) {
+                console.log('El repuesto ya existe');
+                return; // Detener el proceso si el repuesto ya existe
+            } else {
+                $.ajax({
+                    url: '../../controllers/repuestos.controllers.php?op=insertar',
+                    type: 'POST',
+                    data: {
+                        campoRepuesto: repuesto
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        cargarRepuestos();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+
+    $('#btn-guardar').click(function (e) {
+        e.preventDefault(); // Evitar el envío del formulario por defecto
+
+        // Obtener los valores del formulario
+        var nombreMantenimiento = $('#nombreMantenimiento').val();
+        var repuesto = $('#repuesto').val();
+        var vehiculoId = $('#vehiculo').val();
+        var frecuencia = $('#frecuencia').val();
+        var duracion = $('#duracion').val();
+        var nota = $('#nota').val();
+
+        // Determinar los valores para los atributos km, hora, día, mes, año
+        var km = 0;
+        var hora = 0;
+        var dia = 0;
+        var mes = 0;
+        var anio = 0;
+        switch (frecuencia) {
+            case 'Kilometros':
+                km = duracion;
+                break;
+            case 'Horas':
+                hora = duracion;
+                break;
+            case 'Dia':
+                dia = duracion;
+                break;
+            case 'Mes':
+                mes = duracion;
+                break;
+            case 'Anio':
+                anio = duracion;
+                break;
+            default:
+                break;
+        }
+
+        // Crear objeto con los datos del formulario
+        var datosFormulario = {
+            nombreMantenimiento: nombreMantenimiento,
+            repuesto: repuesto,
+            idVehiculo: vehiculoId,
+            km: km,
+            hora: hora,
+            dia: dia,
+            mes: mes,
+            anio: anio,
+            nota: nota
+        };
+
+        // Realizar la petición AJAX para insertar los datos en la tabla programacion
+        $.ajax({
+            url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertar',
+            type: 'POST',
+            data: datosFormulario,
+            success: function (response) {
+                console.log(response);
+                LimpiarCajas();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(status.responseText);
+                console.error(error.responseText);
+            }
+        });
+
+        // Realizar la petición AJAX para insertar el repuesto asociado a la programación
+        $.ajax({
+            url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertarRespuestoProgramacion',
+            type: 'POST',
+            data: datosFormulario,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(status.responseText);
+                console.error(error.responseText);
+            }
+        });
+
+        // Realizar la petición AJAX para actualizar el estado de la programación
+        $.ajax({
+            url: '../../controllers/programacion_mantenimientos.controllers.php?op=actualizarEstado',
+            type: 'POST',
+            data: datosFormulario,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(status.responseText);
+                console.error(error.responseText);
+            }
+        });
+    });
+});
+
+// Función para verificar si el repuesto ya existe
+function repuestoExistente(repuesto, callback) {
+    $.ajax({
+        url: '../../controllers/repuestos.controllers.php?op=verificarExistencia',
+        type: 'POST',
+        data: {
+            repuesto: repuesto
+        },
+        success: function (response) {
+            callback(response === 'true');
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al verificar la existencia del repuesto:', error);
+            callback(false);
+        }
+    });
+}
 
 // Función para verificar si el repuesto ya existe
 function repuestoExistente(repuesto) {
