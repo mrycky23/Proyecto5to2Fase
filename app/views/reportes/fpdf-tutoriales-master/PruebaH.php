@@ -86,9 +86,9 @@ class PDF extends FPDF
       $this->Cell(30, 10, utf8_decode('Repuesto'), 1, 0, 'C', 1);
       $this->Cell(30, 10, utf8_decode('Kilometraje'), 1, 0, 'C', 1);
       $this->Cell(30, 10, utf8_decode('Horas'), 1, 0, 'C', 1);
-      $this->Cell(30, 10, utf8_decode('Día'), 1, 0, 'C', 1);
-      $this->Cell(30, 10, utf8_decode('Mes'), 1, 0, 'C', 1);
-      $this->Cell(30, 10, utf8_decode('Año'), 1, 0, 'C', 1);
+      $this->Cell(15, 10, utf8_decode('Día'), 1, 0, 'C', 1);
+      $this->Cell(15, 10, utf8_decode('Mes'), 1, 0, 'C', 1);
+      $this->Cell(15, 10, utf8_decode('Año'), 1, 0, 'C', 1);
       $this->Cell(30, 10, utf8_decode('Nota'), 1, 0, 'C', 1);
       $this->Cell(30, 10, utf8_decode('Estado'), 1, 1, 'C', 1);
    }
