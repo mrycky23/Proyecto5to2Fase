@@ -22,6 +22,9 @@ function init() {
           }
       });
   });
+  $("#form-vehiculos").on("submit", (e) => {
+    GuardarEditar(e);
+  });
 }
 
 function GuardarEditar(e) {
@@ -101,8 +104,8 @@ var eliminar = (id) => {
   // Lógica para eliminar el vehículo con el ID proporcionado
   if (confirm("¿Estás seguro de que quieres eliminar este vehiculo?")) {
     $.post(
-      "../../controllers/tareas.controllers.php?op=eliminar",
-      { TareaID: TareaID },
+      "../../controllers/vehiculos.controllers.php?op=eliminar",
+      { idRepuesto: idRepuesto },
       (resultado) => {
         resultado = JSON.parse(resultado);
         if (resultado === "ok") {
