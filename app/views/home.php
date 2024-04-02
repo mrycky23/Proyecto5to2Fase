@@ -160,10 +160,10 @@
                                 <a class="nav-link" href="./vehiculos/vehiculos.views.php" target="content"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./viajes/viajes.views.php" target="content"><i class="fas fa-fw fa-table"></i>Viajes</a>
+                                <a class="nav-link" href="./viajes/viajes.views.php" target="content"><i class="far fa-paper-plane"></i>Viajes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./reportes/reportes.views.php" target="content"><i class="fas fa-fw fa-table"></i>Reportes</a>
+                                <a class="nav-link" href="./reportes/reportes.views.php" target="content"><i class="fab fa-wpforms"></i>Reportes</a>
                             </li>
                             <li class="nav-divider">
                                 Configuración
