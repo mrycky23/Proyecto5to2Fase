@@ -14,17 +14,6 @@ class Usuarios_Roles
         $con->close();
     }
 
-    /*TODO: Procedimiento para sacar un registro
-    public function uno($idAccesos)
-    {
-        $con = new ClaseConectar();
-        $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT  * FROM usuario_roles WHERE idAccesos = $idAccesos";
-        $datos = mysqli_query($con, $cadena);
-        return $datos;
-        $con->close();
-    }*/
-    /*TODO: Procedimiento para insertar */
     public function Insertar($Usuarios_idUsuarios, $Roles_idRoles,)
     {
 
