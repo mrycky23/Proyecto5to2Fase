@@ -76,13 +76,13 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
                 </form>
             </div>
-            <div class="card-footer bg-white p-0  ">
+            <!--<div class="card-footer bg-white p-0  ">
                 <div class="card-footer-item card-footer-item-bordered">
                     <a href="./app/views/usuarios/registroUsuario.views.php" class="footer-link">Crear cuenta</a></div>
                 <div class="card-footer-item card-footer-item-bordered">
                     <a href="./app/views/usuarios/olvidarContrasenia.views.php" class="footer-link">Olvidé mi contraseña</a>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
   
