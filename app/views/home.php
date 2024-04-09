@@ -182,7 +182,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./mapas/mapas.views.php" target="content"><i class="fas fa-fw fa-table"></i>Mapa Ubicaciones</a>
+                                <a class="nav-link" href="./mapas/mapas.views.php" target="content"><i class="fas fa-map"></i>Mapa Ubicaciones</a>
                             </li>
                         </ul>
                     </div>
