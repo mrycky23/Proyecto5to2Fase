@@ -25,12 +25,65 @@ class ProgramacionMantenimientos
         return $datos;
     }
 
-    /* Procedimiento para sacar un registro */
-    public function uno($conductorId)
+
+    public function actualizarEstadoDiaMesAnio()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM `programacion` WHERE `id`=$id";
+        $cadena = "SELECT vv.idVehiculo FROM viajes_vehiculo vv GROUP BY vv.idVehiculo";
+
+        // Verificar si hay resultados
+        if ($result->num_rows > 0) {
+            // Recorrer los resultados
+            while ($row = $result->fetch_assoc()) {
+                // Obtener el ID del vehículo
+                $vehiculo_id_val = $row["idVehiculo"];
+
+                // Calcular el total de kilómetros recorridos por el vehículo en todos los viajes
+                $km_total_viajes_query = "SELECT SUM(v.KmLlegada - v.KmSalida) AS km_total_viajes
+                                          FROM viajes v
+                                          INNER JOIN viajes_vehiculo vv ON v.id = vv.idViaje
+                                          WHERE vv.idVehiculo = $vehiculo_id_val";
+
+                // Ejecutar la consulta
+                $km_total_viajes_result = $conn->query($km_total_viajes_query);
+
+                // Obtener el resultado
+                $km_total_viajes_row = $km_total_viajes_result->fetch_assoc();
+                $km_total_viajes = $km_total_viajes_row["km_total_viajes"];
+
+                // Obtener el total de kilómetros programados para el vehículo
+                $km_programacion_query = "SELECT km FROM programacion WHERE idVehiculo = $vehiculo_id_val LIMIT 1";
+
+                // Ejecutar la consulta
+                $km_programacion_result = $conn->query($km_programacion_query);
+
+                // Obtener el resultado
+                $km_programacion_row = $km_programacion_result->fetch_assoc();
+                $km_programacion = $km_programacion_row["km"];
+
+                // Calcular el porcentaje de kilómetros recorridos en comparación con la programación
+                $porcentaje_km = ($km_total_viajes / $km_programacion) * 100;
+
+                // Determinar estado de la programación
+                if ($porcentaje_km > 100) {
+                    $estado_programacion = 'Mantenimiento atrasado';
+                } elseif ($porcentaje_km <= 100 && $porcentaje_km > 80) {
+                    $estado_programacion = 'Alerta';
+                } elseif ($porcentaje_km <= 80 && $porcentaje_km > 20) {
+                    $estado_programacion = 'Próximo a mantenimiento';
+                } else {
+                    $estado_programacion = 'Buen estado';
+                }
+
+                // Actualizar estado en la tabla programacion para el vehículo actual
+                $update_query = "UPDATE programacion SET Estado = '$estado_programacion' WHERE idVehiculo = $vehiculo_id_val";
+
+                // Ejecutar la consulta de actualización
+                $conn->query($update_query);
+            }
+        }
+
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;

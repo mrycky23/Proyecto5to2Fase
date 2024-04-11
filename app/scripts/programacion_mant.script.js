@@ -1,15 +1,5 @@
-function init() {
-    $("#form-conductores").on("submit", (e) => {
-        GuardarEditar(e);
-    });
-}
+var datosFormulario;
 
-
-
-// Cargar repuestos en el select
-$(document).ready(function () {
-    cargarRepuestos();
-});
 $(document).ready(function () {
     cargarRepuestos();
     cargarVehiculos();
@@ -62,25 +52,25 @@ $(document).ready(function () {
         var nota = $('#nota').val();
 
         // Determinar los valores para los atributos km, hora, día, mes, año
-        var km = 2500;
+        var km = 0;
         var hora = 0;
         var dia = 0;
         var mes = 0;
         var anio = 0;
         switch (frecuencia) {
-            case 'Kilometros':
+            case 'kilometro':
                 km = duracion;
                 break;
-            case 'Horas':
+            case 'hora':
                 hora = duracion;
                 break;
-            case 'Dia':
+            case 'dia':
                 dia = duracion;
                 break;
-            case 'Mes':
+            case 'mes':
                 mes = duracion;
                 break;
-            case 'Anio':
+            case 'anio':
                 anio = duracion;
                 break;
             default:
@@ -88,7 +78,7 @@ $(document).ready(function () {
         }
 
         // Crear objeto con los datos del formulario
-        var datosFormulario = {
+        datosFormulario = {
             nombreMantenimiento: nombreMantenimiento,
             repuesto: repuesto,
             idVehiculo: vehiculoId,
@@ -108,8 +98,8 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 LimpiarCajas();
-                repuestoAsociado();
-                estadoProgramacion();
+                //repuestoAsociado(datosFormulario);
+                //estadoProgramacion(datosFormulario);
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
@@ -119,9 +109,10 @@ $(document).ready(function () {
         });
     });
 });
-/*
+
+
 // Realizar la petición AJAX para insertar el repuesto asociado a la programación
-function repuestoAsociado() {
+function repuestoAsociado(datosFormulario) {
     
     $.ajax({
         url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertarRespuestoProgramacion',
@@ -137,9 +128,8 @@ function repuestoAsociado() {
         }
     });
 }
-*/
 // Realizar la petición AJAX para actualizar el estado de la programación
-function estadoProgramacion() {
+function estadoProgramacion(datosFormulario) {
    
    $.ajax({
     url: '../../controllers/programacion_mantenimientos.controllers.php?op=actualizarEstado',
@@ -237,5 +227,3 @@ var LimpiarCajas = () => {
     $("#duracion").val("");
     $("#nota").val("");
 };
-
-init();

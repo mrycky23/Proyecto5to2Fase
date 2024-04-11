@@ -1,5 +1,4 @@
 <?php
-//error_reporting(0);
 require_once("../../config/cors.php");
 require_once("../models/programacion_mantenimientos.models.php");
 require_once("../models/programacion_repuestos.models.php");
@@ -9,53 +8,18 @@ $Programacion_repuestos = new programacion_repuestos;
 
 
 switch ($_GET["op"]) {
-    case 'todos':
-        $datos = $Repuestos->todos();
-        $todos = array();
-        while ($row = mysqli_fetch_assoc($datos)) {
-            $todos[] = $row;
-        }
-        mysqli_free_result($datos);
-        echo json_encode($todos);
-        break;
-
-    case 'uno':
-        $programacion = $_POST["id"];
-        $datos = $Repuestos->uno($idRepuesto);
+    case 'actualizarEstado':
+        $datos = $ProgramacionMantenimientos->actualizarEstadoDiaMesAnio();
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
 
-    case 'actualizarEstado':
-        $datos = $ProgramacionMantenimientos->actualizarEstado();
-        $res = mysqli_fetch_assoc($datos);
-        echo json_encode($res);
-        break;
-
-    case 'actualizarEstado':
+    case 'insertarRespuestoProgramacion':
         $idRepuesto = $_POST["repuesto"];
         $datos = $Programacion_repuestos->insertarRespuestoProgramacion($idRepuesto);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
-        break;
-
-    case 'buscarIdVehiculo':
-            // Obtener el nombre del vehículo enviado desde la solicitud AJAX
-            $nombreVehiculo = $_POST["nombreVehiculo"];
-            
-            // Realizar la búsqueda del ID del vehículo en función de su nombre
-            $vehiculo = $Vehiculos->BuscarIdVehiculo($nombreVehiculo);
-        
-            // Verificar si se encontró el vehículo
-            if ($vehiculo) {
-                // Si se encontró, devolver el ID del vehículo como respuesta en formato JSON
-                echo json_encode(array("success" => true, "idVehiculo" => $vehiculo['id']));
-            } else {
-                // Si no se encontró el vehículo, devolver un mensaje de error en formato JSON
-                echo json_encode(array("success" => false, "error" => "No se pudo encontrar el ID del vehículo"));
-            }
-            break;    
-        
+        break;        
     
     case 'insertar':
             // Validar y sanitizar los datos del formulario
@@ -65,31 +29,33 @@ switch ($_GET["op"]) {
             $frecuencia = isset($_POST["frecuencia"]) ? $_POST["frecuencia"] : '';
             $duracion = isset($_POST["duracion"]) ? $_POST["duracion"] : '';
             $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';
+            $km = isset($_POST["kilometro"]) ? $_POST["kilometro"] : 0 ;
+            $hora = isset($_POST["hora"]) ? $_POST["hora"] : 0;
+            $dia = isset($_POST["dia"]) ? $_POST["dia"] : 0;
+            $mes = isset($_POST["mes"]) ? $_POST["mes"] : 0;
+            $anio = isset($_POST["anio"]) ? $_POST["anio"] : 0;
+
             // Determinar los valores para los atributos km, hora, día, mes, año
-            $km = 0;
-            $hora = 0;
-            $dia = 0;
-            $mes = 0;
-            $anio = 0;
             switch ($frecuencia) {
-                case 'Kilometros':
+                case 'kilometro':
                     $km = $duracion;
                     break;
-                case 'Horas':
+                case 'hora':
                     $hora = $duracion;
                     break;
-                case 'Dia':
+                case 'dia':
                     $dia = $duracion;
                     break;
-                case 'Mes':
+                case 'mes':
                     $mes = $duracion;
                     break;
-                case 'Anio':
+                case 'anio':
                     $anio = $duracion;
                     break;
                 default:
                     break;
             }
+            
             
             // Insertar los datos en la tabla programacion
             $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
