@@ -83,9 +83,9 @@
                                             <div class="form-group">
                                                 <label for="frecuencia">Frecuencia:</label>
                                                 <select id="frecuencia" name="frecuencia" class="form-control" required>
-                                                    <option value="">Seleccionar</option>
-                                                    <option value="kilometro">Kilómetros</option>
+                                                    <option value="undefined">Seleccionar</option>
                                                     <option value="hora">Horas</option>
+                                                    <option value="kilometro">Kilometro</option>
                                                     <option value="dia">Día</option>
                                                     <option value="mes">Mes</option>
                                                     <option value="anio">Año</option>

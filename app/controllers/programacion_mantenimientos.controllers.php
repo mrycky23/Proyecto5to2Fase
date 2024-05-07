@@ -3,6 +3,7 @@ require_once("../../config/cors.php");
 require_once("../models/programacion_mantenimientos.models.php");
 require_once("../models/programacion_repuestos.models.php");
 
+
 $ProgramacionMantenimientos = new ProgramacionMantenimientos;
 $Programacion_repuestos = new programacion_repuestos;
 
@@ -29,19 +30,21 @@ switch ($_GET["op"]) {
             $frecuencia = isset($_POST["frecuencia"]) ? $_POST["frecuencia"] : '';
             $duracion = isset($_POST["duracion"]) ? $_POST["duracion"] : '';
             $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';
-            $km = isset($_POST["kilometro"]) ? $_POST["kilometro"] : 0 ;
+            
             $hora = isset($_POST["hora"]) ? $_POST["hora"] : 0;
+            $km = isset($_POST["kilometro"]) ? $_POST["kilometro"] : 0 ;
             $dia = isset($_POST["dia"]) ? $_POST["dia"] : 0;
             $mes = isset($_POST["mes"]) ? $_POST["mes"] : 0;
             $anio = isset($_POST["anio"]) ? $_POST["anio"] : 0;
 
             // Determinar los valores para los atributos km, hora, día, mes, año
             switch ($frecuencia) {
-                case 'kilometro':
-                    $km = $duracion;
-                    break;
+                
                 case 'hora':
                     $hora = $duracion;
+                    break;
+                case 'kilometro':
+                    $km = $duracion;
                     break;
                 case 'dia':
                     $dia = $duracion;

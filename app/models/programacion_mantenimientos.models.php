@@ -26,8 +26,7 @@ class ProgramacionMantenimientos
     }
 
 
-    public function actualizarEstadoDiaMesAnio()
-    {
+    public function actualizarEstadoDiaMesAnio(){
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT vv.idVehiculo FROM viajes_vehiculo vv GROUP BY vv.idVehiculo";
@@ -127,8 +126,6 @@ class ProgramacionMantenimientos
         return $idVehiculo;
     }
     
-
-
     public function Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota)
     {
     $con = new ClaseConectar();

@@ -52,17 +52,17 @@ $(document).ready(function () {
         var nota = $('#nota').val();
 
         // Determinar los valores para los atributos km, hora, día, mes, año
-        var km = 0;
         var hora = 0;
+        var km = 0;
         var dia = 0;
         var mes = 0;
         var anio = 0;
         switch (frecuencia) {
-            case 'kilometro':
-                km = duracion;
-                break;
             case 'hora':
                 hora = duracion;
+                break;
+            case 'kilometro':
+                km = duracion;
                 break;
             case 'dia':
                 dia = duracion;
@@ -180,7 +180,6 @@ function cargarVehiculos() {
             // Agregar la opción "Seleccionar" por defecto
             $('#vehiculo').append('<option value="">Seleccionar</option>');
             // Iterar sobre los vehículos obtenidos y agregarlos al select
-            console.log(response);
             $.each(response, function (index, vehiculo) {
                 $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
             });

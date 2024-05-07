@@ -11,25 +11,6 @@
     <link href="../../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../assets/libs/css/style.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <style>
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .card {
-            margin-top: 20px; /* Agrega margen superior al formulario */
-        }
-    </style>
 </head>
 <!-- ============================================================== -->
 <!-- signup form  -->
@@ -43,7 +24,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-1">Registro</h3>
-                <p>Por favor ingrese sus datos de registro</p>
+                <p>Por favor ingrese los datos de registro</p>
             </div>
             <div class="card-body">
                 <div class="form-group">
@@ -66,13 +47,11 @@
                 </div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Al crear esta cuenta, acepta los<a href="#">terminos y condiciones</a></span>
+                        <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Al crear esta cuenta, acepta los<a href="#"> términos y condiciones</a></span>
                     </label>
                 </div>
             </div>
-            <div class="card-footer bg-white">
-                <p>Ya es miembro?<a href="../../../login.php" class="text-secondary">Iniciar sesion aquí.</a></p>
-            </div>
+            
         </div>
     </form>
 
