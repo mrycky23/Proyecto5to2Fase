@@ -190,7 +190,6 @@
             </div>
         </div>
         <iframe name="content" id= "content" src="./mantenimientos/dashboard.views.php" style="width: 100%; height: 900vh; border: none;"></iframe>
-       <!--<iframe id="content"></iframe>-->
     </div>
     
     <script src="../scripts/scripts.js"></script>

@@ -35,7 +35,11 @@
     <div class="splash-container">
         <div class="card ">
             <div class="card-body">
-            <div class="card-header text-center"><a href="./home.php"><img src="./assets/images/Transjovalsa SA1.jpg" width="180" height="50" alt="logo"></a><span class="splash-description">Ingrese su información.</span></div>
+            <div class="card-header text-center">
+                <a href="./home.php">
+                <img src="./assets/images/Transjovalsa SA1.jpg" width="180" height="50" alt="logo"></a>
+                <span class="splash-description">Ingrese su información.</span>
+            </div>
             
             <h4 class="mb-2"></h4>
             <p class="mb-4"></p>
@@ -73,10 +77,13 @@
                         </label>
                         <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Recordar contraseña</span>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
+                    <button
+                        type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión
+                    </button>
                 </form>
             </div>
-            <!--<div class="card-footer bg-white p-0  ">
+            <!--    REGISTRO DE USUARIO OCULTO POR PRIVILEGIOS
+                <div class="card-footer bg-white p-0  ">
                 <div class="card-footer-item card-footer-item-bordered">
                     <a href="./app/views/usuarios/registroUsuario.views.php" class="footer-link">Crear cuenta</a></div>
                 <div class="card-footer-item card-footer-item-bordered">

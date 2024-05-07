@@ -1,1 +1,9 @@
-RewriteEngine On
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^mantenimientos/([0-9]+)$ ./mantenimientos/dashboard.views.php$1
+RewriteRule ^programacionMantenimientos/([0-9]+)$ ./programacion_mantenimientos/programacion_mant.views.php
+
+ErrorDocument 404 /Aplicacion-Web-Transjovalsa/app/views/errores/404.php
+
+
