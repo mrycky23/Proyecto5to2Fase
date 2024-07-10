@@ -8,16 +8,26 @@ class Usuarios_Roles
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "select * from usuario_roles";
+        $cadena = "SELECT * FROM usuario_roles";
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();
     }
+    public function cargarRoles()
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT * FROM roles";
 
+        if (mysqli_query($con, $cadena)) {
+            return "ok";
+        } else {
+            return 'Error al insertar en la base de datos';
+        }
+        $con->close();
+    }
     public function Insertar($Usuarios_idUsuarios, $Roles_idRoles,)
     {
-
-
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "INSERT into usuario_roles(idUsuario,idRol) values ( $Usuarios_idUsuarios,  $Roles_idRoles )";

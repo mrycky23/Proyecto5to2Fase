@@ -87,7 +87,9 @@
                                         <input type="file" class="custom-file-input" id="customFile">
                                         <label class="custom-file-label" for="customFile">File Input</label>
                                     </div>-->
-                                    <div id="btn-guardar" class="aside-compose"><button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button></div>
+                                    <div id="btn-guardar" class="aside-compose">
+                                        <button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -177,7 +179,7 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-    
+    <!-- Configuracion de envio de form-->
     <script src="../../scripts/vehiculos.script.js"> </script>
 </body>
  

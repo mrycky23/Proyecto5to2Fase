@@ -98,7 +98,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 LimpiarCajas();
-                //repuestoAsociado(datosFormulario);
+                //insertarRepuestoAsociado(datosFormulario);
                 //estadoProgramacion(datosFormulario);
             },
             error: function (xhr, status, error) {
@@ -112,8 +112,7 @@ $(document).ready(function () {
 
 
 // Realizar la petición AJAX para insertar el repuesto asociado a la programación
-function repuestoAsociado(datosFormulario) {
-    
+function insertarRepuestoAsociado(datosFormulario) { 
     $.ajax({
         url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertarRespuestoProgramacion',
         type: 'POST',

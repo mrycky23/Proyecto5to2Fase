@@ -54,7 +54,7 @@
                                 <div class="card">
                                     <h5 class="card-header">Ingresar datos: </h5>
                                     <div class="card-body">
-                                        <form id= "form-ProgramacionMantenimientos" method="post">
+                                        <form id="form-ProgramacionMantenimientos" method="post">
                                             <div class="form-group">
                                                 <label for="nombreMantenimiento">Nombre de mantenimiento</label>
                                                 <input id="nombreMantenimiento" name="nombreMantenimiento" type="text" class="form-control" required>
@@ -77,7 +77,6 @@
                                             <div class="form-group">
                                                 <label for="vehiculo">Vehículo:</label>
                                                 <select  id="vehiculo" name="vehiculo" class="form-control" required>
-                                                    <option value="">Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -101,7 +100,6 @@
                                             </div>
                                             <button id= "btn-guardar"  class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>

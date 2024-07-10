@@ -74,8 +74,8 @@
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Recordar contraseña</span>
                         </label>
-                        <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Recordar contraseña</span>
                     </div>
                     <button
                         type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión

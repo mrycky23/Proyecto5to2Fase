@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>404</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/libs/css/style.css">
-    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="/Aplicacion-Web-Transjovalsa/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/libs/css/style.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
 </head>
 
 <body>
@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="offset-xl-2 col-xl-8 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12">
                         <div class="error-section">
-                            <img src="../../assets/images/404.png" alt="" class="img-fluid">
+                            <img src="/Aplicacion-Web-Transjovalsa/assets/images/404.png" alt="" class="img-fluid">
                             <div class="error-section-content">
                                 <h1 class="display-3">Pagina no encontrada</h1>
                                 <a href="../../index.php" class="btn btn-secondary btn-lg">Regresar al inicio</a>

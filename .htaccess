@@ -1,8 +1,19 @@
 Options +FollowSymLinks
 RewriteEngine on
+RewriteBase /
 
-RewriteRule ^mantenimientos/([0-9]+)$ ./mantenimientos/dashboard.views.php$1
-RewriteRule ^programacionMantenimientos/([0-9]+)$ ./programacion_mantenimientos/programacion_mant.views.php
+# Redirigir las URLs amigables a los archivos correspondientes
+RewriteRule ^mantenimientos/dashboard$ /Aplicacion-Web-Transjovalsa/app/views/mantenimientos/dashboard.views.php [L]
+RewriteRule ^programacion_mantenimientos/programacion_mant$ /Aplicacion-Web-Transjovalsa/app/views/programacion_mantenimientos/programacion_mant.views.php [L]
+RewriteRule ^conductores/conductores$ /Aplicacion-Web-Transjovalsa/app/views/conductores/conductores.views.php [L]
+RewriteRule ^vehiculos/vehiculos$ /Aplicacion-Web-Transjovalsa/app/views/vehiculos/vehiculos.views.php [L]
+RewriteRule ^viajes/viajes$ /Aplicacion-Web-Transjovalsa/app/views/viajes/viajes.views.php [L]
+RewriteRule ^reportes/reportes$ /Aplicacion-Web-Transjovalsa/app/views/reportes/reportes.views.php [L]
+
+# Redirigir las URLs amigables de configuración a los archivos correspondientes
+RewriteRule ^usuarios/perfil-usuario$ /Aplicacion-Web-Transjovalsa/app/views/usuarios/perfilUsuario.views.php [L]
+RewriteRule ^usuarios/registro-usuario$ /Aplicacion-Web-Transjovalsa/app/views/usuarios/registroUsuario.views.php [L]
+RewriteRule ^mapas/mapas$ /Aplicacion-Web-Transjovalsa/app/views/mapas/mapas.views.php [L]
 
 ErrorDocument 404 /Aplicacion-Web-Transjovalsa/app/views/errores/404.php
 
