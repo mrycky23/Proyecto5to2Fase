@@ -21,7 +21,12 @@ class ClaseConectar
     public function ruta()
     {
         define('BASE_PATH', realpath(dirname(__FILE__) . '/../') . '/');
+    }
 
-
+    public function close()
+    {
+       if ($this->conexion) {
+           $this->conexion->close();
+       }
     }
 }

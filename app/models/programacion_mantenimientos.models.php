@@ -30,7 +30,8 @@ class ProgramacionMantenimientos
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT vv.idVehiculo FROM viajes_vehiculo vv GROUP BY vv.idVehiculo";
-
+        $result = mysqli_query($con, $cadena);
+        
         // Verificar si hay resultados
         if ($result->num_rows > 0) {
             // Recorrer los resultados
@@ -45,7 +46,7 @@ class ProgramacionMantenimientos
                                           WHERE vv.idVehiculo = $vehiculo_id_val";
 
                 // Ejecutar la consulta
-                $km_total_viajes_result = $conn->query($km_total_viajes_query);
+                $km_total_viajes_result = $con->query($km_total_viajes_query);
 
                 // Obtener el resultado
                 $km_total_viajes_row = $km_total_viajes_result->fetch_assoc();
@@ -55,7 +56,7 @@ class ProgramacionMantenimientos
                 $km_programacion_query = "SELECT km FROM programacion WHERE idVehiculo = $vehiculo_id_val LIMIT 1";
 
                 // Ejecutar la consulta
-                $km_programacion_result = $conn->query($km_programacion_query);
+                $km_programacion_result = $con->query($km_programacion_query);
 
                 // Obtener el resultado
                 $km_programacion_row = $km_programacion_result->fetch_assoc();
@@ -79,7 +80,7 @@ class ProgramacionMantenimientos
                 $update_query = "UPDATE programacion SET Estado = '$estado_programacion' WHERE idVehiculo = $vehiculo_id_val";
 
                 // Ejecutar la consulta de actualización
-                $conn->query($update_query);
+                $con->query($update_query);
             }
         }
 
