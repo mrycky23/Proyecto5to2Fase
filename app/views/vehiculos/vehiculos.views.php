@@ -42,42 +42,6 @@
                 <!-- end pageheader -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- basic table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Listado de vehiculos</h5>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
-                                        <thead>
-                                            <tr>
-                                                <th>N°</th>
-                                                <th>Placa</th>
-                                                <th>Tipo</th>
-                                                <th>Tonelaje</th>
-                                                <th>Clase</th>
-                                                <th>Color</th>
-                                                <th>Año</th>
-                                                <th>Marca</th>
-                                                <th>Chasis</th>
-                                                <th>Motor</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0" id="ListaVehiculos">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                </div>
-                <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">Ingresar vehiculo: </h5>
@@ -123,12 +87,50 @@
                                         <input type="file" class="custom-file-input" id="customFile">
                                         <label class="custom-file-label" for="customFile">File Input</label>
                                     </div>-->
-                                    <div id="btn-guardar" class="aside-compose"><button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button></div>
+                                    <div id="btn-guardar" class="aside-compose">
+                                        <button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- basic table  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Listado de vehiculos</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                <table class="table table-striped table-bordered first" id= "vehiculosTable">
+                                        <thead>
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>Placa</th>
+                                                <th>Tipo</th>
+                                                <th>Tonelaje</th>
+                                                <th>Clase</th>
+                                                <th>Color</th>
+                                                <th>Año</th>
+                                                <th>Marca</th>
+                                                <th>Chasis</th>
+                                                <th>Motor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0" id="ListaVehiculos">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end basic table  -->
+                    <!-- ============================================================== -->
+                </div>
+                
             </div>
             <!-- ============================================================== -->
             <!-- footer -->
@@ -177,7 +179,7 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-    
+    <!-- Configuracion de envio de form-->
     <script src="../../scripts/vehiculos.script.js"> </script>
 </body>
  

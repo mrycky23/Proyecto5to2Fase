@@ -1,38 +1,42 @@
 function init() {
   CargaLista();
 
-  $('#btn-guardar').click(function(e) {
-      e.preventDefault();
+  $("#btn-guardar").click(function (e) {
+    e.preventDefault();
 
-      var formData = $('#form-conductores').serialize();
+    var formData = $("#form-conductores").serialize();
 
-      $.ajax({
-          url: '../../controllers/conductores.controllers.php?op=insertar', 
-          type: 'POST',
-          data: formData,
-          success: function(response) {
-              console.log(response);
-              LimpiarCajas();
-              ActualizarTabla();   
-          },
-          error: function(xhr, status, error) {
-              console.error(xhr.responseText);
-          }
-      });
+    $.ajax({
+      url: "../../controllers/conductores.controllers.php?op=insertar",
+      type: "POST",
+      data: formData,
+      success: function (response) {
+        console.log(response);
+        LimpiarCajas();
+        ActualizarTabla();
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr.responseText);
+      },
+    });
   });
 
   $("#form_conductores").on("submit", (e) => {
     GuardarEditar(e);
   });
 }
-
-$(document).ready(function(){
+// Función para actualizar la tabla de conductores
+function ActualizarTabla() {
+  // Llamar a la función para cargar la lista de conductores
+  CargaLista();
+}
+$(document).ready(function () {
   // Evento de clic en el botón para abrir el modal
-  $('#btn-editar').click(function(){
+  $("#btn-editar").click(function () {
     // Aquí puedes cambiar el contenido del modal según tus necesidades
-    $('#contenidoModal').html('Aquí puedes poner tu contenido HTML dinámico');
+    $("#contenidoModal").html("Aquí puedes poner tu contenido HTML dinámico");
     // Mostrar el modal
-    $('#miModal').modal('show');
+    $("#miModal").modal("show");
   });
 });
 
@@ -44,7 +48,6 @@ var GuardarEditar = (e) => {
   for (var pair of DatosFormularioConductores.entries()) {
     console.log(pair[0] + ", " + pair[1]);
   }
-
 
   $.ajax({
     url: accion,
@@ -104,6 +107,15 @@ var CargaLista = () => {
         </tr>`;
       });
       $("#ListaConductores").html(html);
+
+       // Después de cargar la lista, asignar eventos de clic a los botones de editar y eliminar
+      $(".btn-editar").click(function () {
+        // Lógica para editar el conductor con el ID proporcionado
+      });
+
+      $(".btn-eliminar").click(function () {
+        // Lógica para eliminar el conductor con el ID proporcionado
+      });
     }
   );
 };

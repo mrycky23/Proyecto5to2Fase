@@ -1,26 +1,26 @@
 function init() {
   CargaLista();
 
-  $('#btn-guardar').click(function(e) {
-      e.preventDefault();
+  $("#btn-guardar").click(function (e) {
+    e.preventDefault();
 
-      var formData = $('#form-vehiculos').serialize();
+    var formData = $("#form-vehiculos").serialize();
 
-      $.ajax({
-          url: '../../controllers/vehiculos.controllers.php?op=insertar', 
-          type: 'POST',
-          data: formData,
-          success: function(response) {
-              console.log(response);
-              ActualizarTabla();
-              LimpiarCajas();
-          },
-          error: function(xhr, status, error) {
-              console.error(xhr.responseText);
-              console.error(status.responseText);
-              console.error(error.responseText);
-          }
-      });
+    $.ajax({
+      url: "../../controllers/vehiculos.controllers.php?op=insertar",
+      type: "POST",
+      data: formData,
+      success: function (response) {
+        console.log(response);
+        ActualizarTabla();
+        LimpiarCajas();
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr.responseText);
+        console.error(status.responseText);
+        console.error(error.responseText);
+      },
+    });
   });
   $("#form-vehiculos").on("submit", (e) => {
     GuardarEditar(e);
@@ -33,35 +33,35 @@ function GuardarEditar(e) {
   var accion = "../../controllers/vehiculos.controllers.php?op=insertar";
 
   for (var pair of DatosFormularioVehiculos.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
+    console.log(pair[0] + ", " + pair[1]);
   }
 
   $.ajax({
-      url: accion,
-      type: "post",
-      data: DatosFormularioVehiculos,
-      processData: false,
-      contentType: false,
-      cache: false,
-      success: (respuesta) => {
-          console.log(respuesta);
-          respuesta = JSON.parse(respuesta);
-          if (respuesta == "ok") {
-              Swal.fire({
-                  title: "Vehiculo!",
-                  text: "Se guardó con éxito",
-                  icon: "success",
-              });
-              CargaLista();
-              LimpiarCajas();
-          } else {
-              Swal.fire({
-                  title: "Vehiculo!",
-                  text: "Error al guardar",
-                  icon: "error",
-              });
-          }
-      },
+    url: accion,
+    type: "post",
+    data: DatosFormularioVehiculos,
+    processData: false,
+    contentType: false,
+    cache: false,
+    success: (respuesta) => {
+      console.log(respuesta);
+      respuesta = JSON.parse(respuesta);
+      if (respuesta == "ok") {
+        Swal.fire({
+          title: "Vehiculo!",
+          text: "Se guardó con éxito",
+          icon: "success",
+        });
+        CargaLista();
+        LimpiarCajas();
+      } else {
+        Swal.fire({
+          title: "Vehiculo!",
+          text: "Error al guardar",
+          icon: "error",
+        });
+      }
+    },
   });
 }
 
@@ -72,12 +72,12 @@ function ActualizarTabla() {
 var CargaLista = () => {
   var html = "";
   $.get(
-      "../../controllers/vehiculos.controllers.php?op=todos",
-      (ListaVehiculos) => {
-          console.log(ListaVehiculos);
-          ListaVehiculos = JSON.parse(ListaVehiculos);
-          $.each(ListaVehiculos, (index, vehiculos) => {
-              html += `
+    "../../controllers/vehiculos.controllers.php?op=todos",
+    (ListaVehiculos) => {
+      console.log(ListaVehiculos);
+      ListaVehiculos = JSON.parse(ListaVehiculos);
+      $.each(ListaVehiculos, (index, vehiculos) => {
+        html += `
               <tr>
                   <td>${index + 1}</td>
                   <td>${vehiculos.placa}</td>
@@ -90,13 +90,17 @@ var CargaLista = () => {
                   <td>${vehiculos.chasis}</td>
                   <td>${vehiculos.motor}</td>
                   <td>
-                      <button class='btn btn-warning' onclick='editar(${vehiculos.id})'>Editar</button>
-                      <button class='btn btn-info' onclick='eliminar(${vehiculos.id})'>Eliminar</button>
+                      <button class='btn btn-warning btn-editar' data-id='${
+                        vehiculos.id
+                      }'>Editar</button>
+                      <button class='btn btn-info btn-eliminar' data-id='${
+                        vehiculos.id
+                      }'>Eliminar</button>
                   </td>
               </tr>`;
-          });
-          $("#ListaVehiculos").html(html);
-      }
+      });
+      $("#ListaVehiculos").html(html);
+    }
   );
 };
 
@@ -105,7 +109,9 @@ var eliminar = (id) => {
   if (confirm("¿Estás seguro de que quieres eliminar este vehiculo?")) {
     $.post(
       "../../controllers/vehiculos.controllers.php?op=eliminar",
-      { idRepuesto: idRepuesto },
+      {
+        idRepuesto: idRepuesto,
+      },
       (resultado) => {
         resultado = JSON.parse(resultado);
         if (resultado === "ok") {

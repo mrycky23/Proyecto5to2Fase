@@ -51,13 +51,10 @@
                         <!-- ============================================================== -->
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <!--<div class="section-block" id="basicform">
-                                    <h3 class="section-title">Datos:</h3>
-                                </div>-->
                                 <div class="card">
                                     <h5 class="card-header">Ingresar datos: </h5>
                                     <div class="card-body">
-                                        <form id= "form-ProgramacionMantenimientos" method="post">
+                                        <form id="form-ProgramacionMantenimientos" method="post">
                                             <div class="form-group">
                                                 <label for="nombreMantenimiento">Nombre de mantenimiento</label>
                                                 <input id="nombreMantenimiento" name="nombreMantenimiento" type="text" class="form-control" required>
@@ -80,18 +77,17 @@
                                             <div class="form-group">
                                                 <label for="vehiculo">Vehículo:</label>
                                                 <select  id="vehiculo" name="vehiculo" class="form-control" required>
-                                                    <option value="">Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="frecuencia">Frecuencia:</label>
                                                 <select id="frecuencia" name="frecuencia" class="form-control" required>
-                                                    <option value="">Seleccionar</option>
-                                                    <option value="Kilometros">Kilómetros</option>
-                                                    <option value="Horas">Horas</option>
-                                                    <option value="Dia">Día</option>
-                                                    <option value="Mes">Mes</option>
-                                                    <option value="Anio">Año</option>
+                                                    <option value="undefined">Seleccionar</option>
+                                                    <option value="hora">Horas</option>
+                                                    <option value="kilometro">Kilometro</option>
+                                                    <option value="dia">Día</option>
+                                                    <option value="mes">Mes</option>
+                                                    <option value="anio">Año</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -104,7 +100,6 @@
                                             </div>
                                             <button id= "btn-guardar"  class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@
                             <h5 class="card-header">Generar reporte de Mantenimientos:</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table class="table table-striped table-bordered first" id="reportesTabla">
                                         <thead>
                                             <tr>
                                             <th class="border-0">#</th>
@@ -66,7 +66,7 @@
                                                     <th class="border-0">Estado</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="table-border-bottom-0" id="Reporte">
                                         </tbody>
                                     </table>
                                 </div>
@@ -128,7 +128,8 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../scripts/reportpdf.js"></script>
+    
+    <script src="../../scripts/reportes.script.js"></script>
 </body>
  
 </html>

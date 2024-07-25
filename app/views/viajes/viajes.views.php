@@ -42,42 +42,6 @@
                 <!-- end pageheader -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- basic table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Lista de viajes</h5>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
-                                        <thead>
-                                            <tr>
-                                                <th>N°</th>
-                                                <th>Placa</th>
-                                                <th>Chofer</th>
-                                                <th>Fecha Partida</th>
-                                                <th>Fecha Llegada</th>
-                                                <th>Lugar Partida</th>
-                                                <th>Lugar Destino</th>
-                                                <th>KM Inicial</th>
-                                                <th>KM Final</th>
-                                                <th>Orden de trabajo</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0" id="ListaViajes">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                </div>
-                <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <!--<div class="section-block" id="basicform">
                             <h3 class="section-title">Datos:</h3>
@@ -141,6 +105,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- basic table  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Lista de viajes</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered first">
+                                        <thead>
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>Placa</th>
+                                                <th>Chofer</th>
+                                                <th>Fecha Partida</th>
+                                                <th>Fecha Llegada</th>
+                                                <th>Lugar Partida</th>
+                                                <th>Lugar Destino</th>
+                                                <th>KM Inicial</th>
+                                                <th>KM Final</th>
+                                                <th>Orden de trabajo</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0" id="ListaViajes">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end basic table  -->
+                    <!-- ============================================================== -->
+                </div>
+                
             </div>
             <!-- ============================================================== -->
             <!-- footer -->

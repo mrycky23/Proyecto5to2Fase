@@ -6,16 +6,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="../../../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../assets/libs/css/style.css">
-    <link rel="stylesheet" href="../../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="../../../assets/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="../../../assets/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="/Aplicacion-Web-Transjovalsa/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/libs/css/style.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="/Aplicacion-Web-Transjovalsa/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/css/select.bootstrap4.css">
     <title>Mantenimentos Transjovalsa S.A</title>
 </head>
 
@@ -98,114 +101,65 @@
                                         <h1 class="mb-1">$28000</h1>
                                     </div>-->
                                     <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-                                        <span>-50.00%</span>
+                                      <!--  <span>-50.00%</span>-->
                                     </div>
                                 </div>
                                 <div id="sparkline-revenue4"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-<!--WIDGETS-->
-                        <!-- ============================================================== -->
-                  
-                        <!-- ============================================================== -->
-
-                                      <!-- recent orders  -->
-                        <!-- ============================================================== -->
-<!--TABLA-->
+                </div>
+                <!--Proximos mantenimientos-->
+                <div class="row">
                         <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Próximos mantenimientos</h5>
-                                <div class="card-body p-0">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Próximos mantenimientos</h5>
+                                </div>
+                                <div class="card-body">
                                     <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
-                                            <thead class="bg-light">
-                                                <tr class="border-0">
-                                                    <th class="border-0">#</th>
-                                                    <th class="border-0">Nombre mantenimiento</th>
-                                                    <th class="border-0">Vehiculo</th>
-                                                    <th class="border-0">Repuesto</th>
-                                                    <th class="border-0">Kilometraje</th>
-                                                    <th class="border-0">Horas</th>
-                                                    <th class="border-0">Día</th>
-                                                    <th class="border-0">Mes</th>
-                                                    <th class="border-0">Año</th>
-                                                    <th class="border-0">Nota</th>
-                                                    <th class="border-0">Estado</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="table-border-bottom-0" id="Dashboard">
-                                                <!--<tr>
-                                                    <td>1</td>
-                                                    <td>Sistema de ventilacin </td>
-                                                    <td>Product #1 </td>
-                                                    <td>id000001 </td>
-                                                    <td>20</td>
-                                                    <td>20</td>
-                                                    <td>$80.00</td>
-                                                    <td>27-08-2018 01:22:12</td>
-                                                    <td>Patricia J. King </td>
-                                                    <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Product #2 </td>
-                                                    <td>id000002 </td>
-                                                    <td>12</td>
-                                                    <td>$180.00</td>
-                                                    <td>25-08-2018 21:12:56</td>
-                                                    <td>Rachel J. Wicker </td>
-                                                    <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>
-                                                        <div class="m-r-10"><img src="../assets/images/product-pic-3.jpg" alt="user" class="rounded" width="45"></div>
-                                                    </td>
-                                                    <td>Product #3 </td>
-                                                    <td>id000003 </td>
-                                                    <td>23</td>
-                                                    <td>$820.00</td>
-                                                    <td>24-08-2018 14:12:77</td>
-                                                    <td>Michael K. Ledford </td>
-                                                    <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>
-                                                        <div class="m-r-10"><img src="../assets/images/product-pic-4.jpg" alt="user" class="rounded" width="45"></div>
-                                                    </td>
-                                                    <td>Product #4 </td>
-                                                    <td>id000004 </td>
-                                                    <td>34</td>
-                                                    <td>$340.00</td>
-                                                    <td>23-08-2018 09:12:35</td>
-                                                    <td>Michael K. Ledford </td>
-                                                    <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-                                                </tr>-->
+                                        <table id="example" class="table table-striped table-bordered second" >
+                                        <thead >
+                                            <tr class="border-0">
+                                                <th class="border-0">#</th>
+                                                <th class="border-0">Nombre mantenimiento</th>
+                                                <th class="border-0">Vehiculo</th>
+                                                <th class="border-0">Repuesto</th>
+                                                <th class="border-0">Kilometraje</th>
+                                                <th class="border-0">Horas</th>
+                                                <th class="border-0">Día</th>
+                                                <th class="border-0">Mes</th>
+                                                <th class="border-0">Año</th>
+                                                <th class="border-0">Nota</th>
+                                                <th class="border-0">Estado</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody id="Dashboard">
                                             </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th class="border-0">#</th>
+                                                <th class="border-0">Nombre mantenimiento</th>
+                                                <th class="border-0">Vehiculo</th>
+                                                <th class="border-0">Repuesto</th>
+                                                <th class="border-0">Kilometraje</th>
+                                                <th class="border-0">Horas</th>
+                                                <th class="border-0">Día</th>
+                                                <th class="border-0">Mes</th>
+                                                <th class="border-0">Año</th>
+                                                <th class="border-0">Nota</th>
+                                                <th class="border-0">Estado</th>
+                                            </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-<!--TABLA-->
-                        <!-- ============================================================== -->
-                        <!-- end recent orders  -->
-
-
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- customer acquistion  -->
-                        <!-- ============================================================== -->
-<!--GRAFICO LINEAL-->
+                            <!--GRAFICO LINEAL-->
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Customer Acquisition</h5>
+                                <h5 class="card-header">Mantenimiento anual</h5>
                                 <div class="card-body">
                                     <div class="ct-chart ct-golden-section" style="height: 354px;"></div>
                                     <div class="text-center">
@@ -225,9 +179,9 @@
                         <!-- ============================================================== -->
                         <!-- end customer acquistion  -->
                         <!-- ============================================================== -->
-<!--GRAFICO LINEAL-->
+                        <!--GRAFICO LINEAL-->
 
-                    </div>
+                </div>
 <!--GRAFICO CIRCULAR-->
                     <div class="row">
                         <!-- ============================================================== -->
@@ -560,26 +514,46 @@
         <!-- ============================================================== -->
     </div>
     <!-- jquery 3.3.1 -->
-    <script src="../../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="../../../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
-    <script src="../../../assets/libs/js/main-js.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/libs/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="../../../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
-    <script src="../../../assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="../../../assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="../../../assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="../../../assets/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="../../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="../../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="../../../assets/libs/js/dashboard-ecommerce.js"></script>
-    
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/libs/js/dashboard-ecommerce.js"></script>
+    <!-- Tables-->
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/multi-select/js/jquery.multi-select.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/libs/js/main-js.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Aplicacion-Web-Transjovalsa/assets/vendor/datatables/js/data-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+
     <script src="../../scripts/dashboard.script.js"> </script>
 </body>
 </html>
