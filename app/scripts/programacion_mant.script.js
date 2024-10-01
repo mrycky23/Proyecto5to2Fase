@@ -23,7 +23,7 @@ $(document).ready(function () {
                 return; // Detener el proceso si el repuesto ya existe
             } else {
                 $.ajax({
-                    url: '../../controllers/repuestos.controllers.php?op=insertar',
+                    url: '../../../API/controllers/repuestos.controllers.php?op=insertar',
                     type: 'POST',
                     data: {
                         campoRepuesto: repuesto
@@ -48,7 +48,9 @@ $(document).ready(function () {
         var repuesto = $('#repuesto').val();
         var vehiculoId = $('#vehiculo').val();
         var frecuencia = $('#frecuencia').val();
+        console.log("Frecuencia seleccionada: " + frecuencia); // Depuración de frecuencia
         var duracion = $('#duracion').val();
+        console.log("Valor de duracion: " + duracion); // Depuración de duracion
         var nota = $('#nota').val();
 
         // Determinar los valores para los atributos km, hora, día, mes, año
@@ -61,8 +63,8 @@ $(document).ready(function () {
             case 'hora':
                 hora = duracion;
                 break;
-            case 'kilometro':
-                km = duracion;
+            case 'kilometraje':
+                km = parseInt(duracion) || 0;
                 break;
             case 'dia':
                 dia = duracion;
@@ -76,8 +78,6 @@ $(document).ready(function () {
             default:
                 break;
         }
-
-        // Crear objeto con los datos del formulario
         datosFormulario = {
             nombreMantenimiento: nombreMantenimiento,
             repuesto: repuesto,
@@ -90,9 +90,11 @@ $(document).ready(function () {
             nota: nota
         };
 
-        // Realizar la petición AJAX para insertar los datos en la tabla programacion
+        console.log(datosFormulario); // Verificación final de los datos antes del envío
+
+        //TODO: insertar los datos en programacion
         $.ajax({
-            url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertar',
+            url: '../../../API/controllers/programacion_mantenimientos.controllers.php?op=insertar',
             type: 'POST',
             data: datosFormulario,
             success: function (response) {
@@ -111,27 +113,11 @@ $(document).ready(function () {
 });
 
 
-// Realizar la petición AJAX para insertar el repuesto asociado a la programación
-function insertarRepuestoAsociado(datosFormulario) { 
-    $.ajax({
-        url: '../../controllers/programacion_mantenimientos.controllers.php?op=insertarRespuestoProgramacion',
-        type: 'POST',
-        data: datosFormulario,
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (xhr, status, error) {
-            console.error(xhr.responseText);
-            console.error(status.responseText);
-            console.error(error.responseText);
-        }
-    });
-}
-// Realizar la petición AJAX para actualizar el estado de la programación
+//TODO: actualizar el estado de la programación
 function estadoProgramacion(datosFormulario) {
    
    $.ajax({
-    url: '../../controllers/programacion_mantenimientos.controllers.php?op=actualizarEstado',
+    url: '../../../API/controllers/programacion_mantenimientos.controllers.php?op=actualizarEstado',
     type: 'POST',
     data: datosFormulario,
     success: function (response) {
@@ -145,10 +131,10 @@ function estadoProgramacion(datosFormulario) {
 });
 }
 
-// Función para verificar si el repuesto ya existe
+//TODO: verificar si el repuesto ya existe
 function repuestoExistente(repuesto, callback) {
     $.ajax({
-        url: '../../controllers/repuestos.controllers.php?op=verificarExistencia',
+        url: '../../../API/controllers/repuestos.controllers.php?op=verificarExistencia',
         type: 'POST',
         data: {
             repuesto: repuesto
@@ -165,9 +151,9 @@ function repuestoExistente(repuesto, callback) {
 
 
 function cargarVehiculos() {
-    // Petición AJAX para obtener los datos de los vehículos desde el controlador
+    //TODO: obtener los datos de los vehículos desde el controlador
     $.ajax({
-        url: '../../controllers/vehiculos.controllers.php',
+        url: '../../../API/controllers/vehiculos.controllers.php',
         type: 'GET',
         data: {
             op: 'todos'
@@ -190,9 +176,9 @@ function cargarVehiculos() {
 }
 
 function cargarRepuestos() {
-    // Petición AJAX para obtener los datos de los repuestos desde el controlador
+    //TODO: obtener los datos de los repuestos desde el controlador
     $.ajax({
-        url: '../../controllers/repuestos.controllers.php',
+        url: '../../../API/controllers/repuestos.controllers.php',
         type: 'GET',
         data: {
             op: 'todos'
@@ -214,8 +200,7 @@ function cargarRepuestos() {
     });
 }
 
-
-// Función para limpiar los campos del formulario
+//TODO: limpiar los campos del formulario
 var LimpiarCajas = () => {
     $("#nombreMantenimiento").val("");
     $("#campoRepuesto").val("");

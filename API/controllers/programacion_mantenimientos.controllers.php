@@ -1,5 +1,5 @@
 <?php
-require_once("../../config/cors.php");
+require_once("../config/cors.php");
 require_once("../models/programacion_mantenimientos.models.php");
 require_once("../models/programacion_repuestos.models.php");
 require_once("../models/programacion_vehiculos.models.php");
@@ -17,29 +17,7 @@ switch ($_GET["op"]) {
         echo json_encode($res);
         break;
 
-    case 'insertarRespuestoProgramacion':
-        $idRepuesto = $_POST["repuesto"];
-        $datos = $Programacion_repuestos->insertarRespuestoProgramacion($idRepuesto);
-        if ($datos && $datos instanceof mysqli_result) {
-            $res = mysqli_fetch_assoc($datos);
-            echo json_encode($res);
-        } else {
-            echo json_encode(["error" => "Failed to fetch data"]);
-        }
-
-    case 'insertarVehiculosProgramacion':
-        $idVehiculo = $_POST["vehiculo"];
-        $datos = $Programacion_vehiculos->insertarVehiculoProgramacion($idVehiculo);
-        if ($datos && $datos instanceof mysqli_result) {
-            $res = mysqli_fetch_assoc($datos);
-            echo json_encode($res);
-        } else {
-            echo json_encode(["error" => "Failed to fetch data"]);
-        }
-        break;
-
     case 'insertar':
-        // Validar y sanitizar los datos del formulario
         $nombreMantenimiento = isset($_POST["nombreMantenimiento"]) ? $_POST["nombreMantenimiento"] : '';
         $repuesto = isset($_POST["repuesto"]) ? $_POST["repuesto"] : '';
         $idVehiculo = isset($_POST["idVehiculo"]) ? $_POST["idVehiculo"] : '';
@@ -48,7 +26,7 @@ switch ($_GET["op"]) {
         $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';
 
         $hora = isset($_POST["hora"]) ? $_POST["hora"] : 0;
-        $km = isset($_POST["kilometro"]) ? $_POST["kilometro"] : 0;
+        $km = isset($_POST["km"]) ? $_POST["km"] : 0;
         $dia = isset($_POST["dia"]) ? $_POST["dia"] : 0;
         $mes = isset($_POST["mes"]) ? $_POST["mes"] : 0;
         $anio = isset($_POST["anio"]) ? $_POST["anio"] : 0;
@@ -59,7 +37,7 @@ switch ($_GET["op"]) {
             case 'hora':
                 $hora = $duracion;
                 break;
-            case 'kilometro':
+            case 'kilometraje':
                 $km = $duracion;
                 break;
             case 'dia':
@@ -80,6 +58,12 @@ switch ($_GET["op"]) {
         $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
 
         echo json_encode($datos);
+        if ($datos) {
+            echo json_encode(["success" => true, "message" => "Insertado correctamente"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Error al insertar"]);
+        }
+        
         break;
 
 

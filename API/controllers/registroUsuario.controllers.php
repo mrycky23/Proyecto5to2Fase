@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../config/cors.php");
+require_once("../config/cors.php");
 require_once("../models/registroUsuario.models.php");
 
 $registroUsuario = new registroUsuario;

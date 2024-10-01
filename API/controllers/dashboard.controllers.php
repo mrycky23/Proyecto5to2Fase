@@ -1,5 +1,5 @@
 <?php
-require_once("../../config/cors.php");
+require_once("../config/cors.php");
 require_once("../models/dashboard.models.php");
 
 $Dashboard = new dashboard;

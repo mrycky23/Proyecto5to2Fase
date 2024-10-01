@@ -43,7 +43,7 @@
             
             <h4 class="mb-2"></h4>
             <p class="mb-4"></p>
-                <form action="./app/controllers/usuarios.controllers.php?op=login" class="mb-3" method="POST">
+                <form action="./API/controllers/usuarios.controllers.php?op=login" class="mb-3" method="POST">
                     <?php if (isset($_GET['op'])) {
                         switch ($_GET['op']) {
                             case "1":
@@ -54,7 +54,6 @@
                                     </div>
                                 </div>
                             <?php
-
                                 break;
                             case '2':
                             ?>

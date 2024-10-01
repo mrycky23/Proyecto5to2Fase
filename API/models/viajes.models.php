@@ -1,23 +1,28 @@
 <?php
-require_once('../../config/conexion.php');
+// Requerimientos
+require_once('../config/conexion.php');
 
-class conductores
+class viajes
 {
     /* Procedimiento para sacar todos los registros */
     public function todos()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM `conductor`";
-        $datos = mysqli_query($con, $cadena);
-        $con->close();
-        return $datos;
-    }
-    public function nombresConductores()
-    {
-        $con = new ClaseConectar();
-        $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT nombre FROM `conductor`";
+        $cadena = "SELECT v.placa AS placa_vehiculo, 
+        c.nombre AS nombre_conductor, 
+        vj.fechaInicio, 
+        vj.fechaFin, 
+        vj.lugarPartida, 
+        vj.lugarDestino, 
+        vj.KmSalida, 
+        vj.KmLlegada, 
+        vj.ordenTrabajo 
+        FROM viajes_vehiculo vv 
+        INNER JOIN viajes vj ON vv.idViaje = vj.id 
+        INNER JOIN vehiculo v ON vv.idVehiculo = v.id 
+        INNER JOIN viajes_conductor vc ON vv.idViaje = vc.idViaje 
+        INNER JOIN conductor c ON vc.idConductor = c.id;";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
@@ -35,11 +40,11 @@ class conductores
     }
 
     /* Procedimiento para insertar */
-    public function Insertar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion)
+    public function Insertar($fechaPartida, $fechaLlegada, $lugarPartida, $lugarDestino, $kmInicial, $kmFinal, $ordenTrabajo, $nota)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `conductor`(`nombre`, `apellido`, `telefono`, `cedula`, `tipoLicencia`, `fechaExpLicencia`, `direccion`) VALUES('$nombre','$apellido','$telefono','$cedula','$tipoLicencia','$ExpLicencia','$direccion')";
+        $cadena = "INSERT INTO `viajes`(`fechaInicio`, `fechaFin`, `lugarPartida`, `lugarDestido`, `kmSalida`, `kmLlegada`, `ordenTrabajo`, `nota`) VALUES('$fechaPartida','$fechaLlegada','$lugarPartida','$lugarDestino','$kmInicial','$kmFinal','$ordenTrabajo', '$nota' )";
 
         if (mysqli_query($con, $cadena)) {
             $con->close();
@@ -52,25 +57,20 @@ class conductores
     }
 
     /* Procedimiento para actualizar */
-    public function Actualizar($id, $nombre, $apellido, $telefono, $cedula, $tipoLicencia, $fechaExpLicencia, $direccion)
+    public function Actualizar($idConductor, $nuevosDatos)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         // Aquí deberías construir la consulta SQL para actualizar
-        $cadena = "UPDATE conductor SET nombre = '$nombre', apellido = '$apellido', telefono = '$telefono', cedula = '$cedula', tipoLicencia='$tipoLicencia', fechaExpLicencia = '$fechaExpLicencia',direccion = '$direccion' WHERE id = '$id'"; // Agrega tu consulta SQL aquí
-
-        /*if (mysqli_query($con, $cadena)) {
+        $cadena = ""; // Agrega tu consulta SQL aquí
+        if (mysqli_query($con, $cadena)) {
             $con->close();
             return "ok";
         } else {
             $error = mysqli_error($con);
             $con->close();
             return $error;
-        }*/
-        $datos = mysqli_query($con, $cadena);
-        return $datos;
-        $con->close();
-        
+        }
     }
 
     /* Procedimiento para Eliminar */

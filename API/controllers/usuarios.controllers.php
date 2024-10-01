@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 /*TODO: Requerimientos */
-require_once('../../config/sesiones.php');
+require_once('../config/sesiones.php');
 require_once("../models/usuarios.models.php");
 //require_once("../models/Accesos.models.php");
 $Usuarios = new Usuarios;
@@ -37,15 +37,7 @@ switch ($_GET["op"]) {
         $datos = $Usuarios->uno($id);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
-        break;/*
-    case "unoconCedula":
-        $Cedula = $_POST["cedula"];
-        $datos = array();
-        $datos = $Usuarios->unoconCedula($Cedula);
-        $res = mysqli_fetch_assoc($datos);
-        echo json_encode($res);
         break;
-        /*TODO: Procedimiento para insertar */
     case 'insertar':
         $Nombres = $_POST["Nombres"];
         $Apellidos = $_POST["Apellidos"];
@@ -115,7 +107,7 @@ switch ($_GET["op"]) {
 
 
 
-                    header("Location:../views/home.php");
+                    header("Location:../../app/views/home.php");
                     exit();
                 } else {
                     header("Location:../../login.php?op=1");

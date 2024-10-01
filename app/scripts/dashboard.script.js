@@ -4,7 +4,7 @@ function init() {
 var CargaLista = () => {
     var html = "";
     $.get(
-      "../../controllers/dashboard.controllers.php?op=todos",
+      "../../../API/controllers/dashboard.controllers.php?op=todos",
       (Dashboard) => {
         Dashboard = JSON.parse(Dashboard);
 

@@ -1,6 +1,6 @@
 <?php
 //error_reporting(0);
-require_once("../../config/cors.php");
+require_once("../config/cors.php");
 require_once("../models/repuestos.models.php");
 
 $Repuestos = new repuestos;

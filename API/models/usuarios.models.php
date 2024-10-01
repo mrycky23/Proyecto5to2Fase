@@ -1,6 +1,6 @@
 <?php
 //TODO: Requerimientos 
-require_once('../../config/conexion.php');
+require_once('../config/conexion.php');
 
 class Usuarios
 {
@@ -48,7 +48,7 @@ class Usuarios
         $con->close();
     }*/
     /*TODO: Procedimiento para insertar */
-    public function Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $idRoles, $Cedula)
+    public function Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $idRoles)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();

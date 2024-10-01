@@ -9,7 +9,7 @@ function init() {
     var formData = $("#form-viajes").serialize();
 
     $.ajax({
-      url: "../../controllers/viajes.controllers.php?op=insertar",
+      url: "../../../API/controllers/viajes.controllers.php?op=insertar",
       type: "POST",
       data: formData,
       success: function (response) {
@@ -29,7 +29,7 @@ function ActualizarTabla() {
 }
 var CargaLista = () => {
   var html = "";
-  $.get("../../controllers/viajes.controllers.php?op=todos", (ListaViajes) => {
+  $.get("../../../API/controllers/viajes.controllers.php?op=todos", (ListaViajes) => {
     console.log(ListaViajes);
     ListaViajes = JSON.parse(ListaViajes);
     $.each(ListaViajes, (index, viajes) => {
@@ -60,9 +60,9 @@ var CargaLista = () => {
 };
 
 function cargarPlaca() {
-  // Petición AJAX para obtener los datos de los repuestos desde el controlador
+  //TODO: Obtener las placas
   $.ajax({
-    url: "../../controllers/vehiculos.controllers.php",
+    url: "../../../API/controllers/vehiculos.controllers.php",
     type: "GET",
     data: {
       op: "placasVehiculos",
@@ -87,7 +87,7 @@ function cargarPlaca() {
 }
 
 function cargarConductor() {
-  // Petición AJAX para obtener los datos de los repuestos desde el controlador
+  //TODO: obtener los repuestos 
   $.ajax({
     url: "../../controllers/conductores.controllers.php?op=nombresConductores",
     type: "GET",

@@ -8,7 +8,7 @@ function guardar() {
   var formData = $("#form-registroUsuario").serialize();
 
     $.ajax({
-      url: "../../controllers/registroUsuario.controllers.php?op=insertar",
+      url: "../../../API/controllers/registroUsuario.controllers.php?op=insertar",
       type: "POST",
       data: formData,
       success: function (response) {
@@ -28,7 +28,7 @@ function guardar() {
 }
 function cargarRoles(){
   $.ajax({
-    url: '../../controllers/usuarios.controllers.php',
+    url: '../../../API/controllers/usuarios.controllers.php',
     type: 'GET',
     data: {op: 'cargarRoles'},
     datatype: 'json',
@@ -51,7 +51,7 @@ function cargarRoles(){
 function cargarVehiculos() {
   // Petición AJAX para obtener los datos de los vehículos desde el controlador
   $.ajax({
-      url: '../../controllers/vehiculos.controllers.php',
+      url: '../../../API/controllers/vehiculos.controllers.php',
       type: 'GET',
       data: {
           op: 'todos'

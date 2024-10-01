@@ -4,7 +4,7 @@ document.getElementById('btn-guardar').addEventListener('click', function() {
     function generarReportePDF() {
         // Petición AJAX para generar el reporte PDF
         $.ajax({
-            url: '../../views/reportespdf.php', // Ruta del script PHP que genera el PDF}
+            url: '../../../API/views/reportespdf.php', // Ruta del script PHP que genera el PDF}
             type: 'GET',
             success: function (response) {
                 // La respuesta es el PDF generado

@@ -7,7 +7,7 @@ function init() {
     var formData = $("#form-vehiculos").serialize();
 
     $.ajax({
-      url: "../../controllers/vehiculos.controllers.php?op=insertar",
+      url: "../../../API/controllers/vehiculos.controllers.php?op=insertar",
       type: "POST",
       data: formData,
       success: function (response) {

@@ -1,6 +1,6 @@
 <?php
 // Requerimientos
-require_once('../../config/conexion.php');
+require_once('../config/conexion.php');
 
 class ProgramacionMantenimientos
 {
@@ -34,9 +34,7 @@ class ProgramacionMantenimientos
         
         // Verificar si hay resultados
         if ($result->num_rows > 0) {
-            // Recorrer los resultados
             while ($row = $result->fetch_assoc()) {
-                // Obtener el ID del vehículo
                 $vehiculo_id_val = $row["idVehiculo"];
 
                 // Calcular el total de kilómetros recorridos por el vehículo en todos los viajes
@@ -89,7 +87,7 @@ class ProgramacionMantenimientos
         return $datos;
     }
 
-    /* Procedimiento para sacar un registro */
+    //TODO: Procedimiento para sacar un registro */
     public function BuscarIdVehiculo($nombreVehiculo)
     {
         // Obtener una conexión a la base de datos
@@ -131,7 +129,7 @@ class ProgramacionMantenimientos
     {
     $con = new ClaseConectar();
     $con = $con->ProcedimientoConectar();
-    $cadena = "INSERT INTO `programacion`(`nombreMantenimiento`, `repuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $cadena = "INSERT INTO `programacion`(`nombreMantenimiento`, `idRepuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     // Preparar la sentencia
     $stmt = $con->prepare($cadena);
@@ -159,7 +157,7 @@ class ProgramacionMantenimientos
     }
 
 
-    /* Procedimiento para actualizar */
+    //TODO: Procedimiento para actualizar */
     public function Actualizar($idConductor, $nuevosDatos)
     {
         $con = new ClaseConectar();
@@ -176,7 +174,7 @@ class ProgramacionMantenimientos
         }
     }
 
-    /* Procedimiento para Eliminar */
+    //TODO: Procedimiento para Eliminar */
     public function Eliminar($idConductor)
     {
         $con = new ClaseConectar();

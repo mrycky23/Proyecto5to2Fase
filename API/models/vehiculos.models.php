@@ -1,50 +1,45 @@
 <?php
 // Requerimientos
-require_once('../../config/conexion.php');
+require_once('../config/conexion.php');
 
-class viajes
+class vehiculos
 {
     /* Procedimiento para sacar todos los registros */
     public function todos()
-    {
+    {//SELECT placa, tipo, tonelaje, clase, color, anio, marca, chasis, motor FROM `vehiculo`"
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT v.placa AS placa_vehiculo, 
-        c.nombre AS nombre_conductor, 
-        vj.fechaInicio, 
-        vj.fechaFin, 
-        vj.lugarPartida, 
-        vj.lugarDestino, 
-        vj.KmSalida, 
-        vj.KmLlegada, 
-        vj.ordenTrabajo 
-        FROM viajes_vehiculo vv 
-        INNER JOIN viajes vj ON vv.idViaje = vj.id 
-        INNER JOIN vehiculo v ON vv.idVehiculo = v.id 
-        INNER JOIN viajes_conductor vc ON vv.idViaje = vc.idViaje 
-        INNER JOIN conductor c ON vc.idConductor = c.id;";
+        $cadena = "SELECT * FROM `vehiculo`";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
     }
-
+    public function placasVehiculos()
+    {   
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT placa FROM `vehiculo`";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
     /* Procedimiento para sacar un registro */
-    public function uno($conductorId)
+    public function uno($idRespuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM `conductor` WHERE `id`=$conductorId";
+        $cadena = "SELECT * FROM `vehiculo` WHERE `id`=$idRespuesto";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
     }
 
     /* Procedimiento para insertar */
-    public function Insertar($fechaPartida, $fechaLlegada, $lugarPartida, $lugarDestino, $kmInicial, $kmFinal, $ordenTrabajo, $nota)
+    public function Insertar($placa, $tipo, $tonelaje, $clase, $color, $anio, $marca, $chasis, $motor)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `viajes`(`fechaInicio`, `fechaFin`, `lugarPartida`, `lugarDestido`, `kmSalida`, `kmLlegada`, `ordenTrabajo`, `nota`) VALUES('$fechaPartida','$fechaLlegada','$lugarPartida','$lugarDestino','$kmInicial','$kmFinal','$ordenTrabajo', '$nota' )";
+        $cadena = "INSERT INTO `vehiculo`(`placa`, `tipo`, `tonelaje`, `clase`, `color`, `anio`, `marca`, `chasis`, `motor`) VALUES('$placa', '$tipo', '$tonelaje', '$clase', '$color',' $anio', '$marca', '$chasis',' $motor')";
 
         if (mysqli_query($con, $cadena)) {
             $con->close();
@@ -57,7 +52,7 @@ class viajes
     }
 
     /* Procedimiento para actualizar */
-    public function Actualizar($idConductor, $nuevosDatos)
+    public function Actualizar($idRepuesto, $repuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();

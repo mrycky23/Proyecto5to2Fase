@@ -7,7 +7,7 @@ function init() {
     var formData = $("#form-conductores").serialize();
 
     $.ajax({
-      url: "../../controllers/conductores.controllers.php?op=insertar",
+      url: "../../../API/controllers/conductores.controllers.php?op=insertar",
       type: "POST",
       data: formData,
       success: function (response) {
@@ -43,7 +43,7 @@ $(document).ready(function () {
 var GuardarEditar = (e) => {
   e.preventDefault();
   var DatosFormularioConductores = new FormData($("#form_conductores")[0]);
-  var accion = "../../controllers/conductores.controllers.php?op=insertar";
+  var accion = "../../../API/controllers/conductores.controllers.php?op=insertar";
 
   for (var pair of DatosFormularioConductores.entries()) {
     console.log(pair[0] + ", " + pair[1]);
@@ -81,7 +81,7 @@ var GuardarEditar = (e) => {
 var CargaLista = () => {
   var html = "";
   $.get(
-    "../../controllers/conductores.controllers.php?op=todos",
+    "../../../API/controllers/conductores.controllers.php?op=todos",
     (ListaConductores) => {
       console.log(ListaConductores);
       ListaConductores = JSON.parse(ListaConductores);

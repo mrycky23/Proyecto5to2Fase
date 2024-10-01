@@ -1,5 +1,5 @@
 <?php
-require_once("../../config/cors.php");
+require_once("../config/cors.php");
 require_once("../models/reportes.models.php");
 
 $Reportes = new reportes;
