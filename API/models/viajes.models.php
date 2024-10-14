@@ -44,7 +44,7 @@ class viajes
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `viajes`(`fechaInicio`, `fechaFin`, `lugarPartida`, `lugarDestido`, `kmSalida`, `kmLlegada`, `ordenTrabajo`, `nota`) VALUES('$fechaPartida','$fechaLlegada','$lugarPartida','$lugarDestino','$kmInicial','$kmFinal','$ordenTrabajo', '$nota' )";
+        $cadena = "INSERT INTO `viajes`(`fechaInicio`, `fechaFin`, `lugarPartida`, `lugarDestino`, `kmSalida`, `kmLlegada`, `ordenTrabajo`, `nota`) VALUES('$fechaPartida','$fechaLlegada','$lugarPartida','$lugarDestino','$kmInicial','$kmFinal','$ordenTrabajo', '$nota' )";
 
         if (mysqli_query($con, $cadena)) {
             $con->close();
@@ -88,5 +88,28 @@ class viajes
             return false;
         }
     }
+
+    public function ultimoId() {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT MAX(id) AS id FROM viajes";
+        $datos = mysqli_query($con, $cadena);
+    
+        if ($datos) { // Verificar si la consulta fue exitosa
+            if ($row = mysqli_fetch_assoc($datos)) {
+                $ultimoId = $row['id']; // Almacenar el id del último registro
+            } else {
+                $ultimoId = null; // No hay registros
+            }
+        } else {
+            // Error en la consulta
+            $ultimoId = null;
+            error_log("Error en la consulta SQL: " . mysqli_error($con)); // Registrar el error
+        }
+    
+        mysqli_close($con); // Cerrar la conexión correctamente
+        return $ultimoId;
+    }
+    
 }
 ?>

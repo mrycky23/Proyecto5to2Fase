@@ -30,7 +30,7 @@ function init() {
 function GuardarEditar(e) {
   e.preventDefault();
   var DatosFormularioVehiculos = new FormData($("#form-vehiculos")[0]);
-  var accion = "../../controllers/vehiculos.controllers.php?op=insertar";
+  var accion = "../../../API/controllers/vehiculos.controllers.php?op=insertar";
 
   for (var pair of DatosFormularioVehiculos.entries()) {
     console.log(pair[0] + ", " + pair[1]);
@@ -72,9 +72,8 @@ function ActualizarTabla() {
 var CargaLista = () => {
   var html = "";
   $.get(
-    "../../controllers/vehiculos.controllers.php?op=todos",
+    "../../../API/controllers/vehiculos.controllers.php?op=todos",
     (ListaVehiculos) => {
-      console.log(ListaVehiculos);
       ListaVehiculos = JSON.parse(ListaVehiculos);
       $.each(ListaVehiculos, (index, vehiculos) => {
         html += `
@@ -108,7 +107,7 @@ var eliminar = (id) => {
   // Lógica para eliminar el vehículo con el ID proporcionado
   if (confirm("¿Estás seguro de que quieres eliminar este vehiculo?")) {
     $.post(
-      "../../controllers/vehiculos.controllers.php?op=eliminar",
+      "../../../API/controllers/vehiculos.controllers.php?op=eliminar",
       {
         idRepuesto: idRepuesto,
       },

@@ -1,11 +1,8 @@
 function init() {
   CargaLista();
-
   $("#btn-guardar").click(function (e) {
     e.preventDefault();
-
     var formData = $("#form-conductores").serialize();
-
     $.ajax({
       url: "../../../API/controllers/conductores.controllers.php?op=insertar",
       type: "POST",
@@ -21,34 +18,29 @@ function init() {
     });
   });
 
-  $("#form_conductores").on("submit", (e) => {
+  $("#form-conductores").on("submit", (e) => {
     GuardarEditar(e);
   });
 }
-// Función para actualizar la tabla de conductores
+
 function ActualizarTabla() {
-  // Llamar a la función para cargar la lista de conductores
   CargaLista();
 }
 $(document).ready(function () {
-  // Evento de clic en el botón para abrir el modal
   $("#btn-editar").click(function () {
-    // Aquí puedes cambiar el contenido del modal según tus necesidades
     $("#contenidoModal").html("Aquí puedes poner tu contenido HTML dinámico");
-    // Mostrar el modal
     $("#miModal").modal("show");
   });
 });
 
 var GuardarEditar = (e) => {
   e.preventDefault();
-  var DatosFormularioConductores = new FormData($("#form_conductores")[0]);
-  var accion = "../../../API/controllers/conductores.controllers.php?op=insertar";
-
+  var DatosFormularioConductores = new FormData($("#form-conductores")[0]);
+  var accion =
+    "../../../API/controllers/conductores.controllers.php?op=insertar";
   for (var pair of DatosFormularioConductores.entries()) {
     console.log(pair[0] + ", " + pair[1]);
   }
-
   $.ajax({
     url: accion,
     type: "post",
@@ -83,7 +75,6 @@ var CargaLista = () => {
   $.get(
     "../../../API/controllers/conductores.controllers.php?op=todos",
     (ListaConductores) => {
-      console.log(ListaConductores);
       ListaConductores = JSON.parse(ListaConductores);
       $.each(ListaConductores, (index, conductores) => {
         html += `
@@ -108,7 +99,7 @@ var CargaLista = () => {
       });
       $("#ListaConductores").html(html);
 
-       // Después de cargar la lista, asignar eventos de clic a los botones de editar y eliminar
+      // Después de cargar la lista, asignar eventos de clic a los botones de editar y eliminar
       $(".btn-editar").click(function () {
         // Lógica para editar el conductor con el ID proporcionado
       });
@@ -121,12 +112,95 @@ var CargaLista = () => {
 };
 
 var eliminar = (id) => {
-  // Lógica para eliminar el conductor con el ID proporcionado
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "¡No podrás revertir esto!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminarlo!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: "../../../API/controllers/conductores.controllers.php?op=eliminar",
+        type: "POST",
+        data: {
+          id: id,
+        },
+        success: function (response) {
+          console.log(response);
+          Swal.fire("Eliminado!", "El conductor ha sido eliminado.", "success");
+          CargaLista(); // Actualiza la lista después de eliminar
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText);
+        },
+      });
+    }
+  });
 };
 
 var editar = (id) => {
-  // Lógica para editar el conductor con el ID proporcionado
+  $.ajax({
+    url: "../../../API/controllers/conductores.controllers.php?op=uno",
+    type: "POST",
+    data: {
+      idConductor: id,
+    },
+    success: function (response) {
+      console.log(response); // Verifica la respuesta antes de parsear JSON
+        try {
+            var data = JSON.parse(response);
+            let conductor = JSON.parse(response);
+            $("#nombreConductor").val(conductor.nombre);
+            $("#apellidoConductor").val(conductor.apellido);
+            $("#telefonoConductor").val(conductor.telefono);
+            $("#cedulaConductor").val(conductor.cedula);
+            $("#tipoLicencia").val(conductor.tipoLicencia);
+            $("#fechaExpLicencia").val(conductor.fechaExpLicencia);
+            $("#direccionConductor").val(conductor.direccion);
+            $("#form-conductores").append(`<input type="hidden" name="idConductor" value="${conductor.id}">`);
+            $("#btn-guardar").hide(); // Ocultar el botón de "Guardar"
+            $("#btn-actualizar").show(); // Mostrar el botón de "Actualizar"
+            $("#miModal").modal("show"); // Abrir el modal para editar
+        } catch (error) {
+            console.error("Error al analizar JSON:", error);
+        }
+    },
+    error: function (xhr, status, error) {
+      console.error(xhr.responseText);
+      console.error(status.responseText);
+      console.error(error.responseText);
+    },
+  });
 };
+
+$("#btn-actualizar").click(function (e) {
+  e.preventDefault();
+
+  var formData = $("#form-conductores").serialize();
+
+  $.ajax({
+    url: "../../../API/controllers/conductores.controllers.php?op=actualizar",
+    type: "POST",
+    data: formData,
+    success: function (response) {
+      console.log(response);
+      Swal.fire({
+        title: "Conductor!",
+        text: "Se actualizó con éxito",
+        icon: "success",
+      });
+      LimpiarCajas();
+      CargaLista();
+      $("#miModal").modal("hide");
+    },
+    error: function (xhr, status, error) {
+      console.error(xhr.responseText);
+    }
+  });
+});
 
 var LimpiarCajas = () => {
   $("#nombreConductor").val("");
@@ -136,7 +210,7 @@ var LimpiarCajas = () => {
   $("#tipoLicencia").val("");
   $("#fechaExpLicencia").val("");
   $("#direccionConductor").val("");
-  //aqui para probar 
+  //aqui para probar
   $("#ModalConductores").modal("hide");
 };
 

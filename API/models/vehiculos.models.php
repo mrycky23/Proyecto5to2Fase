@@ -18,7 +18,7 @@ class vehiculos
     {   
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT placa FROM `vehiculo`";
+        $cadena = "SELECT id, placa FROM `vehiculo`";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;

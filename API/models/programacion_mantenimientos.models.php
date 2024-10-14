@@ -19,7 +19,7 @@ class ProgramacionMantenimientos
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "CALL actualizar_estado_programacion()";
+        $cadena = "CALL establecer_estado_programacion()";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;

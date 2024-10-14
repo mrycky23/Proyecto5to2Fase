@@ -1,6 +1,6 @@
 <!Doctype html>
 <html lang="en">
- 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    
+
     <title>Mantenimentos Transjovalsa S.A</title>
 </head>
 
@@ -23,8 +23,6 @@
     <div class="dashboard-main-wrapper">
         <!-- navbar -->
         <div class="dashboard-header">
-
-            
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <a class="navbar-brand" href="./home.php"><img src="../../assets/images/Transjovalsa SA1.jpg" width="180" height="50"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,13 +88,13 @@
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/github.png" alt="" > <span>Github</span></a>
+                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/github.png" alt=""> <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
+                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/dribbble.png" alt=""> <span>Dribbble</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
+                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/dropbox.png" alt=""> <span>Dropbox</span></a>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -104,10 +102,10 @@
                                             <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
+                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/mail_chimp.png" alt=""><span>Mail chimp</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                            <a href="#" class="connection-item"><img src="/Aplicacion-Web-Transjovalsa/assets/images/slack.png" alt=""> <span>Slack</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -152,7 +150,7 @@
                                 <a class="nav-link" href="./programacion_mantenimientos/programacion_mant.views.php" target="content"><i class="fa fa-fw fas fa-calculator"></i>Programacion de mantenimientos</a>
                             </li>
                             <li class="nav-item">
-                               <a class="nav-link" href="./conductores/conductores.views.php" target="content"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
+                                <a class="nav-link" href="./conductores/conductores.views.php" target="content"><i class="fas fa-fw fa-chart-pie"></i>Conductores</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="./vehiculos/vehiculos.views.php" target="content"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
@@ -187,15 +185,14 @@
                 </nav>
             </div>
         </div>
-        <div 
+        <div
             id="contenido">
         </div>
-        <iframe name="content" id= "content" src="./mantenimientos/dashboard.views.php" style="width: 100%; height: 900vh; border: none;"></iframe>
+        <iframe name="content" id="content" src="./mantenimientos/dashboard.views.php" style="width: 100%; height: 300vh; border: none;"></iframe>
     </div>
     
     <script src="../scripts/scripts.js"></script>
-    <!--login-->
-    <!--<script src="../scripts/login.js"></script>-->
+    <script src="../scripts/resize_Iframe.script.js"></script>
     <!-- jquery 3.3.1 -->
     <script src="../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
@@ -217,5 +214,5 @@
     <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
- 
+
 </html>

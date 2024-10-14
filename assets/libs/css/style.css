@@ -6971,7 +6971,13 @@ Media Query
 .simple-card .nav.nav-tabs .nav-item .nav-link {
     padding: 17px 29px;}
 }
-
+/*----------iframe-------------*/
+#content {
+    width: 100%;
+    height: 100vh; /* Usa 100vh para que ocupe todo el alto de la ventana */
+    border: none; /* Asegúrate de que el borde esté en 'none' */
+    overflow: hidden; /* Evita el desbordamiento en el iframe */
+}
 
 
 

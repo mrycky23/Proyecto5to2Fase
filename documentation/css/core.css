@@ -458,6 +458,12 @@ output {
 
 iframe {
   border: 0;
+  margin: 0;
+  /* Elimina márgenes */
+  padding: 0;
+  /* Elimina rellenos */
+  overflow: hidden;
+  /* Evita que el contenido desborde */
 }
 
 summary {

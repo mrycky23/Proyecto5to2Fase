@@ -1,6 +1,8 @@
 <?php
 require_once("../config/cors.php");
 require_once("../models/conductores.models.php");
+//header('Content-Type: application/json');
+
 
 $Conductor = new conductores;
 
@@ -13,6 +15,7 @@ switch ($_GET["op"]) {
         }
         echo json_encode($todos);
         break;
+        
     case 'nombresConductores':
         $datos = $Conductor->nombresConductores();
         $todos = array();
@@ -21,11 +24,21 @@ switch ($_GET["op"]) {
         }
         echo json_encode($todos);
         break;
+
     case 'uno':
-        $idConductor = $_POST["idConductor"];
-        $datos = $Conductor->uno($idConductor);
-        $res = mysqli_fetch_assoc($datos);
-        echo json_encode($res);
+        if (isset($_POST["idConductor"])) {
+            $idConductor = $_POST["idConductor"];
+            $datos = $Conductor->uno($idConductor);
+    
+            if ($datos) {
+                $res = mysqli_fetch_assoc($datos);
+                echo json_encode($res);
+            } else {
+                echo json_encode(["error" => "Conductor no encontrado"]);
+            }
+        } else {
+            echo json_encode(["error" => "ID del conductor no proporcionado"]);
+        }
         break;
 
     case 'insertar':
@@ -49,7 +62,7 @@ switch ($_GET["op"]) {
         $tipoLicencia = $_POST["tipoLicencia"];
         $ExpLicencia = $_POST["fechaExpLicencia"]; 
         $direccion = $_POST["direccionConductor"];
-        $datos = $Conductor->Actualizar($nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion);
+        $datos = $Conductor->Actualizar($idConductor,$nombre, $apellido, $telefono, $cedula, $tipoLicencia, $ExpLicencia, $direccion);
         echo json_encode($datos);
         break;
 

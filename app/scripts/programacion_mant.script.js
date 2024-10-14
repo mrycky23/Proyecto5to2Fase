@@ -64,7 +64,7 @@ $(document).ready(function () {
                 hora = duracion;
                 break;
             case 'kilometraje':
-                km = parseInt(duracion) || 0;
+                km = duracion;
                 break;
             case 'dia':
                 dia = duracion;
@@ -89,8 +89,8 @@ $(document).ready(function () {
             anio: anio,
             nota: nota
         };
-
-        console.log(datosFormulario); // Verificación final de los datos antes del envío
+        //TODO: Verificación final de los datos antes del envío
+        console.log(datosFormulario); 
 
         //TODO: insertar los datos en programacion
         $.ajax({

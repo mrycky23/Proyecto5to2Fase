@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
- 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,156 +20,146 @@
 </head>
 
 <body>
-        <div class="dashboard-wrapper">
-            <div class="container-fluid  dashboard-content">
-                <!-- ============================================================== -->
-                <!-- pageheader -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header">
-                            <h2 class="pageheader-title">Conductores</h2>
-                            <div class="page-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Conductores</a></li>
-                                    </ol>
-                                </nav>
-                            </div>
+    <div class="dashboard-wrapper">
+        <div class="container-fluid  dashboard-content">
+            <!-- ============================================================== -->
+            <!-- pageheader -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Conductores</h2>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Conductores</a></li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end pageheader -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Ingresar conductor: </h5>
-                            <div class="card-body">
-                                <form id= "form-conductores" method="post">
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Nombre/s:</label>
-                                        <input type="text" name= "nombreConductor" id= "nombreConductor" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Apellido/s:</label>
-                                        <input type="text" name= "apellidoConductor" id= "apellidoConductor" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Telefono:</label>
-                                        <input type="text" name= "telefonoConductor" id= "telefonoConductor" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Cedula:</label>
-                                        <input type="text" name= "cedulaConductor" id= "cedulaConductor" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4"  class="col-form-label">Tipo Licencia:</label>
-                                            <select name= "tipoLicencia" id= "tipoLicencia"class="selectpicker form-control">
-                                                <option>A1</option>
-                                                <option>B</option>
-                                                <option>C</option>
-                                                <option>C1</option>
-                                                <option>D</option>
-                                                <option>D1</option>
-                                                <option>E</option>
-                                                <option>EI</option>
-                                                <option>G</option>
-                                            </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Vigencia:</label>
-                                        <input type="date" name= "fechaExpLicencia" id= "fechaExpLicencia" class="form-control" placeholder="dd-mm-aaaa">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Dirección:</label>
-                                        <input  type="text" name= "direccionConductor" id="direccionConductor" class="form-control" placeholder="">
-                                    </div>
-                                  <!-- <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>-->
-                                        <div id="btn-guardar" class="aside-compose"><button type="button" class="btn btn-lg btn-secondary btn-block">Guardar</button></div>
-                                    </div>
-                                  
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- basic table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Listado de conductores</h5>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
-                                        <thead>
-                                            <tr>
-                                                <th>N#</th>
-                                                <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Telefono</th>
-                                                <th>Cedula</th>
-                                                <th>Licencia</th>
-                                                <th>Expiracion Lic</th>
-                                                <th>Direccion</th>
-                                                <th>Opciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0" id="ListaConductores">
-                                            
-                                        </tbody>
-                                    </table>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Ingresar conductor: </h5>
+                        <div class="card-body">
+                            <form id="form-conductores" method="post">
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Nombre/s:</label>
+                                    <input type="text" name="nombreConductor" id="nombreConductor" class="form-control" placeholder="">
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Apellido/s:</label>
+                                    <input type="text" name="apellidoConductor" id="apellidoConductor" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Telefono:</label>
+                                    <input type="text" name="telefonoConductor" id="telefonoConductor" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Cedula:</label>
+                                    <input type="text" name="cedulaConductor" id="cedulaConductor" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Tipo Licencia:</label>
+                                    <select name="tipoLicencia" id="tipoLicencia" class="selectpicker form-control">
+                                        <option>A1</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>C1</option>
+                                        <option>D</option>
+                                        <option>D1</option>
+                                        <option>E</option>
+                                        <option>EI</option>
+                                        <option>G</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Vigencia:</label>
+                                    <input type="date" name="fechaExpLicencia" id="fechaExpLicencia" class="form-control" placeholder="dd-mm-aaaa">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputText4" class="col-form-label">Dirección:</label>
+                                    <input type="text" name="direccionConductor" id="direccionConductor" class="form-control" placeholder="">
+                                </div>
                         </div>
+                        <!-- Botón Guardar -->
+                        <button type="button" id="btn-guardar" class="btn btn-lg btn-secondary btn-block">Guardar</button>
+                        <!-- Botón Actualizar (oculto inicialmente) -->
+                        <button type="button" id="btn-actualizar" class="btn btn-lg btn-success btn-block" style="display:none;">Actualizar</button>
+                        </form>
+                        </form>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                    <!--nueva linea para el modal si sirve -->
-                    <!-- Modal Conductores-->
-                   
-
-
-<!--Este codigo para abajo es el bueno -->
-                </div>
-                
-            </div>
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            Copyright ©. All rights reserved. Developed by <a href="https://colorlib.com/wp/">Transjovalsa S.A</a>.
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
         </div>
-    
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- basic table  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">Listado de conductores</h5>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered first">
+                                <thead>
+                                    <tr>
+                                        <th>N#</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Telefono</th>
+                                        <th>Cedula</th>
+                                        <th>Licencia</th>
+                                        <th>Expiracion Lic</th>
+                                        <th>Direccion mes/dia/año</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0" id="ListaConductores">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    Copyright ©. All rights reserved. Developed by <a href="https://colorlib.com/wp/">Transjovalsa S.A</a>.
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript: void(0);">About</a>
+                        <a href="javascript: void(0);">Support</a>
+                        <a href="javascript: void(0);">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end footer -->
+    <!-- ============================================================== -->
+    </div>
+
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    
+
 
     <script src="../../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -191,8 +181,10 @@
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     <script src="../../../assets/vendor/bootstrap-select/js/bootstrap-select.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script src="../../scripts/conductores.script.js"> </script>
 </body>
- 
+
 </html>

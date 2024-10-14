@@ -1,21 +1,21 @@
 function init() {
-    CargaLista();
-  }
+  CargaLista();
+}
 var CargaLista = () => {
-    var html = "";
-    $.get(
-      "../../../API/controllers/dashboard.controllers.php?op=todos",
-      (Dashboard) => {
-        Dashboard = JSON.parse(Dashboard);
+  var html = "";
+  $.get(
+    "../../../API/controllers/dashboard.controllers.php?op=todos",
+    (Dashboard) => {
+      Dashboard = JSON.parse(Dashboard);
 
-        Dashboard.sort(function(a, b){
-          var prioridadA = obtenerPrioridad(a.estado);
-          var prioridadB = obtenerPrioridad(b.estado);
-          return prioridadA - prioridadB;
+      Dashboard.sort(function (a, b) {
+        var prioridadA = obtenerPrioridad(a.estado);
+        var prioridadB = obtenerPrioridad(b.estado);
+        return prioridadA - prioridadB;
       });
 
-        $.each(Dashboard, (index, dash) => {
-          html += `
+      $.each(Dashboard, (index, dash) => {
+        html += `
           <tr>
             <td>${index + 1}</td>
             <td>${dash.nombreMantenimiento}</td>
@@ -29,25 +29,25 @@ var CargaLista = () => {
             <td>${dash.nota}</td>
             <td>${dash.estado}</td>
           </tr>`;
-        });
-        $("#Dashboard").html(html);
-      }
-    );
-  };
-
-  function obtenerPrioridad(estado){
-    switch(estado.toLowerCase()){
-      case 'mantenimiento atrasado':
-        return 1;
-      case 'alerta':
-        return 2;
-      case 'proximo mantenimiento':
-        return 3;
-      case 'buen estado':
-        return 4;
-      default: 
-        return 0;  
+      });
+      $("#Dashboard").html(html);
     }
-  }
+  );
+};
 
-  init();
+function obtenerPrioridad(estado) {
+  switch (estado.toLowerCase()) {
+    case "mantenimiento atrasado":
+      return 1;
+    case "alerta":
+      return 2;
+    case "proximo mantenimiento":
+      return 3;
+    case "buen estado":
+      return 4;
+    default:
+      return 0;
+  }
+}
+
+init();
