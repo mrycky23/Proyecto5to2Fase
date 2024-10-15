@@ -125,11 +125,21 @@ class ProgramacionMantenimientos
         return $idVehiculo;
     }
     
-    public function Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota)
+    public function Insertar($nombreMantenimiento, $idRepuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota)
     {
+        
+    if (empty($idRepuesto)) {
+        return "Error: El campo idRepuesto está vacío o no es válido.";
+    }    
+
+    if (empty($idVehiculo)) {
+        return "Error: El campo idVehiculo está vacío o no es válido.";
+    }    
+        
     $con = new ClaseConectar();
     $con = $con->ProcedimientoConectar();
-    $cadena = "INSERT INTO `programacion`(`nombreMantenimiento`, `idRepuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $cadena = "INSERT INTO `programacion`(`nombreMantenimiento`, `idRepuesto`, `idVehiculo`, `km`, `hora`, `dia`, `mes`, `anio`, `nota`) 
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     // Preparar la sentencia
     $stmt = $con->prepare($cadena);
@@ -138,7 +148,7 @@ class ProgramacionMantenimientos
         return "Error al preparar la consulta: " . $con->error;
     }
      // Corregir los tipos de los parámetros en bind_param
-     $stmt->bind_param("ssiiiiiis", $nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
+     $stmt->bind_param("ssiiiiiis", $nombreMantenimiento, $idRepuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota); //Sirve para enlazar variables con los placeholders (signos ?) que aparecen en una consulta SQL preparada.
 
     // Ejecutar la consulta
     $result = $stmt->execute();

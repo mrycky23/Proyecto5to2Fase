@@ -4,7 +4,7 @@ $(document).ready(function () {
     cargarRepuestos();
     cargarVehiculos();
 
-    $('#btn-ingresar').click(function (e) {
+    $('#btn-ingresarRepuesto').click(function (e) {
         e.preventDefault(); // Evitar el envío del formulario por defecto
 
         // Obtener los datos del formulario
@@ -45,14 +45,27 @@ $(document).ready(function () {
 
         // Obtener los valores del formulario
         var nombreMantenimiento = $('#nombreMantenimiento').val();
-        var repuesto = $('#repuesto').val();
+        var repuestoId = $('#repuesto').val();
+        console.log("Repuesto seleccionada: " + repuestoId); 
         var vehiculoId = $('#vehiculo').val();
+        console.log("Vehiculo seleccionada: " + vehiculoId); 
         var frecuencia = $('#frecuencia').val();
         console.log("Frecuencia seleccionada: " + frecuencia); // Depuración de frecuencia
         var duracion = $('#duracion').val();
-        console.log("Valor de duracion: " + duracion); // Depuración de duracion
         var nota = $('#nota').val();
 
+        if (!repuestoId || !vehiculoId) {
+            // Mostrar mensajes de error específicos si faltan datos
+            if (!repuestoId) {
+              alert("Por favor, selecciona un repuesto.");
+              console.error("El campo repuesto está vacío");
+            }
+            if (!vehiculoId) {
+              alert("Por favor, selecciona un vehículo.");
+              console.error("El campo vehiculo está vacío");
+            }
+            return; // Detener la ejecución si faltan datos
+          }
         // Determinar los valores para los atributos km, hora, día, mes, año
         var hora = 0;
         var km = 0;
@@ -80,8 +93,8 @@ $(document).ready(function () {
         }
         datosFormulario = {
             nombreMantenimiento: nombreMantenimiento,
-            repuesto: repuesto,
-            idVehiculo: vehiculoId,
+            repuestoId: repuestoId,
+            vehiculoId: vehiculoId,
             km: km,
             hora: hora,
             dia: dia,
@@ -100,8 +113,6 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 LimpiarCajas();
-                //insertarRepuestoAsociado(datosFormulario);
-                //estadoProgramacion(datosFormulario);
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
@@ -125,8 +136,6 @@ function estadoProgramacion(datosFormulario) {
     },
     error: function (xhr, status, error) {
         console.error(xhr.responseText);
-        console.error(status.responseText);
-        console.error(error.responseText);
     }
 });
 }
@@ -156,7 +165,7 @@ function cargarVehiculos() {
         url: '../../../API/controllers/vehiculos.controllers.php',
         type: 'GET',
         data: {
-            op: 'todos'
+            op: 'placasVehiculos'
         },
         dataType: 'json',
         success: function (response) {
@@ -181,7 +190,7 @@ function cargarRepuestos() {
         url: '../../../API/controllers/repuestos.controllers.php',
         type: 'GET',
         data: {
-            op: 'todos'
+            op: 'nombresRepuestos'
         },
         dataType: 'json',
         success: function (response) {

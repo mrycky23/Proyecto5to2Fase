@@ -9,10 +9,6 @@ function init() {
     var idVehiculo= $("#placa").val();
     var idConductor = $("#conductor").val();
 
-    console.log("ID Vehículo seleccionado: ", idVehiculo);
-    console.log("ID Conductor seleccionado: ", idConductor);
-
-
     if (!idVehiculo || !idConductor) {
           // Mostrar mensajes de error específicos si faltan datos
           if (!idVehiculo) {
@@ -49,8 +45,6 @@ function init() {
               console.error(xhr.responseText);
             },
           })
-        } else {
-          console.error("El campo vehiculo esta vacio o no definido");
         }
         /*TODO: insertar realacion viaje_conductor  */
         
@@ -66,8 +60,6 @@ function init() {
               console.error(xhr.responseText);
             },
           })
-        } else {
-          console.error("El campo conductor esta vacio o no definido");
         }
 
         LimpiarCajas();

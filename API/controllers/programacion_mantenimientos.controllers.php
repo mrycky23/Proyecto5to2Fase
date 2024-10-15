@@ -19,8 +19,8 @@ switch ($_GET["op"]) {
 
     case 'insertar':
         $nombreMantenimiento = isset($_POST["nombreMantenimiento"]) ? $_POST["nombreMantenimiento"] : '';
-        $repuesto = isset($_POST["repuesto"]) ? $_POST["repuesto"] : '';
-        $idVehiculo = isset($_POST["idVehiculo"]) ? $_POST["idVehiculo"] : '';
+        $idRepuesto = isset($_POST["repuestoId"]) ? $_POST["repuestoId"] : '';
+        $idVehiculo = isset($_POST["vehiculoId"]) ? $_POST["vehiculoId"] : '';
         $frecuencia = isset($_POST["frecuencia"]) ? $_POST["frecuencia"] : '';
         $duracion = isset($_POST["duracion"]) ? $_POST["duracion"] : '';
         $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';
@@ -55,14 +55,15 @@ switch ($_GET["op"]) {
 
 
         // Insertar los datos en la tabla programacion
-        $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $repuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
+        $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $idRepuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
 
         echo json_encode($datos);
-        if ($datos) {
+        if ($datos === "ok") {
             echo json_encode(["success" => true, "message" => "Insertado correctamente"]);
         } else {
-            echo json_encode(["success" => false, "message" => "Error al insertar"]);
+            echo json_encode(["success" => false, "message" => "Error al insertar: " . $datos]);
         }
+        exit();
         
         break;
 

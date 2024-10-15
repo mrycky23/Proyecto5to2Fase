@@ -14,6 +14,15 @@ class repuestos
         $con->close();
         return $datos;
     }
+    public function nombresRepuestos()
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT id, nombre FROM `repuestos`";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
 
     //TODO: Procedimiento para sacar un registro */
     public function uno($idRepuesto)
@@ -27,7 +36,7 @@ class repuestos
     }
 
     //TODO: Procedimiento para insertar */
-    public function Insertar($repuesto)
+    public function insertar($repuesto)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();

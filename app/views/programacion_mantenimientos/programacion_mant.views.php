@@ -64,7 +64,7 @@
                                                 <div class="input-group mb-3">
                                                     <input id="campoRepuesto" type="text" class="form-control">
                                                     <div class="input-group-append">
-                                                        <button id="btn-ingresar" type="button" class="btn btn-primary">Ingresar</button>
+                                                        <button id="btn-ingresarRepuesto" type="button" class="btn btn-primary">Ingresar</button>
                                                     </div>
                                                 </div>
                                             </div>

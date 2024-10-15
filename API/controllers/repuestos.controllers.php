@@ -16,6 +16,16 @@ switch ($_GET["op"]) {
         echo json_encode($todos);
         break;
 
+    case 'nombresRepuestos':
+        $datos = $Repuestos->nombresRepuestos();
+        $todos = array();
+        while ($row = mysqli_fetch_assoc($datos)) {
+            $todos[] = $row;
+        }
+        mysqli_free_result($datos);
+        echo json_encode($todos);
+        break;
+
     case 'uno':
         $idRepuesto = $_POST["id"];
         $datos = $Repuestos->uno($idRepuesto);
@@ -26,7 +36,6 @@ switch ($_GET["op"]) {
     case 'insertar':
         $repuesto = $_POST["campoRepuesto"];
 
-    // Verificar si el repuesto ya existe
     if ($Repuestos->existeRepuesto($repuesto)) {
         echo json_encode("El repuesto ya existe");
         return; 
