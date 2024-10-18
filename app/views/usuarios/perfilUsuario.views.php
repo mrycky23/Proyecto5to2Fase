@@ -60,7 +60,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="user-avatar text-center d-block">
-                                        <img src="assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                        <img src="../../../assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
                                     </div>
                                     <div class="text-center">
                                         <h2 class="font-24 mb-0">Michael J. Christy</h2>
@@ -187,7 +187,7 @@
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="media influencer-profile-data d-flex align-items-center p-2">
                                                             <div class="mr-4">
-                                                                <img src="assets/images/slack.png" alt="User Avatar" class="user-avatar-lg">
+                                                                <img src="../../../assets/images/slack.png" alt="User Avatar" class="user-avatar-lg">
                                                             </div>
                                                             <div class="media-body ">
                                                                 <div class="influencer-profile-data">
@@ -237,7 +237,7 @@
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="media influencer-profile-data d-flex align-items-center p-2">
                                                             <div class="mr-4">
-                                                                <img src="assets/images/dribbble.png" alt="User Avatar" class="rounded-circle user-avatar-lg">
+                                                                <img src="../../../assets/images/dribbble.png" alt="User Avatar" class="rounded-circle user-avatar-lg">
                                                             </div>
                                                             <div class="media-body">
                                                                  <h3 class="m-b-10">Your Campaign Title Here</h3>
@@ -277,7 +277,7 @@
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="media influencer-profile-data d-flex align-items-center p-2">
                                                             <div class="mr-4">
-                                                                <img src="assets/images/dropbox.png" alt="User Avatar" class="user-avatar-lg">
+                                                                <img src="../../../assets/images/dropbox.png" alt="User Avatar" class="user-avatar-lg">
                                                             </div>
                                                             <div class="media-body">
                                                                   <h3 class="m-b-10">Your Campaign Title Here</h3>

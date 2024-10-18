@@ -73,31 +73,26 @@ switch ($_GET["op"]) {
         break;
         /*TODO: Procedimiento para insertar */
     case 'login':
-        $correo = $_POST['correo'];
-        $contrasenia = $_POST['contrasenia'];
-
-        //TODO: Si las variables estan vacias regresa con error
-        if (empty($correo) or  empty($contrasenia)) {
-            header("Location:../../login.php?op=2");
+        session_start();
+        
+        $correo = trim($_POST['correo']);
+        $contrasenia = trim($_POST['contrasenia']);
+        
+        if (empty($correo) || empty($contrasenia)) {
+            echo json_encode(["success" => false, "message" => "Correo o contraseña vacíos"]);
             exit();
         }
 
         try {
-            $datos = array();
-            $datos = $Usuarios->login($correo, $contrasenia);
-            $res = mysqli_fetch_assoc($datos);
-        } catch (Throwable $th) {
-            header("Location:../../login.php?op=1");
-            exit();
-        }
-        //TODO:Control de si existe el registro en la base de datos
-        try {
-            if (is_array($res) and count($res) > 0) {
-                //if ((md5($contrasenia) == ($res["Contrasenia"]))) {
-                if ((($contrasenia) == ($res["contrasenia"]))) {
-                    //$datos2 = array();
-                    // $datos2 = $Accesos->Insertar(date("Y-m-d H:i:s"), $res["idUsuarios"], 'ingreso');
-
+            $res = $Usuarios->login($correo);
+            
+            if ($res) {
+                var_dump($contrasenia); // Contraseña ingresada
+                var_dump($res['contrasenia']); // Hash almacenado
+                
+                // Verificar la contraseña hasheada
+                if (password_verify($contrasenia, $res['contrasenia'])) {
+                    // La contraseña es correcta
                     $_SESSION["idUsuarios"] = $res["id"];
                     $_SESSION["Usuarios_Nombres"] = $res["nombreUsuario"];
                     $_SESSION["Usuarios_Apellidos"] = $res["apellidoUsuario"];
@@ -105,20 +100,21 @@ switch ($_GET["op"]) {
                     $_SESSION["Usuario_IdRoles"] = $res["id"];
                     $_SESSION["Rol"] = $res["rol"];
 
-
-
                     header("Location:../../app/views/home.php");
                     exit();
                 } else {
-                    header("Location:../../login.php?op=1");
+                    echo json_encode(["success" => false, "message" => "Contraseña incorrecta"]);
                     exit();
                 }
             } else {
-                header("Location:../../login.php?op=1");
+                echo json_encode(["success" => false, "message" => "Usuario no encontrado"]);
                 exit();
             }
-        } catch (Exception $th) {
-            echo ($th->getMessage());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            echo json_encode(["success" => false, "message" => "Excepción: " . $e->getMessage()]);
+            exit();
         }
         break;
+
 }

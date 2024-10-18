@@ -46,11 +46,8 @@ $(document).ready(function () {
         // Obtener los valores del formulario
         var nombreMantenimiento = $('#nombreMantenimiento').val();
         var idRepuesto = $('#repuesto').val();
-        console.log("Repuesto seleccionada: " + idRepuesto); 
         var idVehiculo = $('#vehiculo').val();
-        console.log("Vehiculo seleccionada: " + idVehiculo); 
         var frecuencia = $('#frecuencia').val();
-        console.log("Frecuencia seleccionada: " + frecuencia); // Depuración de frecuencia
         var duracion = $('#duracion').val();
         var nota = $('#nota').val();
 
@@ -102,8 +99,6 @@ $(document).ready(function () {
             anio: anio,
             nota: nota
         };
-        //TODO: Verificación final de los datos antes del envío
-        console.log(datosFormulario); 
 
         //TODO: insertar los datos en programacion
         $.ajax({

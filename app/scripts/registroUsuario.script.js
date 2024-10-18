@@ -19,8 +19,8 @@ function guardar() {
           }
       },
       error: function (xhr, status, error) {
-          console.xhr("Error en la solicitud AJAX:", error);
-          console.status("Error en la solicitud AJAX:", error);
+          console.xhr("Error en la solicitud AJAX:", xhr);
+          console.status("Error en la solicitud AJAX:", status);
           console.error("Error en la solicitud AJAX:", error);
       },
     });

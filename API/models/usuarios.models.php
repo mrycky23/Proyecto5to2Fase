@@ -5,19 +5,41 @@ require_once('../config/conexion.php');
 class Usuarios
 {
     /*TODO: Procedimiento para sacar todos los registros*/
-    public function login($Correo)
-    {
-        try {
-            $con = new ClaseConectar();
-            $con = $con->ProcedimientoConectar();
-            $cadena = "SELECT usuario.id, usuario.nombreUsuario, usuario.contrasenia, usuario.apellidoUsuario, usuario.correo, roles.rol, roles.id from usuario INNER JOIN usuario_roles on usuario.id = usuario_roles.idUsuario INNER JOIN roles ON usuario_roles.idRol = roles.id WHERE `correo`='$Correo'";
-            $datos = mysqli_query($con, $cadena);
-            return $datos;
-        } catch (Throwable $th) {
-            return $th->getMessage();
+    public function login($correo){
+    $con = null;
+    try {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+
+        // Preparar la consulta
+        $cadena = "SELECT usuario.id, usuario.nombreUsuario, usuario.contrasenia, usuario.apellidoUsuario, usuario.correo, roles.rol, roles.id 
+                   FROM usuario 
+                   INNER JOIN usuario_roles ON usuario.id = usuario_roles.idUsuario 
+                   INNER JOIN roles ON usuario_roles.idRol = roles.id 
+                   WHERE correo = ?";
+        
+        $stmt = $con->prepare($cadena);
+        if (!$stmt) {
+            throw new Exception("Error en la preparación de la consulta: " . $con->error);
         }
-        $con->close();
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    } catch (Throwable $th) {
+        error_log($th->getMessage());
+        return null; 
+    } finally {
+        if ($stmt) {
+            $stmt->close();
+        }
+        if ($con) {
+            $con->close();
+        }
     }
+    }
+
     public function todos()
     {
         $con = new ClaseConectar();
