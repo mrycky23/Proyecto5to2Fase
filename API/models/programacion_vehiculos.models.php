@@ -5,30 +5,15 @@ require_once('../config/conexion.php');
 class programacion_vehiculos
 {
 
-    public function insertarVehiculoProgramacion($idVehiculo)
+    public function insertarProgramacionVehiculo($idProgramacion, $idVehiculo)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
+        $cadena = "INSERT INTO `programacion_vehiculos`(`idProgramacion`, `idVehiculo`) VALUES('$idProgramacion', '$idVehiculo')";
 
-        // Consulta para obtener el último idProgramacion creado
-        $query_id_programacion = "SELECT id FROM programacion ORDER BY id DESC LIMIT 1";
-        $result_id_programacion = mysqli_query($con, $query_id_programacion);
-
-        if ($result_id_programacion) {
-            $row = mysqli_fetch_assoc($result_id_programacion);
-            $idProgramacion = $row['id'];
-
-            // Consulta para insertar el repuesto asociado al último idProgramacion
-            $query_insertar_vehiculo = "INSERT INTO programacion_vehiculos (idProgramacion, idVehiculo) VALUES ('$idProgramacion', '$idVehiculo')";
-
-            if (mysqli_query($con, $query_insertar_vehiculo)) {
-                $con->close();
-                return "ok";
-            } else {
-                $error = mysqli_error($con);
-                $con->close();
-                return $error;
-            }
+        if (mysqli_query($con, $cadena)) {
+            $con->close();
+            return "ok";
         } else {
             $error = mysqli_error($con);
             $con->close();

@@ -45,22 +45,22 @@ $(document).ready(function () {
 
         // Obtener los valores del formulario
         var nombreMantenimiento = $('#nombreMantenimiento').val();
-        var repuestoId = $('#repuesto').val();
-        console.log("Repuesto seleccionada: " + repuestoId); 
-        var vehiculoId = $('#vehiculo').val();
-        console.log("Vehiculo seleccionada: " + vehiculoId); 
+        var idRepuesto = $('#repuesto').val();
+        console.log("Repuesto seleccionada: " + idRepuesto); 
+        var idVehiculo = $('#vehiculo').val();
+        console.log("Vehiculo seleccionada: " + idVehiculo); 
         var frecuencia = $('#frecuencia').val();
         console.log("Frecuencia seleccionada: " + frecuencia); // Depuración de frecuencia
         var duracion = $('#duracion').val();
         var nota = $('#nota').val();
 
-        if (!repuestoId || !vehiculoId) {
+        if (!idRepuesto || !idVehiculo) {
             // Mostrar mensajes de error específicos si faltan datos
-            if (!repuestoId) {
+            if (!idRepuesto) {
               alert("Por favor, selecciona un repuesto.");
               console.error("El campo repuesto está vacío");
             }
-            if (!vehiculoId) {
+            if (!idVehiculo) {
               alert("Por favor, selecciona un vehículo.");
               console.error("El campo vehiculo está vacío");
             }
@@ -93,8 +93,8 @@ $(document).ready(function () {
         }
         datosFormulario = {
             nombreMantenimiento: nombreMantenimiento,
-            repuestoId: repuestoId,
-            vehiculoId: vehiculoId,
+            idRepuesto: idRepuesto,
+            idVehiculo: idVehiculo,
             km: km,
             hora: hora,
             dia: dia,
@@ -112,13 +112,46 @@ $(document).ready(function () {
             data: datosFormulario,
             success: function (response) {
                 console.log(response);
-                LimpiarCajas();
+                var idProgramacion = response.idProgramacion;
+
+                if(idProgramacion && idRepuesto){
+                    $.ajax({
+                        url: '../../../API/controllers/programacion_mantenimientos.controllers.php?op=insertarProgramacionRepuesto',
+                        type: 'POST',
+                        data: {idProgramacion: idProgramacion, idRepuesto: idRepuesto},
+                        succes: function (response) {
+                            console.log(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                        },
+                    })
+                    }
+
+                if(idProgramacion && idRepuesto){
+                    $.ajax({
+                        url: '../../../API/controllers/programacion_mantenimientos.controllers.php?op=insertarProgramacionVehiculo',
+                        type: 'POST',
+                        data: {idProgramacion: idProgramacion, idVehiculo: idVehiculo},
+                        succes: function (response) {
+                            console.log(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                        },
+                    })
+                    }
+
+                    LimpiarCajas();
             },
+
+            
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
                 console.error(status.responseText);
                 console.error(error.responseText);
             }
+            
         });
     });
 });

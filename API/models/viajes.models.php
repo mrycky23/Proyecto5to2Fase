@@ -89,7 +89,7 @@ class viajes
         }
     }
 
-    public function ultimoId() {
+    public function ultimoIdViaje() {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT MAX(id) AS id FROM viajes";

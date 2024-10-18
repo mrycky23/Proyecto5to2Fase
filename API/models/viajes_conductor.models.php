@@ -3,7 +3,7 @@ require_once('../config/conexion.php');
 
 class viajes_conductores
 {
-public function InsertarViajeConductor($idConductor, $idViaje)
+public function insertarViajeConductor($idConductor, $idViaje)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();

@@ -42,7 +42,7 @@ switch ($_GET["op"]) {
         
             // Insertar el viaje en la base de datos
             $datos = $Viaje->Insertar($fechaPartida, $fechaLlegada, $lugarPartida, $lugarDestino, $kmInicial, $kmFinal, $ordenTrabajo, $nota);
-            $idViaje = $Viaje->ultimoId();
+            $idViaje = $Viaje->ultimoIdViaje();
         
             // Verificar si se obtuvo correctamente el idViaje
             if ($idViaje) {
@@ -58,7 +58,7 @@ switch ($_GET["op"]) {
                 }
                 // Verificar si el idConductor no está vacío antes de insertar la relación
                 if ($idConductor) {
-                    $resultConductor = $ViajeConductor->InsertarViajeConductor($idConductor, $idViaje);
+                    $resultConductor = $ViajeConductor->insertarViajeConductor($idConductor, $idViaje);
                     if (!$resultConductor) {
                         //echo json_encode(['status' => 'error', 'message' => 'Error al insertar relación viaje-conductor']);
                         exit;

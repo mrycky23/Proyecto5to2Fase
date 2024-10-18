@@ -100,8 +100,6 @@ class ProgramacionMantenimientos
     
         // Vincular el parámetro de nombreVehiculo a la consulta preparada
         $sentencia->bind_param("s", $nombreVehiculo);
-    
-        // Ejecutar la consulta preparada
         $sentencia->execute();
     
         // Obtener el resultado de la consulta
@@ -109,7 +107,6 @@ class ProgramacionMantenimientos
     
         // Verificar si se encontró el vehículo
         if ($resultado && $resultado->num_rows > 0) {
-            // Si se encontró, obtener el ID del vehículo
             $datos = $resultado->fetch_assoc();
             $idVehiculo = $datos['id'];
         } else {
@@ -148,7 +145,7 @@ class ProgramacionMantenimientos
         return "Error al preparar la consulta: " . $con->error;
     }
      // Corregir los tipos de los parámetros en bind_param
-     $stmt->bind_param("ssiiiiiis", $nombreMantenimiento, $idRepuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota); //Sirve para enlazar variables con los placeholders (signos ?) que aparecen en una consulta SQL preparada.
+     $stmt->bind_param("ssiiiiiis", $nombreMantenimiento, $idRepuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota); //TODO BIND PARAM: Sirve para enlazar variables con los placeholders (signos ?) que aparecen en una consulta SQL preparada.
 
     // Ejecutar la consulta
     $result = $stmt->execute();
@@ -198,6 +195,27 @@ class ProgramacionMantenimientos
             $con->close();
             return false;
         }
+    }
+    //TODO: Procedimiento para Conseguir el ultimos Id e insertar en la relacion */
+    public function ultimoIdProgramacion() {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT MAX(id) AS id FROM programacion";
+        $datos = mysqli_query($con, $cadena);
+    
+        if ($datos) { // Verificar si la consulta fue exitosa
+            if ($row = mysqli_fetch_assoc($datos)) {
+                $ultimoId = $row['id'];
+            } else {
+                $ultimoId = null; 
+            }
+        } else {
+            // Error en la consulta
+            $ultimoId = null;
+            error_log("Error en la consulta SQL: " . mysqli_error($con));
+        }
+        mysqli_close($con);
+        return $ultimoId;
     }
 }
 ?>
