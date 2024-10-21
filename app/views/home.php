@@ -1,3 +1,7 @@
+<?php
+// Verificar sesión antes de cargar la página
+require_once('../../API/config/verificar_sesion.php');
+?>
 <!Doctype html>
 <html lang="en">
 
@@ -15,7 +19,7 @@
     <link rel="stylesheet" href="../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-
+    
     <title>Mantenimentos Transjovalsa S.A</title>
 </head>
 
@@ -123,7 +127,7 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Cuenta</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Configuración</a>
-                                <a class="dropdown-item" href="../../API/controllers/usuarios.controllers.php?action=cerrarSesion" 
+                                <a class="dropdown-item" href="../../API/config/sesiones.php?action=cerrarSesion" 
                                     id="cerrarSesion-btn"><i class="fas fa-power-off mr-2"></i>
                                     Cerrar Sesión
                                 </a>
