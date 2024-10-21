@@ -123,7 +123,10 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Cuenta</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Configuración</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Cerrar Sesión</a>
+                                <a class="dropdown-item" href="../../API/controllers/usuarios.controllers.php?action=cerrarSesion" 
+                                    id="cerrarSesion-btn"><i class="fas fa-power-off mr-2"></i>
+                                    Cerrar Sesión
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -193,6 +196,7 @@
     
     <script src="../scripts/scripts.js"></script>
     <script src="../scripts/resize_Iframe.script.js"></script>
+    <script src="../scripts/cerrar_sesion.sript.js"></script>
     <!-- jquery 3.3.1 -->
     <script src="../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->

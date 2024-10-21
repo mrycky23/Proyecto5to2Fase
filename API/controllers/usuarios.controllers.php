@@ -7,8 +7,10 @@ require_once("../models/usuarios.models.php");
 $Usuarios = new Usuarios;
 //$Accesos = new Accesos;
 
-class ImagenController {
-    public function guardarImagen($imageData, $fileName) {
+class ImagenController
+{
+    public function guardarImagen($imageData, $fileName)
+    {
         $resultado = ImagenModel::guardarImagen($imageData, $fileName);
         if ($resultado) {
             return 'Imagen guardada correctamente';
@@ -17,6 +19,36 @@ class ImagenController {
         }
     }
 }
+
+class CerrarSesionController
+{
+    public function cerrarSesion()
+    {
+        if (session_status() === PHP_SESSION_NONE){
+            session_start();
+        }
+
+        $_SESSION = array();
+
+        if (ini_get("session.use_cookies")){
+            $params = session_get_cookie_params();
+            setcookie(session_name(),'',time() - 42000,
+                $params["path"],$params["domain"],
+                $params["secure"],$params["httponly"]
+            );
+        }
+        session_destroy();
+        header("Location:../../login.php");
+        exit();
+    }
+}
+
+// Verificar si se está solicitando cerrar sesión
+if (isset($_GET['action']) && $_GET['action'] === 'cerrarSesion') {
+    $cerrarSesionController = new CerrarSesionController();
+    $cerrarSesionController->cerrarSesion();
+}
+
 
 $imagenController = new ImagenController();
 
@@ -43,7 +75,7 @@ switch ($_GET["op"]) {
         $Apellidos = $_POST["Apellidos"];
         $Contrasenia = $_POST["contrasenia"];
         $Correo = $_POST["correo"];
-        
+
         //$SucursalId = $_POST["SucursalId"];
         $RolId = $_POST["RolId"];
         //$Cedula = $_POST["Cedula"];
@@ -74,32 +106,23 @@ switch ($_GET["op"]) {
         /*TODO: Procedimiento para insertar */
     case 'login':
         session_start();
-        
         $correo = trim($_POST['correo']);
         $contrasenia = trim($_POST['contrasenia']);
-        
         if (empty($correo) || empty($contrasenia)) {
             echo json_encode(["success" => false, "message" => "Correo o contraseña vacíos"]);
             exit();
         }
-
         try {
             $res = $Usuarios->login($correo);
-            
+
             if ($res) {
-                var_dump($contrasenia); // Contraseña ingresada
-                var_dump($res['contrasenia']); // Hash almacenado
-                
-                // Verificar la contraseña hasheada
                 if (password_verify($contrasenia, $res['contrasenia'])) {
-                    // La contraseña es correcta
                     $_SESSION["idUsuarios"] = $res["id"];
                     $_SESSION["Usuarios_Nombres"] = $res["nombreUsuario"];
                     $_SESSION["Usuarios_Apellidos"] = $res["apellidoUsuario"];
                     $_SESSION["Usuarios_Correo"] = $res["correo"];
                     $_SESSION["Usuario_IdRoles"] = $res["id"];
                     $_SESSION["Rol"] = $res["rol"];
-
                     header("Location:../../app/views/home.php");
                     exit();
                 } else {
@@ -116,5 +139,7 @@ switch ($_GET["op"]) {
             exit();
         }
         break;
-
+    case 'CerrarSesion':
+       
+        break;
 }
