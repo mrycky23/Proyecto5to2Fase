@@ -1,83 +1,123 @@
-$(document).ready(function(){
-    cargarRoles();
-});
+$(document).ready(function () {
+  console.log("Documento listo"); // Verifica que jQuery funcione
+  cargarRoles();
+  
 
-function guardar() {
-  $("#btn-guardar").click(function (e) {
+  //TODO: Registrar un rol
+  $("#btn-ingresarRol").click(function (e){
   e.preventDefault();
-  var formData = $("#form-registroUsuario").serialize();
+  var rol = $("#nuevoRol").val();
+  
+  if (rol === "") {
+    alert("Por favor, selecciona un rol.");
+    console.log("El campo rol está vacío");
+    return;
+  }
 
+  rolExistente(rol, function (existe){
+    if(existe) {
+      console.log("El rol ya existe");
+      return;
+    } else {
+      $.ajax({
+        url: "../../../API/controllers/roles.controllers.php?op=insertar",
+        type: "POST",
+        data: {
+          campoRol: rol
+        },
+        success: function (response) {
+            console.log(response);
+            cargarRoles();
+            limpiarCajas();
+        },
+        error: function (xhr, status, error) {
+          console.error("Error en la solicitud AJAX:", error);
+        },
+      });
+    }
+  });
+ });
+
+  //TODO: Registrar un usuario
+  $("#btn-guardar").click(function (e) {
+    console.log("Botón guardar clickeado");
+    e.preventDefault();
+    var formData = $("#form-registroUsuario").serialize();
+    var idRol = $("#rol").val();
     $.ajax({
       url: "../../../API/controllers/registroUsuario.controllers.php?op=insertar",
       type: "POST",
       data: formData,
       success: function (response) {
-          if (response.success) {
-              console.log("Los datos se han guardado correctamente.");
-          } else {
-              console.error("Ocurrió un error al guardar los datos.");
-          }
+        console.log(response);
+        var idUsuario = response.idUsuario;
+        if(idUsuario && idRol){
+          $.ajax({
+            url:  "../../../API/controllers/registroUsuario.controllers.php?op=insertarUsuarioRol",
+            type: "POST",
+            data:{ idUsuario: idUsuario, idRol: idRol},
+            success: function (response){
+              console.log(response);
+            },
+            error: function (xhr,status, error) {
+              console.error(xhr.reponseText);
+            }
+          });
+        }
       },
       error: function (xhr, status, error) {
-          console.xhr("Error en la solicitud AJAX:", xhr);
-          console.status("Error en la solicitud AJAX:", status);
-          console.error("Error en la solicitud AJAX:", error);
+        console.xhr("Error en la solicitud AJAX:", xhr);
+        console.status("Error en la solicitud AJAX:", status);
+        console.error("Error en la solicitud AJAX:", error);
       },
     });
   });
-}
-function cargarRoles(){
+});
+
+//TODO: verificar si el rol ya existe
+function rolExistente(rol, callback) {
   $.ajax({
-    url: '../../../API/controllers/usuarios.controllers.php',
-    type: 'GET',
-    data: {op: 'cargarRoles'},
-    datatype: 'json',
-    success: function(response){
-      // Limpiar opciones existentes en el select
-      $('#rol').empty();
-      // Agregar la opción "Seleccionar" por defecto
-      $('#rol').append('<option value="">Seleccionar</option>');
-      // Iterar sobre los roles obtenidos y agregarlos al select
-      $.each(response, function (index, roles) {
-        $('#rol').append('<option value="' + roles.id + '">' + roles.rol + '</option>');
-      });
+    url: "../../../API/controllers/roles.controllers.php?op=verificarExistencia",
+    type: "POST",
+    data: {
+      campoRol: rol,
     },
-    error: function (xhr, status, error){
-      console.error('Error al obtener los roles:', error);
-    }
-    });
+    success: function (response) {
+      callback(response === "true");
+    },
+    error: function (xhr, status, error) {
+      console.error("Error al verificar la existencia del rol:", error);
+      callback(false);
+    },
+  });
 }
 
-function cargarVehiculos() {
-  // Petición AJAX para obtener los datos de los vehículos desde el controlador
+function cargarRoles() {
   $.ajax({
-      url: '../../../API/controllers/vehiculos.controllers.php',
-      type: 'GET',
-      data: {
-          op: 'todos'
-      },
-      dataType: 'json',
-      success: function (response) {
-          // Limpiar opciones existentes en el select
-          $('#vehiculo').empty();
-          // Agregar la opción "Seleccionar" por defecto
-          $('#vehiculo').append('<option value="">Seleccionar</option>');
-          // Iterar sobre los vehículos obtenidos y agregarlos al select
-          $.each(response, function (index, vehiculo) {
-              $('#vehiculo').append('<option value="' + vehiculo.id + '">' + vehiculo.placa + '</option>');
-          });
-      },
-      error: function (xhr, status, error) {
-          console.error('Error al obtener los vehículos:', error);
-      }
+    url: "../../../API/controllers/roles.controllers.php",
+    type: "GET",
+    data: { op: "todos" },
+    dataType: "json",
+    success: function (response) {
+      $("#rol").empty();
+      $("#rol").append('<option value="">Seleccionar</option>');
+      $.each(response, function (index, roles) {
+        $("#rol").append(
+          '<option value="' + roles.id + '">' + roles.rol + "</option>"
+        );
+      });
+    },
+    error: function (xhr, status, error) {
+      console.error("Error al obtener los roles:", xhr);
+    },
   });
 }
-function limpiarCajas(){
+
+function limpiarCajas() {
   $("#nombre").val("");
   $("#apellido").val("");
   $("#correo").val("");
   $("#contrasenia").val("");
   $("#confirmaContrasenia").val("");
 }
-guardar();
 limpiarCajas();

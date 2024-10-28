@@ -1,37 +1,37 @@
 <?php
 /*TODO: Requerimientos */
 require_once("../config/cors.php");
-require_once("../models/rol.models.php");
+require_once("../models/roles.models.php");
 error_reporting(0);
 
-$Rol = new Rol;
+$rolModel= new Rol;
 switch ($_GET["op"]) {
+
         /*TODO: Procedimiento para listar todos los registros */
     case 'todos':
-        $datos = array();
-        $datos = $Rol->todos();
+        $datos = $rolModel->todos();
+        $todos = array();
         while ($row = mysqli_fetch_assoc($datos)) {
             $todos[] = $row;
         }
+        mysqli_free_result($datos);
         echo json_encode($todos);
-
         break;
-        /*TODO: Procedimiento para sacar un registro 
+
+        //TODO: Procedimiento para sacar un registro //
     case 'uno':
         $idAccesos = $_POST["idAccesos"];
         $datos = array();
-        $datos = $Sucursal->uno($idAccesos);
+        $datos = $Rol->uno($idAccesos);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
-        break;*/
-        /*TODO: Procedimiento para insertar
-    case 'insertar':
+        break;
 
-        $Ultimo = $_POST["Ultimo"];
-        $Usuarios_idUsuarios = $_POST["combo_idUsuarios"];
-        $tipo = $_POST["tipo"];
+        // TODO: Procedimiento para insertar //
+    case 'insertar':
+        $rol = $_POST["campoRol"];
         $datos = array();
-        $datos = $Sucursal->Insertar($Ultimo, $Usuarios_idUsuarios, $tipo);
+        $datos = $rolModel->insertar($rol);
         echo json_encode($datos);
         break;
        
@@ -47,7 +47,19 @@ switch ($_GET["op"]) {
     case 'eliminar':
         $idAccesos = $_POST["idAccesos"];
         $datos = array();
-        $datos = $Sucursal->Eliminar($idAccesos);
+        $datos = $Rol->Eliminar($idAccesos);
         echo json_encode($datos);
-        break; */
+        break; 
+
+    case 'verificarExistencia':
+        $rol = $_POST["campoRol"];
+        $datos = array();
+        $datos = $rolModel->verificarExistencia($rol);
+        if ($datos) {
+            echo json_encode(['existe' => true]);
+        } else {
+            echo json_encode(['existe' => false]);
+        }
+        break;
+
 }

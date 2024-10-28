@@ -35,13 +35,7 @@ switch ($_GET["op"]) {
 
     case 'insertar':
         $repuesto = $_POST["campoRepuesto"];
-
-    if ($Repuestos->existeRepuesto($repuesto)) {
-        echo json_encode("El repuesto ya existe");
-        return; 
-    }
-
-        $datos = $Repuestos->Insertar($repuesto);
+        $datos = $Repuestos->insertar($repuesto);
         echo json_encode($datos);
         break;
 

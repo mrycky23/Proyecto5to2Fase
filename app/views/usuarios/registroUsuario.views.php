@@ -45,8 +45,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="roles">Seleccionar rol:</label>
-                                    <select id="roles" name="roles" class="form-control" required></select>
+                                    <label for="rol">Seleccionar rol:</label>
+                                    <select id="rol" name="rol" class="form-control" required></select>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control form-control-lg" id="contrasenia" name="contrasenia"  type="password" required="" placeholder="Contraseña">
@@ -54,8 +54,8 @@
                                 <div class="form-group">
                                     <input class="form-control form-control-lg" id="confirmaContrasenia" type="password" required="" placeholder="Confirmar contraseña">
                                 </div>
-                                <div class="form-group pt-2" id= "btn-guardar" >
-                                    <button type="button" class="btn btn-block btn-primary" >Registrar</button>
+                                <div class="form-group pt-2">
+                                    <button type="button" id= "btn-guardar" class="btn btn-block btn-primary" >Registrar</button>
                                 </div>
                                 <div class="form-group">
                                     <label class="custom-control custom-checkbox">

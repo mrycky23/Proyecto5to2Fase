@@ -13,31 +13,29 @@ class Usuarios_Roles
         return $datos;
         $con->close();
     }
-    public function cargarRoles()
+    public function insertarUsuarioRol($idUsuario, $idRol)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "SELECT * FROM roles";
+        $cadena = "INSERT INTO usuario_roles(idUsuario,idRol) values (?,?)";
 
-        if (mysqli_query($con, $cadena)) {
+        $stmt = $con->prepare($cadena);
+        if(!$stmt){
+            return "Error al preparar la consulta";
+        }
+
+        $stmt->bind_param("ii", $idUsuario, $idRol);
+        $result = $stmt->execute();
+        if($result){
+            $stmt->close();
+            $con->close();
             return "ok";
         } else {
-            return 'Error al insertar en la base de datos';
+            $error = $stmt->error;
+            $stmt->close();
+            $con->close();
+            return "Error al ejecutar la consulta: $error";
         }
-        $con->close();
-    }
-    public function Insertar($Usuarios_idUsuarios, $Roles_idRoles,)
-    {
-        $con = new ClaseConectar();
-        $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT into usuario_roles(idUsuario,idRol) values ( $Usuarios_idUsuarios,  $Roles_idRoles )";
-
-        if (mysqli_query($con, $cadena)) {
-            return "ok";
-        } else {
-            return 'Error al insertar en la base de datos';
-        }
-        $con->close();
     }
     /*TODO: Procedimiento para actualizar */
     public function Actualizar($Usuarios_idUsuarios, $Roles_idRoles, $idUsuariosRoles,)
@@ -49,19 +47,6 @@ class Usuarios_Roles
             return "ok";
         } else {
             return 'error al actualizar el registro';
-        }
-        $con->close();
-    }
-    /*TODO: Procedimiento para Eliminar */
-    public function Eliminar($Usuarios_idUsuarios)
-    {
-        $con = new ClaseConectar();
-        $con = $con->ProcedimientoConectar();
-        $cadena = "DELETE FROM `usuario_roles` WHERE `idUsuario`= $Usuarios_idUsuarios";
-        if (mysqli_query($con, $cadena)) {
-            return true;
-        } else {
-            return false;
         }
         $con->close();
     }

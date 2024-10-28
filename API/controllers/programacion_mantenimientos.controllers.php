@@ -56,7 +56,6 @@ switch ($_GET["op"]) {
         $datos = $ProgramacionMantenimientos->Insertar($nombreMantenimiento, $idRepuesto, $idVehiculo, $km, $hora, $dia, $mes, $anio, $nota);
         $idProgramacion  = $ProgramacionMantenimientos->ultimoIdprogramacion();
 
-        // Verificar si se obtuvo correctamente el idViaje
         if ($idProgramacion) {
             //TODO: Insertar los datos en la tabla programacion-vehiculo
             if ($idVehiculo) {
