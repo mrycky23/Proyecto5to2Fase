@@ -25,7 +25,6 @@
 <body>
     <div class="dashboard-header">
         <div class="dashboard-wrapper">
-                <!--<div class="dashboard-ecommerce">-->
                 <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
@@ -488,7 +487,6 @@
                             <!-- ============================================================== -->
                         </div>
                 </div>
-                <!--</div>-->
                 <div class="footer">
                     <div class="container-fluid">
                         <div class="row">

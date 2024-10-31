@@ -25,7 +25,7 @@ require_once('../../API/config/verificar_sesion.php');
 
 <body>
     <div class="dashboard-main-wrapper">
-        <!-- navbar -->
+        <!-- navbar header -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <a class="navbar-brand" href="./home.php"><img src="../../assets/images/Transjovalsa SA1.jpg" width="180" height="50"></a>
@@ -137,6 +137,7 @@ require_once('../../API/config/verificar_sesion.php');
                 </div>
             </nav>
         </div>
+        <!-- sidenavbar -->
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -150,7 +151,6 @@ require_once('../../API/config/verificar_sesion.php');
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <!--<a class="nav-link" href="/mantenimientos/dashboard" target="content"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>-->
                                 <a class="nav-link" href="./mantenimientos/dashboard.views.php" target="content"><i class="fas fa-fw fas fa-home"></i>Mantenimientos</a>
                             </li>
                             <li class="nav-item">
@@ -161,6 +161,9 @@ require_once('../../API/config/verificar_sesion.php');
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="./vehiculos/vehiculos.views.php" target="content"><i class="fab fa-fw  fas fa-truck-moving"></i>Vehiculos</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="./repuestos/repuestos.views.php" target="content"><i class="fas fa-wrench"></i>Repuestos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./viajes/viajes.views.php" target="content"><i class="far fa-paper-plane"></i>Viajes</a>

@@ -1,6 +1,6 @@
 <?php
 
-// verificar_sesion.php
+// verificar_sesion.php2
 session_start();
 
 // Verifica si el usuario ha iniciado sesión
