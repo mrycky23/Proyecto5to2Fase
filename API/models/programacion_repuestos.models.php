@@ -2,7 +2,7 @@
     
 require_once('../config/conexion.php');
 
-class programacion_repuestos
+class ProgramacionRepuestos
 {
 
     public function insertarProgramacionRepuesto($idProgramacion, $idRepuesto)

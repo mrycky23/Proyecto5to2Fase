@@ -210,7 +210,6 @@ class ProgramacionMantenimientos
                 $ultimoId = null; 
             }
         } else {
-            // Error en la consulta
             $ultimoId = null;
             error_log("Error en la consulta SQL: " . mysqli_error($con));
         }

@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header" id="top">
-                                    <h2 class="pageheader-title">Programacion de mantenimientos </h2>
+                                    <h2 class="pageheader-title">Repuestos </h2>
                                     <p class="pageheader-text"></p>
 <!--BREADCRUMBS-->
                                     <div class="page-breadcrumb">
@@ -65,25 +65,27 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="repuesto">Repuesto:</label>
-                                                <select id="repuesto" name="repuesto" class="form-control"  required>
+                                                <label for="campoDuracion">Ingresar unidad de duracion:</label>
+                                                <div class="input-group mb-3">
+                                                    <input id="campoDuracion" type="text" class="form-control">
+                                                    <div class="input-group-append">
+                                                        <button id="btn-ingresarDuracion" type="button" class="btn btn-primary">Ingresar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="unidadDuracion">Unidad de duracion:</label>
+                                                <select id="unidadDuracion" name="unidadDuracion" class="form-control"  required>
                                                     <option value="">Seleccionar</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="frecuencia">Frecuencia:</label>
-                                                <select id="frecuencia" name="frecuencia" class="form-control" required>
-                                                    <option value="undefined">Seleccionar</option>
-                                                    <option value="hora">Horas</option>
-                                                    <option value="kilometraje">Kilometro</option>
-                                                    <option value="dia">Día</option>
-                                                    <option value="mes">Mes</option>
-                                                    <option value="anio">Año</option>
-                                                </select>
+                                                <label for="duracion">Durabilidad</label>
+                                                <input id="duracion" name="duracion" type="number" class="form-control" placeholder="" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="duracion">Duración</label>
-                                                <input id="duracion" name="duracion" type="number" class="form-control" placeholder="" required>
+                                                <label for="cantidad">Cantidad de repuestos</label>
+                                                <input id="cantidad" name="cantidad" type="number" class="form-control" placeholder="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nota">Nota:</label>
@@ -91,6 +93,32 @@
                                             </div>
                                             <button id= "btn-guardar"  class="btn btn-lg btn-secondary btn-block">Guardar</button>
                                         </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- basic table  -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Listado de repuestos</h5>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered first">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N#</th>
+                                                        <th>Nombre</th>
+                                                        <th>durabilidad</th>
+                                                        <th>Unidad</th>
+                                                        <th>Cantidad de Repuestos</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="table-border-bottom-0" id="ListaRepuestos">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +171,7 @@
             })
     });
     </script>
-    <script src= "../../scripts/programacion_mant.script.js"></script>
+    <script src= "../../scripts/repuestos.script.js"></script>
 </body>
  
 </html>

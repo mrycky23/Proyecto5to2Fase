@@ -65,11 +65,7 @@ $(document).ready(function () {
       return; // Detener la ejecución si faltan datos
     }
     // Determinar los valores para los atributos km, hora, día, mes, año
-    var hora = 0;
-    var km = 0;
-    var dia = 0;
-    var mes = 0;
-    var anio = 0;
+    var hora = 0, km = 0, dia = 0, mes = 0, anio = 0;
     switch (frecuencia) {
       case "hora":
         hora = duracion;
@@ -91,6 +87,7 @@ $(document).ready(function () {
     }
     datosFormulario = {
       nombreMantenimiento: nombreMantenimiento,
+      idRepuesto: parseInt(idRepuesto, 10),
       idRepuesto: idRepuesto,
       idVehiculo: idVehiculo,
       km: km,
@@ -107,6 +104,7 @@ $(document).ready(function () {
       type: "POST",
       data: datosFormulario,
       success: function (response) {
+        console.log("Datos enviados: ", datosFormulario);
         console.log(response);
         var idProgramacion = response.idProgramacion;
 
@@ -115,16 +113,16 @@ $(document).ready(function () {
             url: "../../../API/controllers/programacion_mantenimientos.controllers.php?op=insertarProgramacionRepuesto",
             type: "POST",
             data: { idProgramacion: idProgramacion, idRepuesto: idRepuesto },
-            succes: function (response) {
+            success: function (response) {
               console.log(response);
             },
             error: function (xhr, status, error) {
-              console.error(xhr.responseText);
+              console.error("Error al insertar programacion de repuesto: ", xhr.responseText);
             },
           });
         }
 
-        if (idProgramacion && idRepuesto) {
+        if (idProgramacion && idVehiculo) {
           $.ajax({
             url: "../../../API/controllers/programacion_mantenimientos.controllers.php?op=insertarProgramacionVehiculo",
             type: "POST",
@@ -133,7 +131,7 @@ $(document).ready(function () {
               console.log(response);
             },
             error: function (xhr, status, error) {
-              console.error(xhr.responseText);
+              console.error("Error al insertar programacion de vehiculos: ",xhr.responseText);
             },
           });
         }
@@ -142,9 +140,12 @@ $(document).ready(function () {
       },
 
       error: function (xhr, status, error) {
-        console.error(xhr.responseText);
-        console.error(status.responseText);
-        console.error(error.responseText);
+        console.error("Error al insertar programacion: ",{
+          status: status,
+          error: error,
+          responseText: xhr.responseText,
+        }
+        );
       },
     });
   });

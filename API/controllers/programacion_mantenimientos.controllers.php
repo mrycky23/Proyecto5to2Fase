@@ -6,8 +6,8 @@ require_once("../models/programacion_vehiculos.models.php");
 
 
 $ProgramacionMantenimientos = new ProgramacionMantenimientos;
-$ProgramacionRepuesto = new programacion_repuestos;
-$ProgramacionVehiculo = new programacion_vehiculos;
+$ProgramacionRepuesto = new ProgramacionRepuestos;
+$ProgramacionVehiculo = new ProgramacionVehiculos;
 
 
 switch ($_GET["op"]) {
@@ -19,8 +19,8 @@ switch ($_GET["op"]) {
 
     case 'insertar':
         $nombreMantenimiento = isset($_POST["nombreMantenimiento"]) ? $_POST["nombreMantenimiento"] : '';
-        $idRepuesto = isset($_POST["repuestoId"]) ? $_POST["repuestoId"] : '';
-        $idVehiculo = isset($_POST["vehiculoId"]) ? $_POST["vehiculoId"] : '';
+        $idRepuesto = isset($_POST["idRepuesto"]) ? $_POST["idRepuesto"] : '';
+        $idVehiculo = isset($_POST["idVehiculo"]) ? $_POST["idVehiculo"] : '';
         $frecuencia = isset($_POST["frecuencia"]) ? $_POST["frecuencia"] : '';
         $duracion = isset($_POST["duracion"]) ? $_POST["duracion"] : '';
         $nota = isset($_POST["nota"]) ? $_POST["nota"] : '';
@@ -59,29 +59,29 @@ switch ($_GET["op"]) {
         if ($idProgramacion) {
             //TODO: Insertar los datos en la tabla programacion-vehiculo
             if ($idVehiculo) {
-                $resultVehiculo = $ProgramacionVehiculo->insertarProgramacionVehiculo($idVehiculo, $idViaje);
+                $resultVehiculo = $ProgramacionVehiculo->insertarProgramacionVehiculo($idProgramacion, $idVehiculo);
                 if (!$resultVehiculo) {
-                    //echo json_encode(['status' => 'error', 'message' => 'Error al insertar relación programacion-vehiculo']);
+                    echo json_encode(['status' => 'error', 'message' => 'Error al insertar relación programacion-vehiculo']);
                     exit;
                 }
             } else {
-                //echo json_encode(['status' => 'error', 'message' => 'El campo idVehiculo está vacío']);
+                echo json_encode(['status' => 'error', 'message' => 'El campo idVehiculo está vacío']);
                 exit;
             }
             //TODO: Insertar los datos en la tabla programacion-repuesto
             if ($idRepuesto) {
-                $resultRepuesto = $ProgramacionRepuesto->insertarProgramacionRepuesto($idConductor, $idViaje);
+                $resultRepuesto = $ProgramacionRepuesto->insertarProgramacionRepuesto($idProgramacion, $idRepuesto);
                 if (!$resultRepuesto) {
-                    //echo json_encode(['status' => 'error', 'message' => 'Error al insertar relación programacion-repuesto']);
+                    echo json_encode(['status' => 'error', 'message' => 'Error al insertar relación programacion-repuesto']);
                     exit;
                 }
             } else {
-                //echo json_encode(['status' => 'error', 'message' => 'El campo idConductor está vacío']);
+                echo json_encode(['status' => 'error', 'message' => 'El campo idRespuesto está vacío']);
                 exit;
             }
-            //echo json_encode(['status' => 'success', 'message' => 'Viaje y relaciones insertadas correctamente', 'idViaje' => $idViaje]);
+            echo json_encode(['status' => 'success', 'message' => 'Programacion y relaciones insertadas correctamente', 'idProgramacion' => $idProgramacion]);
         } else {
-            //echo json_encode(['status' => 'error', 'message' => 'Error al obtener el ID del último viaje']);
+            echo json_encode(['status' => 'error', 'message' => 'Error al obtener el ID de la ultima programacion']);
         }
 
         echo json_encode($datos);
